@@ -1,0 +1,13 @@
+{
+  "accentColor": "#007bff",
+  "cssTheme": "FF4F00",
+  "theme": "moonstone",
+  "translucency": false,
+  "nativeMenus": true,
+  "baseFontSizeAction": false,
+  "showViewHeader": false,
+  "showRibbon": false,
+  "interfaceFontFamily": "Avenir Next",
+  "textFontFamily": "Avenir Next",
+  "monospaceFontFamily": "MonoLisa"
+}

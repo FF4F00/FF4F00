@@ -1,0 +1,300 @@
+/*===============================================================
+FF4F00
+
+
+FF4F00 is licensed under the MIT license.
+
+*===============================================================*/
+/*
+@settings
+name: FF4F00
+id: FF4F00-theme-settings
+settings:
+*/
+
+/*
+    font-family: "Departure Mono", sans-serif !important;
+    font-family: "Scientifica", sans-serif !important;
+    font-family: "Dank Mono", sans-serif !important;
+*/
+body {
+    --radius-s: 0px;
+    --radius-m: 0px;
+    --radius-l: 0px;
+    --input-radius: 0px;
+    --tab-radius-active: 0px;
+    --checkbox-radius: 0px;
+    --toggle-radius: 0px;
+    --toggle-thumb-radius: 0px;
+    --slider-thumb-radius: 0px;
+    --tab-stacked-pane-width: 100%;
+}
+
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+    display: none;
+}
+
+svg * {
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    rx: 0;
+    ry: 0;
+}
+
+.menu {
+    padding: var(--size-2-1);
+}
+
+.menu-item {
+    padding: var(--size-4-1) var(--size-4-2);
+}
+
+.menu-separator {
+    margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
+
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container {
+    width: 100%;
+    transition: width 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.workspace-split.mod-vertical > .workspace-leaf:not(.mod-active) {
+    min-width: 0;
+    transition: min-width 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.workspace-tab-header:hover,
+.workspace-tab-header:hover .workspace-tab-header-inner,
+.workspace-tab-header:hover .workspace-tab-header-inner-icon,
+.workspace-tab-header:hover .workspace-tab-header-inner-title,
+.workspace-tab-header.is-active,
+.workspace-tab-header.is-active .workspace-tab-header-inner,
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    background-color: inherit !important;
+    color: inherit !important;
+    cursor: default !important;
+}
+
+.theme-dark {
+    --background-primary: #000206;
+    --background-secondary: #000206;
+    --background-secondary-alt: #000206;
+}
+
+.theme-light {
+    --background-primary: #faf9f8;
+    --background-secondary: #faf9f8;
+    --background-secondary-alt: #faf9f8;
+
+    .mod-stacked .workspace-tab-header {
+        font-family: "Departure Mono", monospace !important;
+        background-color: #efece9 !important;
+    }
+
+    .mod-stacked .workspace-tab-header:hover,
+    .mod-stacked .workspace-tab-header:hover .workspace-tab-header-inner,
+    .mod-stacked .workspace-tab-header:hover .workspace-tab-header-inner-icon,
+    .mod-stacked .workspace-tab-header:hover .workspace-tab-header-inner-title,
+    .mod-stacked .workspace-tab-header.is-active,
+    .mod-stacked .workspace-tab-header.is-active .workspace-tab-header-inner,
+    .mod-stacked
+        .workspace-tab-header.is-active
+        .workspace-tab-header-inner-icon,
+    .mod-stacked
+        .workspace-tab-header.is-active
+        .workspace-tab-header-inner-title {
+        background-color: #efece9 !important;
+        color: #000206 !important;
+        cursor: default !important;
+    }
+
+    .mod-stacked .workspace-tab-header.is-active,
+    .mod-stacked .workspace-tab-header.is-active .workspace-tab-header-inner,
+    .mod-stacked
+        .workspace-tab-header.is-active
+        .workspace-tab-header-inner-icon,
+    .mod-stacked
+        .workspace-tab-header.is-active
+        .workspace-tab-header-inner-title {
+        background-color: #efece9 !important;
+        color: #000206 !important;
+    }
+
+    .mod-stacked .workspace-tab-header:not(.is-active),
+    .mod-stacked
+        .workspace-tab-header:not(.is-active)
+        .workspace-tab-header-inner,
+    .mod-stacked
+        .workspace-tab-header:not(.is-active)
+        .workspace-tab-header-inner-icon,
+    .mod-stacked
+        .workspace-tab-header:not(.is-active)
+        .workspace-tab-header-inner-title {
+        color: #727272 !important;
+    }
+
+    .workspace-tab-header[data-type="file-explorer"] {
+        margin-left: 0px;
+        border-left: 0px solid rgba(100, 100, 100, 0.1);
+    }
+
+    /* .markdown-preview-view p,
+    .markdown-preview-view blockquote,
+    .cm-line {
+        font-family: "Avenir Next", sans-serif !important;
+    } */
+
+    .markdown-preview-view pre {
+        font-family: "Dank Mono";
+    }
+
+    em,
+    .cm-em {
+        font-family: "Dank Mono", monospace;
+        font-style: italic;
+        color: #007bff;
+    }
+    strong,
+    .cm-strong {
+        font-family: "Avenir", sans-serif !important;
+    }
+    .theme-light,
+    .theme-dark {
+        --text-highlight-bg: #ceff00;
+    }
+
+    .markdown-preview-view mark,
+    .cm-highlight {
+        font-family: "Avenir", sans-serif !important;
+        background-color: var(--text-highlight-bg) !important;
+        font-weight: bold;
+    }
+
+    /* Change underline color */
+    u,
+    .cm-underline {
+        text-decoration-color: #ff4f00 !important;
+        text-decoration-thickness: 2px;
+    }
+
+    del,
+    .cm-strikethrough {
+        text-decoration-color: transparent !important;
+        font-family: "Flow Block", "Redacted Script";
+        text-decoration-thickness: 1px;
+        color: #000206;
+        margin-left: 1px;
+        margin-right: 1px;
+        /* color: #ff4f00; */
+    }
+
+    .cm-header,
+    .markdown-preview-view h1,
+    .markdown-preview-view h2,
+    .markdown-preview-view h3,
+    .markdown-preview-view h4,
+    .markdown-preview-view h5,
+    .markdown-preview-view h6 {
+        font-family: "Suisse Works", monospace !important;
+        font-family: "Playfair Display", monospace !important;
+    }
+
+    #calendar-container {
+        font-family: "Departure Mono", monospace !important;
+    }
+
+    .nav-files-container {
+        font-family: "Departure Mono", monospace !important;
+    }
+
+    .nav-files-container > div > div {
+        border-radius: 2px;
+    }
+
+    .nav-files-container > div > div:nth-child(2) {
+        background-color: #ff4f00;
+    }
+    .nav-files-container > div > div:nth-child(3) {
+        background-color: #ff6100;
+    }
+    .nav-files-container > div > div:nth-child(4) {
+        background-color: #ff7200;
+    }
+    .nav-files-container > div > div:nth-child(5) {
+        background-color: #ff8400;
+    }
+    .nav-files-container > div > div:nth-child(6) {
+        background-color: #ff9500;
+    }
+    .nav-files-container > div > div:nth-child(7) {
+        background-color: #ffa700;
+    }
+    .nav-files-container > div > div:nth-child(8) {
+        background-color: #ffb800;
+    }
+    .nav-files-container > div > div:nth-child(9) {
+        background-color: #ffc400;
+    }
+    .nav-files-container > div > div:nth-child(10) {
+        background-color: #fccb27;
+    }
+
+    .nav-files-container > div > div:nth-child(11),
+    .nav-files-container > div > div:nth-child(12),
+    .nav-files-container > div > div:nth-child(13),
+    .nav-files-container > div > div:nth-child(14),
+    .nav-files-container > div > div:nth-child(15),
+    .nav-files-container > div > div:nth-child(16) {
+        background-color: #efece9;
+    }
+
+    .nav-files-container > div > div:nth-child(2) *,
+    .nav-files-container > div > div:nth-child(3) *,
+    .nav-files-container > div > div:nth-child(4) *,
+    .nav-files-container > div > div:nth-child(5) *,
+    .nav-files-container > div > div:nth-child(6) *,
+    .nav-files-container > div > div:nth-child(7) *,
+    .nav-files-container > div > div:nth-child(8) *,
+    .nav-files-container > div > div:nth-child(9) *,
+    .nav-files-container > div > div:nth-child(10) *,
+    .nav-files-container > div > div:nth-child(11) *,
+    .nav-files-container > div > div:nth-child(11) *,
+    .nav-files-container > div > div:nth-child(12) *,
+    .nav-files-container > div > div:nth-child(13) *,
+    .nav-files-container > div > div:nth-child(14) *,
+    .nav-files-container > div > div:nth-child(15) *,
+    .nav-files-container > div > div:nth-child(16) *,
+    .nav-files-container > div > div:nth-child(17) * {
+        color: #323232;
+    }
+
+    .markdown-preview-view {
+        border: none;
+        text-decoration: none;
+    }
+
+    * pre,
+    * code {
+        font-family: "Dank Mono";
+    }
+
+    .CodeMirror pre.CodeMirror-line {
+        background-color: pink !important;
+    }
+
+    * .code-styler-line-number {
+        display: none;
+    }
+
+    .el-pre > .code-styler-line-number {
+        display: none;
+    }
+
+    /* .el-pre .code-styler-pre-parent {
+
+    }
+    .el-pre .has-run-code-button .code-styler-pre-parent {
+    } */
+}

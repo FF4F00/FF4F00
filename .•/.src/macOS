@@ -1,0 +1,113 @@
+# git clone .•
+
+# RUST
+xcode-select --install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+
+
+
+
+# MODULAR
+curl -ssL https://magic.modular.com/5f99cf70-fbfd-497f-8dab-0703c30c6038 | bash
+magic self-update
+magic add max
+magic add "python=3.11"
+magic add pip
+
+# API
+brew install --cask postman
+brew install --cask httpie
+
+# CLOUDFLARE
+cd $HOME/.•/
+magic run pip install cloudflare-cli4
+
+# AWS
+sudo softwareupdate --install-rosetta
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+
+
+
+# STORJ
+curl -L https://github.com/storj/storj/releases/latest/download/uplink_darwin_arm64.zip -o uplink_darwin_arm64.zip
+unzip -o uplink_darwin_arm64.zip
+sudo install uplink /usr/local/bin/uplink
+
+
+# BTCPAY
+# EC2 -> BSD / test_node
+
+
+# NOTION
+# -> Collaboration
+brew install --cask notion
+
+# FIGMA
+# -> Collaboration
+brew install --cask figma
+curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-arm64
+chmod +x tailwindcss-macos-arm64
+mv tailwindcss-macos-arm64 tailwindcss
+
+# RAYCAST
+# -> Collaboration
+brew install --cask raycast
+
+# WARP
+# -> Collaboration
+brew install --cask warp
+
+# TERMIUS
+# -> Collaboration
+brew install --cask termius
+
+# ZED
+# -> Collaboration
+brew install --cask zed
+
+# GITLAB
+# -> Collaboration
+brew install glab
+
+
+
+# NEOVIM
+source ~/.•/.src/neovim
+
+# ANDROID STUDIO
+brew install --cask android-studio
+
+
+# JUPYTERLAB
+brew install --cask jupyterlab
+mkdir $HOME/.notes
+cd $HOME/.notes
+magic add "python==3.11"
+magic add conda
+magic add jupyterlab
+
+
+
+# AMETHYST
+brew install --cask amethyst
+
+# GHOSTTY
+brew install --cask ghostty
+cargo install starship
+cargo install zoxide
+cargo install coreutils
+cargo install bandwhich
+cargo install bottom
+cargo install onefetch
+
+# SKETCHYBAR
+brew tap FelixKratz/formulae
+brew install sketchybar
+
+# MPV
+brew install --cask mpv
+
+# OBS
+brew install --cask obs

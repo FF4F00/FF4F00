@@ -1,0 +1,283 @@
+
+
+.uiux {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #444444;
+  overflow: hidden;
+}
+
+.top,
+.mid,
+.btm {
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+.top,
+.btm {
+  min-height: 64px;
+  border: 1px solid red;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mid {
+  min-height: 384px;
+  flex-grow: 2;
+}
+
+.line {
+  border-bottom: 1px solid black;
+  width: 80%;
+  height: 33.3333333333%;
+}
+
+
+.discovery {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid red;
+  padding: 5%;
+}
+
+
+.btm a {
+  display: block;
+  width: 20%;
+  max-width: 48px;
+  max-height: 48px;
+  height: 100%;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  font-size: 0;
+}
+
+.btm a img {
+  width: 100%;
+  height: auto;
+}
+
+
+#rothko {
+  border: 1px solid blue;
+  width: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 16px; /* Apply gap here for flex items spacing */
+  margin-bottom: 96px;
+}
+
+#rothko .top,
+#rothko .mid,
+#rothko .btm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid red; /* Debugging border */
+}
+
+#rothko .top {
+  min-height: 64px;
+}
+
+#rothko .mid {
+  min-height: 32px;
+}
+
+#rothko .btm {
+  min-height: 32px;
+  gap: 16px; /* Gap for child divs */
+}
+
+#rothko .btm button {
+  width: 16.6666666667%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  border: 1px solid black; /* Debugging border */
+}
+
+/* body{
+  line-height:              $base * 1rem;
+  font-size:                $base * 1rem;
+  width:                            auto;
+} */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+[type=checkbox] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+}
+
+[type=radio] {
+  -webkit-appearance: radio;
+  appearance: radio;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+option {
+  padding: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+/* input {
+  transform: translate(-50%, -50%);
+  width: calc(100% - 50%);
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+}
+
+[type="text"] {
+  min-height:    100%;
+  padding-left:  16px;
+  padding-right: 16px;
+
+} */
+/* Small devices (e.g., iPhone 4, Galaxy S5) */
+@media screen and (min-width: 320px) and (max-width: 374px) {
+  .top, .btm {
+    max-height: 32px;
+  }
+}
+/* Medium devices (e.g., iPhone 6, 7, 8, SE 2020, Galaxy S6/S7/S8) */
+@media screen and (min-width: 375px) and (max-width: 414px) {
+  .top, .btm {
+    max-height: 40px;
+  }
+}
+/* Larger devices (e.g., iPhone X, XS, 11, 12, 13, 14, 15, Galaxy S9/S10/S20) */
+@media screen and (min-width: 415px) and (max-width: 430px) {
+  .top, .btm {
+    max-height: 48px;
+  }
+}
+/* Extra large devices (e.g., Galaxy Note 8/9/10) */
+@media screen and (min-width: 431px) and (max-width: 479px) {
+  .top, .btm {
+    max-height: 56px;
+  }
+}
+/* Very large devices (e.g., Galaxy Tab A) */
+@media screen and (min-width: 480px) and (max-width: 639px) {
+  .top, .btm {
+    max-height: 64px;
+  }
+}
+/* Extra large tablets and small desktops */
+@media screen and (min-width: 640px) and (max-width: 959px) {
+  .top, .btm {
+    max-height: 72px;
+  }
+}
+/* Desktops and larger screens */
+@media screen and (min-width: 240px) {
+  .top, .btm {
+    max-height: 80px;
+  }
+  .uiux {
+    max-width: 430px;
+    margin: 0 auto;
+    max-height: 932px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@viewport {
+  orientation: portrait;
+}

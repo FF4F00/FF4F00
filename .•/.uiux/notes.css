@@ -1,0 +1,613 @@
+
+nav{
+  order: 1;
+}
+main {
+  order: 2;
+}
+aside{
+  order: 3;
+}
+footer{
+  order: 4;
+}
+
+
+main, nav, footer,{
+  background-color: #FF4F00;
+}
+
+main{
+  min-height: 90%;
+}
+
+._01, 
+._02, 
+._02x,
+._02y, 
+._02z,
+._03,
+._03x,
+._03y,
+._03z,
+._04{
+
+  @include w(100%, 100%, 100%);
+  @include h(100%, 100%, 100%);
+  @include trbl(cc,fixed);
+  display:  grid;
+}
+
+
+._01{
+  grid-template-columns: 1fr;
+  grid-template-rows:    1fr;
+  padding: 16px;
+}
+
+._02{
+  grid-template-columns: 1fr;
+  grid-template-rows:    48px calc(100% - 64px);
+  grid-template-areas:   nav main;
+  grid-gap: 16px;
+  padding: 16px;
+
+}
+
+._02x{
+
+  grid-template-rows:    calc(100% - 64px) 48px;
+
+  
+
+}
+
+._02y{}
+
+._02z{}
+
+._03{}
+
+._03x{}
+
+._03y{}
+
+._03z{}
+
+._04{}
+
+
+// header
+// nav
+// main
+// aside
+// footer
+
+
+
+
+.g *{
+  background-color: pink;
+}
+
+
+// stay relative 
+iframe {
+  @include        w(100%, 100%, auto);
+  @include        h(100%, 100%, auto);
+  position:                   relative;
+  overflow:                     hidden;
+}
+
+
+
+
+
+@mixin                          base(){
+    min-height:                     --h;
+    max-height:                    --vh;
+    min-width:                      --w;
+    max-width:                     --vw;
+    height:                        --_1; 
+    margin:                       auto;
+}
+
+@mixin           iosTextSizeAdjust(--x){
+  -webkit-text-size-adjust:         --x;
+  -ms-text-size-adjust:             --x;
+}
+  
+@mixin                 typography(--ff){
+  font-family:                     --ff;
+  font-size:                     --font;
+}
+
+@mixin                  aura(--bg, $fg){
+  @if                 --dark-mode == $t{
+
+    --bg:                           $pm; 
+    --fg:                           $am;
+
+    background-color:          bg(--bg);
+    color:                     fg(--fg);
+
+  }@else if          --dark-mode == $f{
+
+    --bg:                           $am; 
+    --fg:                           $pm;
+
+    background-color:          bg(--bg);
+    color:                     fg(--fg);
+
+  }@else                              {
+    background-color:          bg(--bg);
+    color:                     fg(--fg);
+  }
+}
+
+
+
+@mixin   bg(--_: _, $bg, $fg, $url: ''){
+
+  @if --_ == _ {
+    --_:                      100% 100%;
+  }@else if --_ == x {
+    --_:                      auto 100%;
+  }@else if --_ == y {
+    --_:                      100% auto;
+  }@else {
+    --_:                      auto auto;
+  }
+
+  background:                url(--url);
+  background-repeat:         no-repeat;
+  background-size:                  --_;
+  background-position:   center center;
+  @include               aura(--bg,$fg);
+
+}
+/* ––––––––––––––––––––––––––––––––––––
+--_:    background-size: $x $y;        - 
+--bg:   background-color:  $bg;        -
+--fg:   color:             $fg;        -
+--url:  background:  url($url);        -
+–––––––––––––––––––––––––––––––––––– */
+
+@mixin trbl(
+  --_: $_,
+  --t: 0,
+  --r: 0,
+  --b: 0,
+  --l: 0,
+  --p: absolute){
+
+  @if                 --p == absolute or
+                      --p == relative or
+                      --p == sticky   or
+                      --p == fixed     {
+
+    position:                       --p;
+
+  }@else                              {
+    position:                   static;
+
+  }
+
+  @if --_ == tl or $_ == tc or $_ == tr{
+    top:                            --t;
+  }
+
+  @if --_ == cl or $_ == cc or $_ == cr{
+    top:                           50%;
+    transform:        translateY(-50%);
+  }
+
+  @if --_ == bl or $_ == bc or $_ == br{
+    top:                          100%;
+    transform:       translateY(-100%);
+  }
+
+  @if --_ == tl or $_ == cl or $_ == bl{
+    left:                           --l;
+  }
+  
+  @if          --p == absolute or fixed{
+
+      @if                   --_ == tr or 
+                            --_ == cr or
+                            --_ == br  {
+          right:                    --r;
+      }
+
+      @if                  --_ == otl or
+                           --_ == otr  {
+          top:                     20%;
+
+      }@else if            --_ == obl or
+                           --_ == obr  {
+          bottom:                   20%;
+      }
+
+      @if                  --_ == otl or
+                           --_ == obl  {
+          left:                    20%;
+
+      }@else if            --_ == otr or
+                           --_ == obr  {
+          right:                   20%;
+      }
+
+  }@else if             --p == relative{
+
+      @if                   --_ == tr or
+                            --_ == cr or
+                            --_ == br  {
+              left:               100%;
+      }
+
+      @if                   --_ == tr  {
+      
+          transform: translateX(-100%);
+
+      }@else if               --_ == cr{
+
+          transform: translate(
+                            -100%, -50%
+                      );
+      }@else if               --_ == br{
+          transform:   translate(
+                           -100%, -100%
+                        );
+      }
+
+  }@else if               --p == sticky{
+
+      @if                   --_ == tr or
+                            --_ == cr or
+                            --_ == br  {
+              left:               100%;
+      }
+      @if                   --_ == bl or
+                            --_ == bc or
+                            --_ == br  {
+              bottom:               --b;
+          }
+
+  }@else if           --p != absolute or
+                      --p != relative or
+                      --p != sticky   or
+                      --p != fixed     {
+
+  }
+
+  @if                         --_ == tc{
+      left:                        50%;
+      transform:      translate(
+                               -50%, 0%
+                      );
+  }@else if                   --_ == cc{
+      left:                        50%;
+      transform:      translate(
+                             -50%, -50%
+                      );
+  }@else if                   --_ == bc{
+      left:                        50%;
+      transform:      translate(
+                            -50%, -100%
+                      );
+  }
+  
+}
+
+/* ––––––––––––––––––––––––––––––––––––
+--_: tl,tc,tr,  cl,cc,cr,  bl,bc,br    - 
+--p: absolute, fixed sticky relative   -
+–––––––––––––––––––––––––––––––––––– */
+
+.tl{@include trbl(tl)}
+.tc{@include trbl(tc)}
+.tr{@include trbl(tr)}
+
+.cl{@include trbl(cl)}
+.cc{@include trbl(cc)}
+.cr{@include trbl(cr)}
+
+.bl{@include trbl(bl)}
+.bc{@include trbl(bc)}
+.br{@include trbl(br)}
+
+
+@mixin     m(--t, $r, $b, $l, $_: auto){
+  @if --_ != auto{
+    --t: $_;
+    --r: $_;
+    --b: $_;
+    --l: $_;
+    margin:    m(--t) m($r) m($b) m($l);
+  }@else {
+    margin:    m(--t) m($r) m($b) m($l);
+  }
+}
+
+@mixin     p(--t, $r, $b, $l, $_: auto){
+  @if --_ != auto{
+    --t: $_;
+    --r: $_;
+    --b: $_;
+    --l: $_;
+    padding:   p(--t) p($r) p($b) p($l);
+  }@else {
+    padding:   p(--t) p($r) p($b) p($l);
+  }
+}
+
+// border
+
+@mixin                           j(--_){
+  justify-content:              ff(--_);
+}
+@mixin                          as(--_){
+  align-self:                   ff(--_);
+}
+@mixin                          ac(--_){
+  align-content:                ff(--_);
+}
+@mixin                          ai(--_){
+  align-items:                  ff(--_);
+} 
+
+@mixin             f(--d: flex, $f, $j){
+  display:                          --d;
+  flex-flow:                        --f;
+  @include                       j(--j);
+}
+
+
+
+
+// grid
+// animation
+// transition
+// transform
+
+
+
+
+
+
+
+
+
+
+
+
+// –––––––––– FUNCTIONS
+
+@function        _(--_){
+  @return           --_;
+}
+
+@function       uq(--_){  
+  @return  unquote(--_);
+}
+@function      rgb(--_){ 
+  @return uq(
+           'rgb(#{--_})'
+  );
+}
+@function       bg(--_){
+  @return uq(
+           'rgb(#{--_})'
+  );
+}
+@function       fg(--_){
+  @return uq(
+           'rgb(#{--_})'
+  );
+}
+
+@function  s(--_: none){
+  @return           --_;
+}
+@function  c(--_: $blk){
+  @return           --_;
+}
+
+@function       ff(--_){ 
+  @if        --_ == $sb{
+           @return --sb;
+  }@else if  --_ == $sa{
+           @return --sa;
+  }@else if  --_ == $fs{
+           @return --fs;
+  }@else if  --_ == $fe{
+           @return --fe;
+  }@else if  --_ == $_c{
+           @return --_c;
+  }@else              {
+            @return --_;
+  }
+}
+
+@function      rct(--_){
+  @return calc(--_ / 3);
+}
+
+// –––––––––––– @MIXINS
+
+
+
+
+
+
+
+
+
+
+
+*{
+    box-sizing: border-box;
+    background-color: rgb(245,244,243);
+    background-color: rgb(233,232,231);
+}
+
+
+
+.container{
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    overflow: hidden;
+    margin: auto;
+    
+}
+
+.diagram{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flexbox;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    
+    
+}
+
+
+
+.GT_0{
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows:    100%;
+    background-color: #FF4F00;
+    height: calc(100% - 2em);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+
+  
+   
+}
+
+
+
+
+.L1{
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-basis: 1;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+
+}
+
+.y-axis, .x-axis,._45deg{
+    z-index: 100;
+   
+}
+
+.y-axis{
+    background-color: red;
+    height: 100%;
+    width: 1px;
+    margin: auto;
+
+    align-self: center;
+}
+
+.x-axis{
+    background-color: red;
+    height: 1px;
+    width: 100%;
+    margin: auto;
+    align-self: center;
+    position: absolute;
+}
+
+
+._45deg{
+    background-color: red;
+    height: 100%;
+    width: 1px;
+    transform: rotate(-45deg);
+    position: absolute;
+    overflow: hidden;
+}
+
+
+
+
+.gd{
+
+    
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+   
+}
+
+
+
+.d{
+
+
+
+}
+
+
+.t-lr, .b-lr{
+    width: 100%;
+    height: 1em;
+    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    
+
+}
+
+.b-lr{
+    align-self: flex-end;
+    flex-grow: 1;
+}
+
+.t-lr span, .b-lr span{
+    width: 50%;
+}
+
+.tr{
+    text-align: right;
+    padding-left: 1em;
+    padding-right: 1em;
+
+}
+.tl{
+    text-align: left;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

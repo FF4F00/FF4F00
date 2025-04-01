@@ -1,0 +1,51 @@
+._01,
+._02,
+._02x,
+._02y,
+._02z,
+._03,
+._03x,
+._03y,
+._03z,
+._04 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+}
+._01 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  padding: 16px;
+}
+._02 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 48px calc(100% - 64px);
+  grid-template-areas: nav main;
+  grid-gap: 16px;
+  padding: 16px;
+}
+._02x {
+  grid-template-rows: calc(100% - 64px) 48px;
+}
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+* {
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+body {
+  background: #ffc0cb;
+}
+.hg {
+  border: 12px solid #ff0;
+  width: 100%;
+  height: 20px;
+}

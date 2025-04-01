@@ -1,0 +1,136 @@
+@mixin trbl(
+  $_: $_,
+  $t: 0,
+  $r: 0,
+  $b: 0,
+  $l: 0,
+  $p: absolute){
+
+  @if                 $p == absolute or
+                      $p == relative or
+                      $p == sticky   or
+                      $p == fixed     {
+
+    position:                       $p;
+
+  }@else                              {
+    position:                   static;
+
+  }
+
+  @if $_ == tl or $_ == tc or $_ == tr{
+    top:                            $t;
+  }
+
+  @if $_ == cl or $_ == cc or $_ == cr{
+    top:                           50%;
+    transform:        translateY(-50%);
+  }
+
+  @if $_ == bl or $_ == bc or $_ == br{
+    top:                          100%;
+    transform:       translateY(-100%);
+  }
+
+  @if $_ == tl or $_ == cl or $_ == bl{
+    left:                           $l;
+  }
+  
+  @if          $p == absolute or fixed{
+
+      @if                   $_ == tr or 
+                            $_ == cr or
+                            $_ == br  {
+          right:                    $r;
+      }
+
+      @if                  $_ == otl or
+                           $_ == otr  {
+          top:                     20%;
+
+      }@else if            $_ == obl or
+                           $_ == obr  {
+          bottom:                   20%;
+      }
+
+      @if                  $_ == otl or
+                           $_ == obl  {
+          left:                    20%;
+
+      }@else if            $_ == otr or
+                           $_ == obr  {
+          right:                   20%;
+      }
+
+  }@else if             $p == relative{
+
+      @if                   $_ == tr or
+                            $_ == cr or
+                            $_ == br  {
+              left:               100%;
+      }
+
+      @if                   $_ == tr  {
+      
+          transform: translateX(-100%);
+
+      }@else if               $_ == cr{
+
+          transform: translate(
+                            -100%, -50%
+                      );
+      }@else if               $_ == br{
+          transform:   translate(
+                           -100%, -100%
+                        );
+      }
+
+  }@else if               $p == sticky{
+
+      @if                   $_ == tr or
+                            $_ == cr or
+                            $_ == br  {
+              left:               100%;
+      }
+      @if                   $_ == bl or
+                            $_ == bc or
+                            $_ == br  {
+              bottom:               $b;
+          }
+
+  }@else if           $p != absolute or
+                      $p != relative or
+                      $p != sticky   or
+                      $p != fixed     {
+
+  }
+
+  @if                         $_ == tc{
+      left:                        50%;
+      transform:      translate(
+                               -50%, 0%
+                      );
+  }@else if                   $_ == cc{
+      left:                        50%;
+      transform:      translate(
+                             -50%, -50%
+                      );
+  }@else if                   $_ == bc{
+      left:                        50%;
+      transform:      translate(
+                            -50%, -100%
+                      );
+  }
+}
+
+
+//.tl{@include trbl(tl)}
+//.tc{@include trbl(tc)}
+//.tr{@include trbl(tr)}
+//.cl{@include trbl(cl)}
+//.cc{@include trbl(cc)}
+//.cr{@include trbl(cr)}
+//.bl{@include trbl(bl)}
+//.bc{@include trbl(bc)}
+//.br{@include trbl(br)}
+
