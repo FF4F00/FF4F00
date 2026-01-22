@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+# ✅ Verified 07/12/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# mpv nightly
+
+DIR="/tmp"
+VERSION="nightly"
+
+if [ ! -d "/Applications/mpv.app" ]; then
+
+    # download
+    curl -Lo "$DIR/mpv.zip" "https://nightly.link/mpv-player/mpv/workflows/build/master/mpv-macos-15-arm.zip"
+
+    # extract
+    unzip -q "$DIR/mpv.zip" -d "$DIR"
+    rm -f "$DIR/mpv.zip"
+
+    # install
+    sudo mv "$DIR/mpv.app" /Applications/
+
+fi
+

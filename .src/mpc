@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# ✅ Verified 04/25/2025
+# ⚠️ Requires: Signature
+# mpc v0.35
+
+DIR="/tmp"
+
+curl -Lo /tmp/mpc-0.35.tar.xz.sig https://www.musicpd.org/download/mpc/0/mpc-0.35.tar.xz.sig
+curl -Lo /tmp/mpc-0.35.tar.xz https://www.musicpd.org/download/mpc/0/mpc-0.35.tar.xz
+
+tar -xf "$DIR/mpc-0.35.tar.xz" -C $DIR && rm -rf $DIR/mpc-0.35.tar.xz
+
+cd "$DIR/mpc-0.35" && meson setup build && ninja -C build && sudo ninja -C build install
+

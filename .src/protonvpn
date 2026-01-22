@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+# Function to install a DMG
+install_dmg() {
+  local DMG_URL="$1"
+  local DMG_NAME="$2"
+  local APP_NAME="$3"
+
+  echo "Downloading $APP_NAME..."
+  curl -L -o "$DMG_NAME" "$DMG_URL"
+
+  echo "Mounting $DMG_NAME..."
+  MOUNT_POINT=$(hdiutil attach "$DMG_NAME" | grep "/Volumes/" | awk '{print $3}')
+
+  echo "Copying $APP_NAME to /Applications..."
+  cp -R "$MOUNT_POINT/$APP_NAME" /Applications/
+
+  echo "Unmounting $DMG_NAME..."
+  hdiutil detach "$MOUNT_POINT"
+
+  rm "$DMG_NAME"
+  echo "$APP_NAME has been installed to /Applications."
+  echo
+}
+
+# ProtonVPN
+PROTONVPN_DMG_URL="https://protonvpn.com/download/macos/4.8.0/ProtonVPN_mac_v4.8.0.dmg"
+PROTONVPN_DMG_NAME="ProtonVPN_mac_v4.8.0.dmg"
+PROTONVPN_APP_NAME="ProtonVPN.app"
+install_dmg "$PROTONVPN_DMG_URL" "$PROTONVPN_DMG_NAME" "$PROTONVPN_APP_NAME"

@@ -1,0 +1,52 @@
+#!/bin/sh
+
+set -e
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+
+SRC="Raycast"
+SRC_URL="https://releases.raycast.com/releases/1.100.3/download?build=arm"
+SRC_DMG="$SRC.dmg"
+SRC_APP="$SRC.app"
+
+if [ ! -d "/Applications/$SRC_APP" ]; then
+
+    APP_DIR="/Applications"
+    VOL_DIR="/Volumes"
+    TMP_DIR="/tmp"
+
+    install() {
+        local URL="$1"
+        local DMG="$2"
+        local APP="$3"
+
+        # download
+        if [ ! -f "$TMP_DIR/$DMG" ]; then
+            curl --fail --location --silent --show-error -o "$TMP_DIR/$DMG" "$URL"
+        fi
+
+        # extract
+        if [ ! -d "$VOL_DIR/$SRC" ]; then
+            MOUNT=$(hdiutil attach "$TMP_DIR/$DMG" | grep -o '/Volumes/.*' | head -n 1)
+        fi 
+
+        # install
+        sudo rsync -a "$MOUNT/$APP" "$APP_DIR/"
+        sudo xattr -dr com.apple.quarantine "$APP_DIR/$APP"
+
+    }
+
+    clean() {
+        # clean
+        hdiutil detach "$MOUNT"
+        rm -f "$TMP_DIR/$SRC_DMG"
+    }
+
+    install "$SRC_URL" "$SRC_DMG" "$SRC_APP"
+    clean
+
+fi
+
+

@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# ✅ Verified 07/2025
+# ⚠️ Requires: Signature
+# Target: macOS (Apple Silicon)
+# App: Music Player Daemon (MPD) 0.24.4
+
+VERSION="0.24.4"
+DIR="/tmp/mpd-src"
+BUILD_DIR="$DIR/build"
+PREFIX="/usr/local"
+
+# Exit if MPD already installed
+[ -x "$PREFIX/bin/mpd" ] && exit 0
+
+# ⚠️ Dependencies
+[ ! -x "$PREFIX/bin/meson" ]        && ./MESON
+[ ! -x "$PREFIX/bin/ninja" ]        && ./NINJA
+[ ! -x "$PREFIX/bin/pkg-config" ]   && ./PKGCONF
+[ ! -f "$PREFIX/lib/libmpdclient.dylib" ] && ./LIBMPDCLIENT
+[ ! -x "$PREFIX/bin/ffmpeg" ]       && ./FFMPEG
+
+# Clean and prep build dir
+rm -rf "$DIR"
+mkdir -p "$DIR"
+
+# Download
+curl -L -o "$DIR/mpd-$VERSION.tar.xz" "https://www.musicpd.org/download/mpd/0.24/mpd-$VERSION.tar.xz"
+
+# Extract
+tar -xf "$DIR/mpd-$VERSION.tar.xz" -C "$DIR"
+rm -f "$DIR/mpd-$VERSION.tar.xz"
+
+# Unknown options: "libwrap, pipe-output, samplerate, soundcloud, spotify"
+
+# Build with Meson
+cd "$DIR/mpd-$VERSION"
+meson setup "$BUILD_DIR" --prefix="$PREFIX" --buildtype=release \
+  -Dffmpeg=enabled \
+  -Dalsa=disabled \
+  -Dpulse=disabled \
+  -Djack=disabled \
+  -Dshout=disabled \
+  -Dvorbis=disabled \
+  -Dflac=disabled \
+  -Dopus=disabled \
+  -Dsndfile=disabled \
+  -Dcurl=disabled \
+  -Dsystemd=disabled \
+  -Ddocumentation=disabled \
+  -Dtest=false \
+  -Dzeroconf=disabled \
+  -Ddbus=disabled \
+  -Dmad=disabled \
+  -Dopenal=disabled \
+  -Dsoxr=disabled \
+  -Dchromaprint=disabled \
+  -Dicu=disabled
+
+# Compile and install
+ninja -C "$BUILD_DIR"
+sudo ninja -C "$BUILD_DIR" install

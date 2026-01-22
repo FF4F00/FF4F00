@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libvpx 1.13.0
+
+DIR="/tmp"
+VERSION="1.13.0"
+
+if [ ! -f /usr/local/lib/libvpx.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/libvpx.tar.gz" "https://github.com/webmproject/libvpx/archive/refs/tags/v${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/libvpx.tar.gz" -C "$DIR" && rm -f "$DIR/libvpx.tar.gz"
+
+    # Install
+    (cd "$DIR/libvpx-${VERSION}" && ./configure --enable-shared && make && sudo make install)
+
+fi

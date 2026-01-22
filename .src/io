@@ -1,0 +1,159 @@
+#!/usr/bin/env zsh
+
+# IO : CLI/TUI, API, AI/ML, System tools & utilities
+
+# ┌───┬───────────┬──────────────────────────┬────────┬────────────────┬────────────┬────────────┬──────────┬────────────┬───────────────┬───────────────────────────────────────┐
+# │   │ Language  │ Paradigm                 │ Purity │ Execution      │ Evaluation │ Discipline │ Check    │ Annotation │ Compatibility │ Features                              │
+# ├───┼───────────┼──────────────────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 1 │ C         │ Imperative  │ Procedural │ Impure │ Sequential     │ Eager      │ Weak       │ Static   │ Explicit   │ Nominal       │ Union                                 │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 2 │ Zig       │ Imperative  │ Procedural │ Impure │ Sequential     │ Eager      │ Strong     │ Static   │ Inferred   │ Nominal       │ Polymorphic, Algebraic                │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 3 │ Go        │ Imperative  │ Procedural │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ Inferred   │ Structural    │ Polymorphic                           │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 4 │ Mojo      │ Imperative  │ Procedural │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ Inferred   │ Nominal       │ Polymorphic, Algebraic                │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 5 │ Deno      │ Imperative  │ Procedural │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ I/Explicit │ Structural    │ Polymorphic, Union                    │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 6 │ Rust      │ Imperative  │ Procedural │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ Inferred   │ Nominal       │ Polymorphic, Algebraic, Affine        │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 7 │ F#        │ Declarative │ Functional │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ Inferred   │ Nominal       │ Polymorphic, Algebraic                │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 8 │ Elixir    │ Declarative │ Functional │ Impure │ Non-Sequential │ Eager      │ Weak       │ Dynamic  │ N/A        │ N/A           │ Polymorphic, Effect                   │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 9 │ Haskell   │ Declarative │ Functional │ Pure   │ Non-Sequential │ Lazy       │ Strong     │ Static   │ Inferred   │ Nominal       │ Polymorphic, Algebraic, Higher-Kinded │
+# └───┴───────────┴─────────────┴────────────┴────────┴────────────────┴────────────┴────────────┴──────────┴────────────┴───────────────┴───────────────────────────────────────┘
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# Base workspace
+WRK_="$HOME/.wrk_"
+
+# ┌─────────────┐
+# │ usage       │
+# └─────────────┘
+io_usage() {
+  cat <<'EOF'
+usage:
+  io -s | self                        # self (no args)
+  io -h | --help | help               # help
+  io -q | query   [args...]           # query
+  io -c | console [args...]           # console
+  io -u | update  [args...]           # update
+  io -d | delete  [args...]           # delete
+  io -l | launch  [args...]           # launch
+  io -i | install [args...]           # install
+  io -r | release [args...]           # release
+  io -v | version [args...]           # version
+  io -b | build   [args...]           # build
+  io -n | new     [args...]           # new
+EOF
+}
+
+# ┌─────────────┐
+# │ self        │
+# └─────────────┘
+io_self() {
+  # strict inside as well
+  set -e
+
+  # ignore any passed arguments
+  if [ "$#" -ne 0 ]; then
+    echo "ℹ️  ignoring arguments to 'self' (takes no parameters)"
+  fi
+
+  local io_source_path="${WRK_}/io/io"
+  local io_dest_dir="/usr/local/bin"
+  local io_dest="${io_dest_dir}/io"
+
+  # 0) pick an editor ($EDITOR preferred; fallback to vi)
+  local editor="${EDITOR:-}"
+  if [ -n "$editor" ] && command -v "$editor" >/dev/null 2>&1; then
+    :
+  elif command -v vi >/dev/null 2>&1; then
+    editor="vi"
+  else
+    echo "❌ no suitable editor found (set \$EDITOR or install 'vi')" >&2
+    return 1
+  fi
+
+  # 1) edit the version-controlled source
+  if [ ! -f "$io_source_path" ]; then
+    echo "❌ not found: $io_source_path" >&2
+    return 1
+  fi
+  "$editor" "$io_source_path" || {
+    echo "❌ editor failed; aborting install" >&2; return 1;
+  }
+
+  # 2) ensure destination directory exists (sudo on first-time setups)
+  if [ ! -d "$io_dest_dir" ]; then
+    echo "ℹ️  creating $io_dest_dir (sudo)"
+    sudo mkdir -p "$io_dest_dir"
+  fi
+
+  # 3) install/update live binary atomically with correct mode
+  if sudo install -m 0755 "$io_source_path" "$io_dest"; then
+    :
+  else
+    echo "❌ install failed. Try:" >&2
+    echo "   sudo install -m 0755 \"$io_source_path\" \"$io_dest\"" >&2
+    return 1
+  fi
+
+  # 4) verify executable
+  if [ -x "$io_dest" ]; then
+    echo "✅ installed: $io_dest"
+  else
+    echo "⚠️  installed but not executable; fixing (sudo)"
+    sudo chmod +x "$io_dest" || { echo "❌ chmod failed on $io_dest" >&2; return 1; }
+    echo "✅ fixed permissions: $io_dest"
+  fi
+}
+
+# ┌─────────────┐
+# │ placeholders│
+# └─────────────┘
+io_query()   { echo "io query $*"; }
+io_console() { echo "io console $*"; }
+io_update()  { echo "io update $*"; }
+io_delete()  { echo "io delete $*"; }
+io_launch()  { echo "io launch $*"; }
+io_install() { echo "io install $*"; }
+io_release() { echo "io release $*"; }
+io_version() { echo "io version $*"; }
+io_build()   { echo "io build $*"; }
+io_new()     { echo "io new $*"; }
+
+# ┌─────────────┐
+# │ dispatcher  │
+# └─────────────┘
+io() {
+  case "${1:-}" in
+    -s|self)              shift || true; io_self "$@";;
+    -h|--help|help|"")    io_usage;;
+    -q|query)             shift || true; io_query "$@";;
+    -c|console)           shift || true; io_console "$@";;
+    -u|update)            shift || true; io_update "$@";;
+    -d|delete)            shift || true; io_delete "$@";;
+    -l|launch)            shift || true; io_launch "$@";;
+    -i|install)           shift || true; io_install "$@";;
+    -r|release)           shift || true; io_release "$@";;
+    -v|version)           shift || true; io_version "$@";;
+    -b|build)             shift || true; io_build "$@";;
+    -n|new)               shift || true; io_new "$@";;
+    -*)
+      echo "❌ unknown flag: $1" >&2
+      io_usage; return 2
+      ;;
+    *)
+      echo "❌ only supported words are: self, help, query, console, update, delete, launch, install, release, version, build, new" >&2
+      io_usage; return 2
+      ;;
+  esac
+}
+
+# ── main ──
+io "$@"

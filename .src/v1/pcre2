@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# pcre2 v10.44
+
+DIR="/tmp"
+VERSION="10.44"
+
+if [ ! -f /usr/local/lib/libpcre2-8.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/pcre2-${VERSION}.tar.gz.sig" "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-${VERSION}/pcre2-${VERSION}.tar.gz.sig"
+    curl -Lo "$DIR/pcre2-${VERSION}.tar.gz" "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-${VERSION}/pcre2-${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/pcre2-${VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/pcre2-${VERSION}.tar.gz"
+
+    # Install
+    (cd "$DIR/pcre2-${VERSION}" && ./configure && make && sudo make install)
+
+fi

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+
+# Target: Apple Silicon
+# ncmpcpp v0.10.1
+
+DIR="/tmp"
+VERSION="0.10.1"
+
+if [ ! -f /usr/local/bin/ncmpcpp ]; then
+
+    # ⚠️ Dependencies
+    
+    [ ! -f /usr/local/bin/m4 ]                 && ./M4            # ✅ Required for autoconf
+    [ ! -f /usr/local/bin/autoconf ]           && ./AUTOCONF      # ✅ Required for automake
+    [ ! -f /usr/local/bin/automake ]           && ./AUTOMAKE      # ✅ Required for build systems
+    [ ! -f /usr/local/bin/libtool ]            && ./LIBTOOL       # ✅ Required for shared libraries
+    [ ! -f /usr/local/lib/libiconv.dylib ]     && ./LIBICONV      # ✅ Required for character encoding
+    [ ! -f /usr/local/bin/ncursesw6-config ]   && ./NCURSES       # ✅ Required for UI
+    [ ! -f /usr/local/lib/libintl.dylib ]      && ./GETTEXT       # ✅ Required for internationalization
+    [ ! -f /usr/local/lib/libmpdclient.dylib ] && ./LIBMPDCLIENT  # ✅ Required for MPD communication
+    [ ! -f /usr/local/lib/libtag.dylib ]       && ./TAGLIB        # ✅ Required for tag handling
+    [ ! -d /usr/local/include/boost ]          && ./BOOST         # ✅ Required for C++ utilities
+    [ ! -d /usr/local/include/utf8cpp ]        && ./UTF8CPP       # ✅ Required for UTF-8 handling
+    [ ! -f /usr/local/lib/libfftw3.dylib ]     && ./FFTW          # ✅ Optional for visualization
+  
+    # Verify Boost installation
+    if [ ! -d /usr/local/include/boost ]; then
+        echo "Error: Boost headers not found after installation attempt"
+        exit 1
+    fi
+
+    # Download
+    curl -Lo $DIR/ncmpcpp-${VERSION}.tar.gz https://github.com/ncmpcpp/ncmpcpp/archive/refs/tags/${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf $DIR/ncmpcpp-${VERSION}.tar.gz -C $DIR && rm -f $DIR/ncmpcpp-${VERSION}.tar.gz
+
+    # Install
+    (cd $DIR/ncmpcpp-${VERSION} && autoreconf -fiv && ./configure && make && sudo make install)
+
+fi

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# flac_to_alac.sh
+# Convert all .flac files in the current directory to lossless ALAC (.m4a)
+
+shopt -s nullglob
+
+for f in *.flac; do
+  out="${f%.flac}.m4a"
+  ffmpeg -y -i "$f" -c:a alac -vn "$out"
+done
+

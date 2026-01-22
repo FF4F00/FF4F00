@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# Dependencies ⚠️  [ cmake, libtool, autoconf, automake, pkgconfig, gettext ]
+# Target: Apple Silicon
+
+DIR="/tmp"
+PKG="nvim-macos-arm64"
+URL="https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz"
+
+
+    # sudo rm -rf /usr/local/bin/nvim
+    # sudo rm -rf /usr/local/lib/nvim
+    # sudo rm -rf /usr/local/share/nvim
+
+if [ ! -f /usr/local/bin/nvim ]; then
+
+    # SRC PRIMER
+    # for dep in cmake libtool autoconf automake pkg-config gettext; do
+    #    if ! command -v $dep >/dev/null 2>&1; then
+    #        echo "❌ Missing dependency: $dep"
+    #        echo "→ Install with: brew install $dep"
+    #        exit 1
+    #    fi
+    # done
+
+    # Download
+    curl -Lso "${DIR}/${PKG}.tar.gz" "${URL}"
+
+    # Extract
+    tar -xzf "${DIR}/${PKG}.tar.gz" -C "${DIR}"
+    rm -f "${DIR}/${PKG}.tar.gz"
+
+    # Install
+    sudo mkdir -p /usr/local/bin /usr/local/share /usr/local/lib
+
+    sudo cp -R "${DIR}/${PKG}/bin/nvim" /usr/local/bin/
+    sudo cp -R "${DIR}/${PKG}/lib/"* /usr/local/lib/
+    sudo cp -R "${DIR}/${PKG}/share/"* /usr/local/share/
+
+    sudo find /usr/local/share/nvim/runtime/colors -type f ! \( -name "default.vim" -o -name "vim.lua" \) -delete
+
+    # (cd $DIR/${PKG}-${VERSION} && make CMAKE_BUILD_TYPE=Release && sudo make install)
+fi
+

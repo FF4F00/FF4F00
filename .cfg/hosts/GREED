@@ -1,0 +1,364 @@
+# ┌───────────────┐
+# │ GREED         │
+# └───────────────┘
+
+0.0.0.0 americanexpress.com
+0.0.0.0 www.americanexpress.com
+:: americanexpress.com
+:: www.americanexpress.com
+
+0.0.0.0 visa.com
+0.0.0.0 www.visa.com
+:: visa.com
+:: www.visa.com
+
+0.0.0.0 mastercard.com
+0.0.0.0 www.mastercard.com
+:: mastercard.com
+:: www.mastercard.com
+
+0.0.0.0 discover.com
+0.0.0.0 www.discover.com
+:: discover.com
+:: www.discover.com
+
+0.0.0.0 citi.com
+0.0.0.0 www.citi.com
+:: citi.com
+:: www.citi.com
+
+0.0.0.0 chase.com
+0.0.0.0 www.chase.com
+:: chase.com
+:: www.chase.com
+
+0.0.0.0 capitalone.com
+0.0.0.0 www.capitalone.com
+:: capitalone.com
+:: www.capitalone.com
+
+0.0.0.0 barclays.com
+0.0.0.0 www.barclays.com
+:: barclays.com
+:: www.barclays.com
+
+0.0.0.0 wells fargo.com
+0.0.0.0 www.wellsfargo.com
+:: wellsfargo.com
+:: www.wellsfargo.com
+
+0.0.0.0 usbank.com
+0.0.0.0 www.usbank.com
+:: usbank.com
+:: www.usbank.com
+
+0.0.0.0 synchrony.com
+0.0.0.0 www.synchrony.com
+:: synchrony.com
+:: www.synchrony.com
+
+0.0.0.0 fidelity.com
+0.0.0.0 www.fidelity.com
+:: fidelity.com
+:: www.fidelity.com
+
+0.0.0.0 americanbank.com
+0.0.0.0 www.americanbank.com
+:: americanbank.com
+:: www.americanbank.com
+
+0.0.0.0 navyfederal.org
+0.0.0.0 www.navyfederal.org
+:: navyfederal.org
+:: www.navyfederal.org
+
+0.0.0.0 boon.cards
+0.0.0.0 www.boon.cards
+:: boon.cards
+:: www.boon.cards
+
+0.0.0.0 usaa.com
+0.0.0.0 www.usaa.com
+:: usaa.com
+:: www.usaa.com
+
+0.0.0.0 td.com
+0.0.0.0 www.td.com
+:: td.com
+:: www.td.com
+
+0.0.0.0 pnc.com
+0.0.0.0 www.pnc.com
+:: pnc.com
+:: www.pnc.com
+
+0.0.0.0 regions.com
+0.0.0.0 www.regions.com
+:: regions.com
+:: www.regions.com
+
+0.0.0.0 flagstar.com
+0.0.0.0 www.flagstar.com
+:: flagstar.com
+:: www.flagstar.com
+
+0.0.0.0 suntrust.com
+0.0.0.0 www.suntrust.com
+:: suntrust.com
+:: www.suntrust.com
+
+0.0.0.0 usbank.com
+0.0.0.0 www.usbank.com
+:: usbank.com
+:: www.usbank.com
+
+0.0.0.0 citizenbank.com
+0.0.0.0 www.citizenbank.com
+:: citizenbank.com
+:: www.citizenbank.com
+
+0.0.0.0 key.com
+0.0.0.0 www.key.com
+:: key.com
+:: www.key.com
+
+0.0.0.0 sofi.com
+0.0.0.0 www.sofi.com
+:: sofi.com
+:: www.sofi.com
+
+0.0.0.0 prosper.com
+0.0.0.0 www.prosper.com
+:: prosper.com
+:: www.prosper.com
+
+0.0.0.0 lendmark.com
+0.0.0.0 www.lendmark.com
+:: lendmark.com
+:: www.lendmark.com
+
+0.0.0.0 lightstream.com
+0.0.0.0 www.lightstream.com
+:: lightstream.com
+:: www.lightstream.com
+
+0.0.0.0 lendup.com
+0.0.0.0 www.lendup.com
+:: lendup.com
+:: www.lendup.com
+
+0.0.0.0 upgrade.com
+0.0.0.0 www.upgrade.com
+:: upgrade.com
+:: www.upgrade.com
+
+0.0.0.0 marinerfinance.com
+0.0.0.0 www.marinerfinance.com
+:: marinerfinance.com
+:: www.marinerfinance.com
+
+0.0.0.0 lightstone.com
+0.0.0.0 www.lightstone.com
+:: lightstone.com
+:: www.lightstone.com
+
+0.0.0.0 bestegg.com
+0.0.0.0 www.bestegg.com
+:: bestegg.com
+:: www.bestegg.com
+
+0.0.0.0 lendkey.com
+0.0.0.0 www.lendkey.com
+:: lendkey.com
+:: www.lendkey.com
+
+0.0.0.0 lightstreamloan.com
+0.0.0.0 www.lightstreamloan.com
+:: lightstreamloan.com
+:: www.lightstreamloan.com
+
+0.0.0.0 payoff.com
+0.0.0.0 www.payoff.com
+:: payoff.com
+:: www.payoff.com
+
+0.0.0.0 moneylion.com
+0.0.0.0 www.moneylion.com
+:: moneylion.com
+:: www.moneylion.com
+
+0.0.0.0 credibly.com
+0.0.0.0 www.credibly.com
+:: credibly.com
+:: www.credibly.com
+
+0.0.0.0 lendio.com
+0.0.0.0 www.lendio.com
+:: lendio.com
+:: www.lendio.com
+
+0.0.0.0 bondloans.com
+0.0.0.0 www.bondloans.com
+:: bondloans.com
+:: www.bondloans.com
+
+0.0.0.0 upgradeprime.com
+0.0.0.0 www.upgradeprime.com
+:: upgradeprime.com
+:: www.upgradeprime.com
+
+0.0.0.0 lightseek.com
+0.0.0.0 www.lightseek.com
+:: lightseek.com
+:: www.lightseek.com
+
+0.0.0.0 anthemfinance.com
+0.0.0.0 www.anthemfinance.com
+:: anthemfinance.com
+:: www.anthemfinance.com
+
+0.0.0.0 ondeck.com
+0.0.0.0 www.ondeck.com
+:: ondeck.com
+:: www.ondeck.com
+
+0.0.0.0 rocketloans.com
+0.0.0.0 www.rocketloans.com
+:: rocketloans.com
+:: www.rocketloans.com
+
+0.0.0.0 upgradefinance.com
+0.0.0.0 www.upgradefinance.com
+:: upgradefinance.com
+:: www.upgradefinance.com
+
+0.0.0.0 prosperloan.com
+0.0.0.0 www.prosperloan.com
+:: prosperloan.com
+:: www.prosperloan.com
+
+0.0.0.0 lendkeyfinance.com
+0.0.0.0 www.lendkeyfinance.com
+:: lendkeyfinance.com
+:: www.lendkeyfinance.com
+
+0.0.0.0 experian.com
+0.0.0.0 www.experian.com
+:: experian.com
+:: www.experian.com
+
+0.0.0.0 acxiom.com
+0.0.0.0 www.acxiom.com
+:: acxiom.com
+:: www.acxiom.com
+
+0.0.0.0 corelogic.com
+0.0.0.0 www.corelogic.com
+:: corelogic.com
+:: www.corelogic.com
+
+0.0.0.0 infutor.com
+0.0.0.0 www.infutor.com
+:: infutor.com
+:: www.infutor.com
+
+0.0.0.0 transunion.com
+0.0.0.0 www.transunion.com
+:: transunion.com
+:: www.transunion.com
+
+0.0.0.0 lexisnexis.com
+0.0.0.0 www.lexisnexis.com
+:: lexisnexis.com
+:: www.lexisnexis.com
+
+0.0.0.0 corelogic.com
+0.0.0.0 www.corelogic.com
+:: corelogic.com
+:: www.corelogic.com
+
+0.0.0.0 experianmarketing.com
+0.0.0.0 www.experianmarketing.com
+:: experianmarketing.com
+:: www.experianmarketing.com
+
+0.0.0.0 fidelisdata.com
+0.0.0.0 www.fidelisdata.com
+:: fidelisdata.com
+:: www.fidelisdata.com
+
+0.0.0.0 oracle.com
+0.0.0.0 www.oracle.com
+:: oracle.com
+:: www.oracle.com
+
+0.0.0.0 bluekai.com
+0.0.0.0 www.bluekai.com
+:: bluekai.com
+:: www.bluekai.com
+
+0.0.0.0 lotame.com
+0.0.0.0 www.lotame.com
+:: lotame.com
+:: www.lotame.com
+
+0.0.0.0 lotpol.com
+0.0.0.0 www.lotpol.com
+:: lotpol.com
+:: www.lotpol.com
+
+0.0.0.0 onemain.com
+0.0.0.0 www.onemain.com
+:: onemain.com
+:: www.onemain.com
+
+0.0.0.0 zefr.com
+0.0.0.0 www.zefr.com
+:: zefr.com
+:: www.zefr.com
+
+0.0.0.0 bombora.com
+0.0.0.0 www.bombora.com
+:: bombora.com
+:: www.bombora.com
+
+0.0.0.0 datacamp.com
+0.0.0.0 www.datacamp.com
+:: datacamp.com
+:: www.datacamp.com
+
+0.0.0.0 dataxu.com
+0.0.0.0 www.dataxu.com
+:: dataxu.com
+:: www.dataxu.com
+
+0.0.0.0 chartbeat.com
+0.0.0.0 www.chartbeat.com
+:: chartbeat.com
+:: www.chartbeat.com
+
+0.0.0.0 lotustech.com
+0.0.0.0 www.lotustech.com
+:: lotustech.com
+:: www.lotustech.com
+
+0.0.0.0 quantcast.com
+0.0.0.0 www.quantcast.com
+:: quantcast.com
+:: www.quantcast.com
+
+0.0.0.0 Nielsen.com
+0.0.0.0 www.Nielsen.com
+:: Nielsen.com
+:: www.Nielsen.com
+
+0.0.0.0 simmons1.com
+0.0.0.0 www.simmons1.com
+:: simmons1.com
+:: www.simmons1.com
+
+0.0.0.0 acxiom360.com
+0.0.0.0 www.acxiom360.com
+:: acxiom360.com
+:: www.acxiom360.com
+

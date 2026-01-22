@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature verification
+# Target: Apple Silicon
+
+curl --fail --location --silent --show-error -o sketch.zip "https://download.sketch.com/sketch-2025.2.4-205425.zip"
+sudo rm -rf /Applications/Sketch.app && unzip sketch.zip -d /Applications
+
+
+
+
+
+
+
+

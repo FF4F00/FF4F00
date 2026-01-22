@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# opus 1.4
+
+DIR="/tmp"
+VERSION="1.4"
+
+if [ ! -f /usr/local/lib/libopus.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/opus.tar.gz" "https://github.com/xiph/opus/archive/refs/tags/v${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/opus.tar.gz" -C "$DIR" && rm -f "$DIR/opus.tar.gz"
+
+    # Install
+    (cd "$DIR/opus-${VERSION}" && ./autogen.sh && ./configure && make && sudo make install)
+
+fi

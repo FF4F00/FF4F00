@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# m4 v4.0.1
+
+DIR="/tmp"
+VERSION="1.4.19"
+
+if [ ! -f /usr/local/bin/m4 ]; then
+
+    # Download
+    curl -Lo $DIR/m4-${VERSION}.tar.gz.sig https://mirrors.ocf.berkeley.edu/gnu/m4/m4-${VERSION}.tar.gz.sig
+    curl -Lo $DIR/m4-${VERSION}.tar.gz https://mirrors.ocf.berkeley.edu/gnu/m4/m4-${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf "$DIR/m4-${VERSION}.tar.gz" -C $DIR && rm -rf $DIR/m4-${VERSION}.tar.gz
+
+    # Install
+    (cd "$DIR/m4-${VERSION}" && ./configure && make && sudo make install)
+
+fi

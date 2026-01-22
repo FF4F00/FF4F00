@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libpng 1.6.40
+
+DIR="/tmp"
+VERSION="1.6.40"
+
+if [ ! -f /usr/local/lib/libpng.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/libpng.tar.gz" "https://github.com/glennrp/libpng/archive/refs/tags/v${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/libpng.tar.gz" -C "$DIR" && rm -f "$DIR/libpng.tar.gz"
+
+    # Install
+    (cd "$DIR/libpng-${VERSION}" && ./configure && make && sudo make install)
+
+fi

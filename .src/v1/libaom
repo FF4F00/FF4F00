@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libaom 3.7.0
+
+DIR="/tmp"
+VERSION="3.7.0"
+
+if [ ! -f /usr/local/lib/libaom.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/libaom.tar.gz" "https://aomedia.googlesource.com/aom/+archive/v${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/libaom.tar.gz" -C "$DIR" && rm -f "$DIR/libaom.tar.gz"
+
+    # Install
+    (cd "$DIR/aom" && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=1 .. && make && sudo make install)
+
+
+fi

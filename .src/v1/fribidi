@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# fribidi 1.0.13
+
+DIR="/tmp"
+VERSION="1.0.13"
+
+if [ ! -f /usr/local/lib/libfribidi.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/fribidi.tar.gz" "https://github.com/fribidi/fribidi/archive/refs/tags/v${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/fribidi.tar.gz" -C "$DIR" && rm -f "$DIR/fribidi.tar.gz"
+
+    # Install
+    (cd "$DIR/fribidi-${VERSION}" && meson setup build && cd build && ninja && sudo ninja install)
+
+fi

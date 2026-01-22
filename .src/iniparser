@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# ✅ Verified 07/2025
+# Target: macOS (Apple Silicon or Intel)
+# iniparser v4.2.6
+
+DIR="/tmp"
+VERSION="4.2.6"
+
+if [ ! -f /usr/local/include/iniparser.h ]; then
+
+    # Download
+    curl -L -o "$DIR/iniparser-$VERSION.tar.gz" "https://github.com/ndevilla/iniparser/archive/refs/tags/v$VERSION.tar.gz"
+
+    # Extract
+    tar -xzf "$DIR/iniparser-$VERSION.tar.gz" -C "$DIR" && rm -f "$DIR/iniparser-$VERSION.tar.gz"
+
+    # Build and install
+    make -C "$DIR/iniparser-$VERSION"
+    sudo make -C "$DIR/iniparser-$VERSION" install
+fi
+

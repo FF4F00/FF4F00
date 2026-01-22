@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# flac 1.4.3
+
+DIR="/tmp"
+VERSION="1.4.3"
+
+if [ ! -f /usr/local/lib/libFLAC.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/flac.tar.gz" "https://github.com/xiph/flac/archive/refs/tags/${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/flac.tar.gz" -C "$DIR" && rm -f "$DIR/flac.tar.gz"
+
+    # Install
+    (cd "$DIR/flac-${VERSION}" && ./autogen.sh && ./configure && make && sudo make install)
+
+fi
+

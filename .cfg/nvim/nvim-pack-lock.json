@@ -1,0 +1,18 @@
+{
+  "plugins": {
+    "Comment.nvim": [],
+    "mason.nvim": [],
+    "neoscroll.nvim": [],
+    "nvim-dap": [],
+    "nvim-dap-python": [],
+    "nvim-dap-ui": {
+      "rev": "cf91d5e",
+      "src": "https://github.com/rcarriga/nvim-dap-ui.git"
+    },
+    "nvim-lspconfig": [],
+    "plenary.nvim": [],
+    "render-markdown.nvim": [],
+    "snacks.nvim": [],
+    "supermaven-nvim": []
+  }
+}

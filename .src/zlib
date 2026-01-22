@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# zlib v1.3.1
+
+DIR="/tmp"
+VERSION="1.3.1"
+
+if [ ! -f /usr/local/lib/libz.dylib ]; then
+
+    # ⚠️ Dependencies: None
+
+    # Download
+
+    curl -Lo "$DIR/zlib-${VERSION}.tar.gz.asc" https://zlib.net/zlib-${VERSION}.tar.gz.asc
+    curl -Lo "$DIR/zlib-${VERSION}.tar.gz" https://zlib.net/zlib-${VERSION}.tar.gz
+
+    # Extract
+
+    tar -xzvf "$DIR/zlib-${VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/zlib-${VERSION}.tar.gz"
+
+    # Install
+    
+    (cd "$DIR/zlib-${VERSION}" && ./configure && make && sudo make install)
+
+fi

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: python3
+# Target: Apple Silicon
+# Ninja v1.12.1
+
+DIR="/tmp"
+VERSION="1.12.1"
+
+if [ ! -f /usr/local/bin/ninja ]; then
+
+    # Download
+    curl -Lo $DIR/ninja-${VERSION}.tar.gz https://github.com/ninja-build/ninja/archive/refs/tags/v${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf $DIR/ninja-${VERSION}.tar.gz -C $DIR && rm -f $DIR/ninja-${VERSION}.tar.gz
+
+    # Install
+    (cd $DIR/ninja-${VERSION} && ./configure.py --bootstrap && sudo cp ninja /usr/local/bin/)
+
+fi

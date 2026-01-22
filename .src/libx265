@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: None
+# ⚠️ Dependencies: CMake
+# Target: Apple Silicon
+# x265 v4.1
+
+DIR="/tmp"
+VERSION="4.1"
+
+sudo rm -rf /tmp/x265_4.1
+
+if [ ! -f /usr/local/lib/libx265.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/x265_${VERSION}.tar.gz" "https://bitbucket.org/multicoreware/x265_git/downloads/x265_${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/x265_${VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/x265_${VERSION}.tar.gz"
+
+    # Remove incompatible CMake policies
+    sed -i '' '/cmake_policy(SET CMP0025 OLD)/d; /cmake_policy(SET CMP0054 OLD)/d' "$DIR/x265_${VERSION}/source/CMakeLists.txt"
+    
+    # Install
+    (cd "$DIR/x265_${VERSION}" && mkdir -p build && cd build && \
+     cmake -DCMAKE_INSTALL_PREFIX=/usr/local \
+           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+           -DENABLE_ASSEMBLY=OFF \
+           -DGIT_ARCHETYPE=1 \
+           -Wno-dev \
+           ../source && \
+     make -j"$(sysctl -n hw.ncpu)" && \
+     sudo make install)
+fi

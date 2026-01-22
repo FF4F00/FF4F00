@@ -1,0 +1,16 @@
+#!/bin/bash
+
+STREAM_KEY="live_1347809982_Gna4MHK6LkvJuy8fX7XTKKsEa00msx"
+
+VIDEO_INPUT="1:none"    # captures desktop video + system audio only, no microphone
+
+FRAMERATE=30
+RESOLUTION="1920x1080"
+BITRATE="6000k"
+BUF_SIZE="12000k"
+KEYINT=$(($FRAMERATE * 2))
+
+ffmpeg -f avfoundation -framerate $FRAMERATE -video_size $RESOLUTION -i "$VIDEO_INPUT" \
+-c:v h264_videotoolbox -b:v $BITRATE -maxrate $BITRATE -bufsize $BUF_SIZE -pix_fmt yuv420p \
+-g $KEYINT -c:a aac -b:a 320k -ar 44100 -f flv "rtmp://live.twitch.tv/app/$STREAM_KEY"
+

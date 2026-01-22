@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: None
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libtermkey v0.22
+
+DIR="/tmp"
+VERSION="0.22"
+
+if [ ! -f /usr/local/lib/libtermkey.dylib ]; then
+    # Download
+    curl -Lo $DIR/libtermkey-${VERSION}.tar.gz `http://www.leonerd.org.uk/code/libtermkey/libtermkey-${VERSION}.tar.gz`
+
+    # Extract
+    tar -xzvf $DIR/libtermkey-${VERSION}.tar.gz -C $DIR && rm -f $DIR/libtermkey-${VERSION}.tar.gz
+
+    # Install
+    (cd $DIR/libtermkey-${VERSION} && make && sudo make install)
+    
+fi

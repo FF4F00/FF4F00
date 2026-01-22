@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libmpdclient v2.22
+
+DIR="/tmp"
+VERSION="2.22"
+
+if [ ! -f /usr/local/lib/libmpdclient.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/libmpdclient-${VERSION}.tar.xz.sig https://www.musicpd.org/download/libmpdclient/2/libmpdclient-${VERSION}.tar.xz.sig
+    curl -Lo $DIR/libmpdclient-${VERSION}.tar.xz https://www.musicpd.org/download/libmpdclient/2/libmpdclient-${VERSION}.tar.xz
+
+    # Extract
+    tar -xf "$DIR/libmpdclient-${VERSION}.tar.xz" -C $DIR && rm -rf $DIR/libmpdclient-${VERSION}.tar.xz
+
+    # Install
+    (cd "$DIR/libmpdclient-${VERSION}" && meson setup build && cd build && ninja && sudo ninja install)
+
+fi
+

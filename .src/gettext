@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# gettext v0.24
+
+DIR="/tmp"
+VERSION="0.24"
+
+if [ ! -f /usr/local/lib/libintl.dylib ]; then
+
+    # ⚠️ Dependencies
+    [ ! -f /usr/local/bin/m4 ]             && ./M4        # ✅ Required for autoconf macros
+    [ ! -f /usr/local/bin/autoconf ]       && ./AUTOCONF  # ✅ Required for configure script
+    [ ! -f /usr/local/bin/libtool ]        && ./LIBTOOL   # ✅ Required for shared libraries
+    [ ! -f /usr/local/bin/automake ]       && ./AUTOMAKE  # ✅ Required for build system
+    [ ! -f /usr/local/lib/libiconv.dylib ] && ./LIBICONV  # ✅ Required for character encoding
+
+    # Download
+    curl -Lo $DIR/gettext-${VERSION}.tar.gz.sig https://mirrors.ocf.berkeley.edu/gnu/gettext/gettext-${VERSION}.tar.gz.sig
+    curl -Lo $DIR/gettext-${VERSION}.tar.gz https://mirrors.ocf.berkeley.edu/gnu/gettext/gettext-${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf $DIR/gettext-${VERSION}.tar.gz -C $DIR && rm -f $DIR/gettext-${VERSION}.tar.gz
+
+    # Install
+    (cd $DIR/gettext-${VERSION} && ./configure && make && sudo make install)
+
+fi

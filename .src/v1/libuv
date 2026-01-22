@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libuv v1.49.2
+
+DIR="/tmp"
+VERSION="1.50.0"
+
+if [ ! -f /usr/local/lib/libuv.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/libuv-v${VERSION}.tar.gz https://github.com/libuv/libuv/archive/refs/tags/v${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf "$DIR/libuv-v${VERSION}.tar.gz" -C $DIR && rm -f "$DIR/libuv-v${VERSION}.tar.gz"
+
+    # Install
+    (cd "$DIR/libuv-${VERSION}" && mkdir -p build && cd build && cmake .. -DBUILD_TESTING=ON && cmake --build . && sudo cmake --install .)
+
+fi

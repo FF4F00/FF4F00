@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libressl v4.0.0
+
+DIR="/tmp"
+VERSION="4.0.0"
+
+# Download
+curl -Lo $DIR/libressl-${VERSION}.tar.gz.asc https://mirrors.ocf.berkeley.edu/pub/OpenBSD/LibreSSL/libressl-${VERSION}.tar.gz.asc
+curl -Lo $DIR/libressl-${VERSION}.tar.gz https://mirrors.ocf.berkeley.edu/pub/OpenBSD/LibreSSL/libressl-${VERSION}.tar.gz
+
+# Extract
+tar -xzvf "$DIR/libressl-${VERSION}.tar.gz" -C $DIR && rm -rf $DIR/libressl-${VERSION}.tar.gz
+
+# Install
+cd "$DIR/libressl-${VERSION}" && ./configure && make && sudo make install
+
+
+
+

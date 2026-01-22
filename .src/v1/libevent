@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libevent v2.1.12-stable
+
+DIR="/tmp"
+VERSION="2.1.12-stable"
+
+if [ ! -f /usr/local/lib/libevent.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/libevent-${VERSION}.tar.gz.asc https://github.com/libevent/libevent/releases/download/release-${VERSION}/libevent-${VERSION}.tar.gz.asc
+    curl -Lo $DIR/libevent-${VERSION}.tar.gz https://github.com/libevent/libevent/releases/download/release-${VERSION}/libevent-${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf $DIR/libevent-${VERSION}.tar.gz -C $DIR && rm -f $DIR/libevent-${VERSION}.tar.gz
+
+    # Install
+    (cd $DIR/libevent-${VERSION} && ./configure --disable-openssl && make && sudo make install)
+
+fi
+

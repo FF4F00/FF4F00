@@ -1,0 +1,9 @@
+-- ls9.lua
+-- Reserved LSP slot
+--
+-- Intentionally empty.
+--
+-- This slot exists to:
+--   - enforce scarcity
+--   - allow future expansion without restructuring
+--   - keep slot numbering stable for public consumers

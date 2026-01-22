@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# libmad 0.15.1b
+
+DIR="/tmp"
+VERSION="0.15.1b"
+
+if [ ! -f /usr/local/lib/libmad.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/libmad.tar.gz" "https://github.com/sezero/libmad/archive/refs/tags/${VERSION}.tar.gz"
+    curl -Lo "$DIR/libmad.tar.gz.sig" "https://github.com/sezero/libmad/releases/download/${VERSION}/libmad-${VERSION}.tar.gz.sig"
+
+    # Extract
+    tar -xzf "$DIR/libmad.tar.gz" -C "$DIR" && rm -f "$DIR/libmad.tar.gz" "$DIR/libmad.tar.gz.sig"
+
+    # Build and Install
+    cd "$DIR/libmad-${VERSION}"
+    ./configure --prefix=/usr/local
+    make -j"$(sysctl -n hw.ncpu)"
+    sudo make install
+
+fi

@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# elixir 1.18.4
+
+sudo rm -rf /usr/local/*
+sudo rm -rf /tmp/*
+
+DIR="/tmp"
+VERSION="1.18.4"
+
+if [ ! -f /usr/local/bin/elixir ]; then
+
+    # ⚠️ Dependencies
+
+    [ ! -f /usr/local/bin/erl ]              && ./ERLANG       # ✅
+
+    # Download
+
+    curl -Lo "$DIR/elixir-${VERSION}.tar.gz" https://github.com/elixir-lang/elixir/archive/refs/tags/v${VERSION}.tar.gz
+
+    # Extract
+
+    tar -xzvf "$DIR/elixir-${VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/elixir-${VERSION}.tar.gz"
+
+    # Install
+
+    (cd "$DIR/elixir-${VERSION}" && make clean && make && sudo make install)
+
+fi
+
+
+
+

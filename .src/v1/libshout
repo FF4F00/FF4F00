@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+# ✅ Verified 07/2025
+# Target: macOS (Apple Silicon or Intel)
+# Library: libshout 2.4.6
+
+cd /tmp
+curl -LO https://ftp.osuosl.org/pub/xiph/releases/libshout/libshout-2.4.6.tar.gz
+tar -xzf libshout-2.4.6.tar.gz
+cd libshout-2.4.6
+
+# ✅ Patch missing includes
+sed -i '' '1i\
+#include <stdlib.h>
+' src/legacy.c
+
+sed -i '' '1i\
+#include <string.h>\
+#include <strings.h>
+' src/proto_http.c
+
+# ✅ Configure and build with macOS-safe CFLAGS
+CFLAGS="-D_DARWIN_C_SOURCE" ./configure
+make -j$(sysctl -n hw.ncpu)
+sudo make install
