@@ -3,10 +3,13 @@ set -e
 
 REPO_HTTPS="https://github.com/FF4F00/FF4F00.git"
 REPO_SSH="git@github.com:FF4F00/FF4F00.git"
-TARGET_DIR="$HOME/.wrk_"
+WORKDIR="$HOME/.wrk_"
+BIN_SRC="$WORKDIR/bin"
+BIN_DST="/usr/local/bin"
 
 echo "==> FF4F00 installer"
-echo "==> Target directory: $TARGET_DIR"
+echo "==> Workspace: $WORKDIR"
+echo "==> CLI target: $BIN_DST"
 echo
 
 # --- preflight ----------------------------------------------------
@@ -19,23 +22,48 @@ fi
 
 # --- clone --------------------------------------------------------
 
-if [ -d "$TARGET_DIR" ]; then
-  echo "==> $TARGET_DIR already exists."
+if [ -d "$WORKDIR" ]; then
+  echo "==> $WORKDIR already exists."
   echo "==> Skipping clone."
 else
   echo "==> Cloning FF4F00 repository (HTTPS)"
-  git clone "$REPO_HTTPS" "$TARGET_DIR"
+  git clone "$REPO_HTTPS" "$WORKDIR"
 fi
 
-cd "$TARGET_DIR"
+cd "$WORKDIR"
 
 # --- switch remote to SSH ----------------------------------------
 
 echo "==> Configuring git remote to use SSH"
 git remote set-url origin "$REPO_SSH"
 
+# --- install CLI binaries ----------------------------------------
+
+if [ -d "$BIN_SRC" ]; then
+  echo "==> Installing CLI tools to $BIN_DST"
+
+  for tool in "$BIN_SRC"/*; do
+    [ -f "$tool" ] || continue
+
+    name="$(basename "$tool")"
+
+    echo "    -> $name"
+    chmod +x "$tool"
+
+    if [ -w "$BIN_DST" ]; then
+      cp "$tool" "$BIN_DST/$name"
+    else
+      sudo cp "$tool" "$BIN_DST/$name"
+    fi
+  done
+else
+  echo "⚠️  No bin/ directory found at $BIN_SRC"
+  echo "   Skipping CLI installation."
+fi
+
 # --- ssh check ----------------------------------------------------
 
+echo
 echo "==> Checking GitHub SSH authentication"
 
 if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
@@ -55,13 +83,14 @@ else
   echo "     pbcopy < ~/.ssh/id_ed25519.pub"
   echo
   echo "     https://github.com/settings/ssh/new"
-  echo
 fi
 
 echo
-echo "==> FF4F00 installed at $TARGET_DIR"
-echo "==> You can now:"
-echo "     cd $TARGET_DIR"
-echo "     git status"
+echo "==> FF4F00 installed"
+echo "==> Workspace: $WORKDIR"
+echo "==> CLI tools available globally:"
+if [ -d "$BIN_SRC" ]; then
+  ls "$BIN_SRC" | sed 's/^/     - /'
+fi
 echo
 echo "==> Done."
