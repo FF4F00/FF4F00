@@ -46,7 +46,6 @@ if [ -d "$BIN_SRC" ]; then
     [ -f "$tool" ] || continue
 
     name="$(basename "$tool")"
-
     echo "    -> $name"
     chmod +x "$tool"
 
@@ -56,6 +55,9 @@ if [ -d "$BIN_SRC" ]; then
       sudo cp "$tool" "$BIN_DST/$name"
     fi
   done
+
+  echo "==> Cleaning up $BIN_SRC"
+  rm -rf "$BIN_SRC"
 else
   echo "⚠️  No bin/ directory found at $BIN_SRC"
   echo "   Skipping CLI installation."
