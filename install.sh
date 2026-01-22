@@ -5,16 +5,19 @@ REPO_HTTPS="https://github.com/FF4F00/FF4F00.git"
 REPO_SSH="git@github.com:FF4F00/FF4F00.git"
 
 WORKDIR="$HOME/.wrk_"
+PROJECTS_DIR="$HOME/.houston"
+
 BIN_SRC="$WORKDIR/.bin"
 BIN_DST="/usr/local/bin"
 
-echo "==> FF4F00 installer"
-echo "==> Workspace: $WORKDIR"
-echo "==> CLI source: $BIN_SRC"
-echo "==> CLI target: $BIN_DST"
+echo "==> FF4F00 Platform Installer"
+echo "==> Platform: $WORKDIR (replaceable)"
+echo "==> Projects: $PROJECTS_DIR (persistent)"
 echo
 
-# --- preflight ----------------------------------------------------
+# -------------------------------------------------
+# Preflight
+# -------------------------------------------------
 
 if ! command -v git >/dev/null 2>&1; then
   echo "❌ git is not installed."
@@ -22,37 +25,50 @@ if ! command -v git >/dev/null 2>&1; then
   exit 1
 fi
 
-# --- clone --------------------------------------------------------
+# -------------------------------------------------
+# Ensure projects directory exists (safe)
+# -------------------------------------------------
 
-if [ -d "$WORKDIR" ]; then
-  echo "==> $WORKDIR already exists."
-  echo "==> Skipping clone."
+if [ ! -d "$PROJECTS_DIR" ]; then
+  echo "==> Creating projects directory: $PROJECTS_DIR"
+  mkdir -p "$PROJECTS_DIR"
 else
-  echo "==> Cloning FF4F00 repository (HTTPS)"
-  git clone "$REPO_HTTPS" "$WORKDIR"
+  echo "==> Projects directory exists: $PROJECTS_DIR"
 fi
 
-cd "$WORKDIR"
+# -------------------------------------------------
+# Replace platform (.wrk_)
+# -------------------------------------------------
 
-# --- switch remote to SSH ----------------------------------------
+if [ -d "$WORKDIR" ]; then
+  echo "==> Removing existing platform at $WORKDIR"
+  rm -rf "$WORKDIR"
+fi
+
+echo "==> Installing latest platform"
+git clone "$REPO_HTTPS" "$WORKDIR"
+
+cd "$WORKDIR"
 
 echo "==> Configuring git remote to use SSH"
 git remote set-url origin "$REPO_SSH"
 
-# --- validate workspace layout -----------------------------------
-
-echo "==> Validating workspace layout"
+# -------------------------------------------------
+# Validate platform layout
+# -------------------------------------------------
 
 if [ ! -d "$BIN_SRC" ]; then
   echo "❌ Required directory missing:"
   echo "   $BIN_SRC"
-  echo "   Installer cannot continue."
+  echo "   Platform install is invalid."
   exit 1
 fi
 
-# --- install CLI binaries ----------------------------------------
+# -------------------------------------------------
+# Install CLI binaries
+# -------------------------------------------------
 
-echo "==> Installing CLI tools"
+echo "==> Installing CLI tools to $BIN_DST"
 
 for tool in "$BIN_SRC"/*; do
   [ -f "$tool" ] || continue
@@ -67,7 +83,9 @@ for tool in "$BIN_SRC"/*; do
   fi
 done
 
-# --- ssh check ----------------------------------------------------
+# -------------------------------------------------
+# SSH sanity check (non-fatal)
+# -------------------------------------------------
 
 echo
 echo "==> Checking GitHub SSH authentication"
@@ -85,10 +103,20 @@ else
   echo "  https://github.com/settings/ssh/new"
 fi
 
+# -------------------------------------------------
+# Done
+# -------------------------------------------------
+
 echo
-echo "==> FF4F00 installed successfully"
-echo "==> Workspace: $WORKDIR"
-echo "==> CLI tools installed from:"
-echo "     $BIN_SRC"
+echo "==> FF4F00 platform installed successfully"
+echo
+echo "Platform:"
+echo "  $WORKDIR"
+echo
+echo "Projects:"
+echo "  $PROJECTS_DIR"
+echo
+echo "CLI tools:"
+ls "$BIN_SRC" | sed 's/^/  - /'
 echo
 echo "==> Done."
