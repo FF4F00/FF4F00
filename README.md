@@ -3,6 +3,11 @@
 <div style="float: right">Synopsis</div>
 <hr>
 
+
+> Install
+
+`curl -fsSL https://raw.githubusercontent.com/FF4F00/FF4F00/main/install.sh | sh`
+
 ![Version](https://img.shields.io/badge/version-0.0.1-blue) ![Build Status](https://img.shields.io/github/actions/workflow/status/ff4f00/ff4f00/main.yml)
 
 A modern solution for building decentralized, AI-powered, and cross-platform applications with Mojo. This project aims to provide a Laravel-like developer experience but with first-class support for Web3 identity, payments, social platforms, AI agents, and multi-device frontend generation — all deployable as single Mojo binaries using the IO platform.
