@@ -3,12 +3,17 @@ set -e
 
 REPO_HTTPS="https://github.com/FF4F00/FF4F00.git"
 REPO_SSH="git@github.com:FF4F00/FF4F00.git"
+
 WORKDIR="$HOME/.wrk_"
-BIN_SRC="$WORKDIR/bin"
+BIN_SRC="$WORKDIR/.•"
 BIN_DST="/usr/local/bin"
+
+CFG_DIR="$WORKDIR/.cfg"
+SRC_DIR="$WORKDIR/.src"
 
 echo "==> FF4F00 installer"
 echo "==> Workspace: $WORKDIR"
+echo "==> CLI source: $BIN_SRC"
 echo "==> CLI target: $BIN_DST"
 echo
 
@@ -37,30 +42,35 @@ cd "$WORKDIR"
 echo "==> Configuring git remote to use SSH"
 git remote set-url origin "$REPO_SSH"
 
+# --- ensure workspace directories --------------------------------
+
+echo "==> Ensuring workspace directories"
+
+mkdir -p "$CFG_DIR"
+mkdir -p "$SRC_DIR"
+
 # --- install CLI binaries ----------------------------------------
 
 if [ -d "$BIN_SRC" ]; then
-  echo "==> Installing CLI tools to $BIN_DST"
+  echo "==> Installing CLI tools"
 
   for tool in "$BIN_SRC"/*; do
     [ -f "$tool" ] || continue
 
     name="$(basename "$tool")"
     echo "    -> $name"
-    chmod +x "$tool"
 
     if [ -w "$BIN_DST" ]; then
-      cp "$tool" "$BIN_DST/$name"
+      install -m 0755 "$tool" "$BIN_DST/$name"
     else
-      sudo cp "$tool" "$BIN_DST/$name"
+      sudo install -m 0755 "$tool" "$BIN_DST/$name"
     fi
   done
-
-  echo "==> Cleaning up $BIN_SRC"
-  rm -rf "$BIN_SRC"
 else
-  echo "⚠️  No bin/ directory found at $BIN_SRC"
-  echo "   Skipping CLI installation."
+  echo "❌ Expected CLI source directory not found:"
+  echo "   $BIN_SRC"
+  echo "   Installer cannot continue."
+  exit 1
 fi
 
 # --- ssh check ----------------------------------------------------
@@ -72,27 +82,26 @@ if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
   echo "✅ GitHub SSH authentication detected."
 else
   echo
-  echo "⚠️  GitHub SSH authentication not detected."
+  echo "⚠⚠️  GitHub SSH authentication not detected."
   echo
   echo "To enable passwordless git push:"
-  echo "  1. Generate an SSH key:"
-  echo "     ssh-keygen -t ed25519 -C \"you@example.com\""
-  echo
-  echo "  2. Add the key to the agent:"
-  echo "     ssh-add --apple-use-keychain ~/.ssh/id_ed25519"
-  echo
-  echo "  3. Add the public key to GitHub:"
-  echo "     pbcopy < ~/.ssh/id_ed25519.pub"
-  echo
-  echo "     https://github.com/settings/ssh/new"
+  echo "  ssh-keygen -t ed25519 -C \"you@example.com\""
+  echo "  ssh-add --apple-use-keychain ~/.ssh/id_ed25519"
+  echo "  pbcopy < ~/.ssh/id_ed25519.pub"
+  echo "  https://github.com/settings/ssh/new"
 fi
 
 echo
-echo "==> FF4F00 installed"
-echo "==> Workspace: $WORKDIR"
-echo "==> CLI tools available globally:"
-if [ -d "$BIN_SRC" ]; then
-  ls "$BIN_SRC" | sed 's/^/     - /'
-fi
+echo "==> FF4F00 installed successfully"
+echo "==> Workspace layout:"
+echo "     $WORKDIR/.•   (CLI binaries)"
+echo "     $WORKDIR/.cfg (configuration)"
+echo "     $WORKDIR/.src (projects)"
+echo
+echo "==> CLI tools installed:"
+ls "$BIN_SRC" | sed 's/^/     - /'
 echo
 echo "==> Done."
+
+
+
