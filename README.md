@@ -6,8 +6,7 @@
 
 > Install
 
-`curl -fsSL https://gitlab.com/FF4F00/FF4F00/-/raw/main/install.sh | sh`
-
+`curl -fsSL https://raw.githubusercontent.com/FF4F00/FF4F00/main/install.sh | sh`
 
 ![Version](https://img.shields.io/badge/version-0.0.1-blue) ![Build Status](https://img.shields.io/github/actions/workflow/status/ff4f00/ff4f00/main.yml)
 
