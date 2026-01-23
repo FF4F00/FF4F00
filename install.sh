@@ -2,11 +2,11 @@
 set -e
 
 # -------------------------------------------------
-# Repository (GitLab)
+# Repository (GitHub)
 # -------------------------------------------------
 
-REPO_HTTPS="https://gitlab.com/FF4F00/FF4F00.git"
-REPO_SSH="git@gitlab.com:FF4F00/FF4F00.git"
+REPO_HTTPS="https://github.com/FF4F00/FF4F00.git"
+REPO_SSH="git@github.com:FF4F00/FF4F00.git"
 
 # -------------------------------------------------
 # Paths
@@ -51,12 +51,12 @@ if [ -d "$WORKDIR" ]; then
   rm -rf "$WORKDIR"
 fi
 
-echo "==> Cloning platform (GitLab)"
+echo "==> Cloning platform (GitHub)"
 git clone "$REPO_HTTPS" "$WORKDIR"
 
 cd "$WORKDIR"
 
-echo "==> Setting git remote to SSH (GitLab)"
+echo "==> Setting git remote to SSH (GitHub)"
 git remote set-url origin "$REPO_SSH" || true
 
 # -------------------------------------------------
@@ -89,21 +89,21 @@ for tool in "$BIN_SRC"/*; do
 done
 
 # -------------------------------------------------
-# SSH sanity check (GitLab, non-fatal)
+# SSH sanity check (GitHub, non-fatal)
 # -------------------------------------------------
 
 echo
-echo "==> Checking GitLab SSH access"
+echo "==> Checking GitHub SSH access"
 
-if ssh -T git@gitlab.com 2>&1 | grep -qi "Welcome to GitLab"; then
+if ssh -T git@github.com 2>&1 | grep -qi "successfully authenticated"; then
   echo "✅ SSH authentication OK"
 else
-  echo "⚠️  GitLab SSH not configured (HTTPS will still work)"
+  echo "⚠️  GitHub SSH not configured (HTTPS will still work)"
   echo "    To enable:"
   echo "      ssh-keygen -t ed25519"
   echo "      ssh-add --apple-use-keychain ~/.ssh/id_ed25519"
   echo "      pbcopy < ~/.ssh/id_ed25519.pub"
-  echo "    Then add the key in GitLab → Preferences → SSH Keys"
+  echo "    Then add the key in GitHub → Settings → SSH and GPG keys"
 fi
 
 # -------------------------------------------------
