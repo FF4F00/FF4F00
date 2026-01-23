@@ -5,250 +5,163 @@ LOG_DIR="${LOG_DIR:-$HOME/.log}"
 EDITOR="${EDITOR:-nvim}"
 DATE="$(date +%Y-%m-%d)"
 
-usage() {
-  cat <<EOF
-Captain's Log (GitLab)
-
-Usage:
-  cl <path>              Open or create a log
-  cl -n <path>           Create new log
-  cl -d <dir>            Create directory
-  cl -l [dir]            List logs
-  cl -c <repo-url>       Clone existing GitLab repo
-  cl -p "<message>"      Commit and push
-  cl init <repo-name>    Create GitLab repo (requires glab)
-
-Notes:
-  - Logs live in ~/.log
-  - Git is the source of truth
-  - GitLab is assumed by default
-EOF
+die() {
+  echo "❌ $*" >&2
   exit 1
 }
 
-# -------------------------------------------------
-# Ensure ~/.log exists
-# -------------------------------------------------
+normalize_repo() {
+  echo "$1" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[^a-z0-9 ]//g' \
+    | sed 's/ \+/-/g'
+}
 
-mkdir -p "$LOG_DIR"
-cd "$LOG_DIR"
+ensure_git() {
+  [ -d ".git" ] || git init >/dev/null
+}
 
-# -------------------------------------------------
-# Git bootstrap
-# -------------------------------------------------
-
-if [ ! -d ".git" ]; then
-  git init >/dev/null
-fi
-
-if [ ! -f ".gitignore" ]; then
+ensure_gitignore() {
+  [ -f ".gitignore" ] && return
   cat > .gitignore <<EOF
 .DS_Store
 *.swp
 *~
 EOF
-  git add .gitignore >/dev/null || true
-fi
+  git add .gitignore >/dev/null
+}
 
-# -------------------------------------------------
-# Subcommand: init (GitLab repo creation)
-# -------------------------------------------------
-
-if [ "$1" = "init" ]; then
-  shift
-  REPO="$1"
-  [ -n "$REPO" ] || usage
-
-  if git remote get-url origin >/dev/null 2>&1; then
-    echo "❌ Remote 'origin' already exists."
-    exit 1
+git_status_hint() {
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo
+    echo "⚠️  Uncommitted changes:"
+    git status --short
   fi
+}
 
-  if ! command -v glab >/dev/null 2>&1; then
-    cat <<EOF
-❌ glab not found.
-
-To publish manually:
-  1. Create a repo on GitLab
-  2. git remote add origin <repo-url>
-  3. cl -p "initial publish"
-
-To enable automatic creation:
-  https://gitlab.com/gitlab-org/cli
-EOF
-    exit 1
-  fi
-
-  if ! glab auth status >/dev/null 2>&1; then
-    echo "❌ glab is not authenticated."
-    echo "   Run: glab auth login"
-    exit 1
-  fi
-
-  echo "==> Creating GitLab repository: $REPO"
-  glab repo create "$REPO" \
-    --private \
-    --source="$LOG_DIR" \
-    --remote=origin \
-    --push
-
-  echo "✅ Captain’s Log published to GitLab"
-  git status --short
-  exit 0
-fi
-
-# -------------------------------------------------
-# Parse flags
-# -------------------------------------------------
-
-MODE=""
-ARG=""
-
-while [ $# -gt 0 ]; do
-  case "$1" in
-    -l|-n|-d|-c|-p)
-      [ -z "$MODE" ] || usage
-      MODE="$1"
-      shift
-      [ $# -gt 0 ] && ARG="$1"
-      break
-      ;;
-    -*)
-      usage
-      ;;
-    *)
-      ARG="$1"
-      break
-      ;;
-  esac
-done
-
-# -------------------------------------------------
-# Clone existing repo
-# -------------------------------------------------
-
-if [ "$MODE" = "-c" ]; then
-  [ -n "$ARG" ] || usage
-
-  if [ "$(ls -A "$LOG_DIR")" ]; then
-    echo "❌ ~/.log is not empty. Aborting clone."
-    exit 1
-  fi
-
-  TMP="$(mktemp -d)"
-  git clone "$ARG" "$TMP"
-
-  mv "$TMP"/* "$LOG_DIR"/
-  mv "$TMP"/.git "$LOG_DIR"/
-  rm -rf "$TMP"
-
-  echo "✅ Log repository cloned."
-  git status --short
-  exit 0
-fi
-
-# -------------------------------------------------
-# Commit + push
-# -------------------------------------------------
-
-if [ "$MODE" = "-p" ]; then
-  [ -n "$ARG" ] || usage
-
-  if git diff --quiet && git diff --cached --quiet; then
-    echo "ℹ️  No changes to publish."
-    exit 0
-  fi
-
-  git add .
-  git commit -m "$ARG"
-  git push
-
-  git status --short
-  exit 0
-fi
-
-# -------------------------------------------------
-# List logs
-# -------------------------------------------------
-
-if [ "$MODE" = "-l" ]; then
-  TARGET="${ARG:-.}"
-  TARGET="${TARGET#/}"
-
-  [ -d "$TARGET" ] || {
-    echo "❌ Directory does not exist: $TARGET"
-    exit 1
-  }
-
-  find "$TARGET" -type f -name '*.md' | sort
-  exit 0
-fi
-
-# -------------------------------------------------
-# Create directory
-# -------------------------------------------------
-
-if [ "$MODE" = "-d" ]; then
-  [ -n "$ARG" ] || usage
-  TARGET="${ARG#/}"
-
-  mkdir -p "$TARGET"
-  echo "✅ Directory created: $TARGET"
-  git status --short
-  exit 0
-fi
-
-# -------------------------------------------------
-# Create new log
-# -------------------------------------------------
-
-if [ "$MODE" = "-n" ]; then
-  [ -n "$ARG" ] || usage
-
-  TARGET="${ARG#/}"
-  FILE="${TARGET%.md}.md"
+open_note() {
+  FILE="$1"
   DIR="$(dirname "$FILE")"
-  NAME="$(basename "$FILE" .md)"
-  TITLE="$(printf "%s" "$NAME" | tr '_' ' ')"
-
-  [ ! -f "$FILE" ] || {
-    echo "❌ Log already exists: $FILE"
-    exit 1
-  }
-
   mkdir -p "$DIR"
 
-  cat > "$FILE" <<EOF
+  if [ ! -f "$FILE" ]; then
+    TITLE="$(basename "$FILE" .md)"
+    cat > "$FILE" <<EOF
 # $TITLE
 ---
 > stardate: $DATE
 
 EOF
+  fi
 
   exec "$EDITOR" "$FILE"
+}
+
+# -------------------------------------------------
+# Bootstrap
+# -------------------------------------------------
+
+mkdir -p "$LOG_DIR"
+cd "$LOG_DIR"
+
+ensure_git
+ensure_gitignore
+
+# -------------------------------------------------
+# Parse command
+# -------------------------------------------------
+
+CMD="$1"
+shift || true
+
+# -------------------------------------------------
+# cl init
+# -------------------------------------------------
+
+if [ "$CMD" = "init" ]; then
+  PLATFORM=""
+  case "$1" in
+    -gh|-glab)
+      PLATFORM="$1"
+      shift
+      ;;
+    *)
+      die "Usage: cl init -gh|-glab <repo name>"
+      ;;
+  esac
+
+  [ $# -gt 0 ] || die "Repository name required"
+
+  DISPLAY_NAME="$*"
+  REPO_NAME="$(normalize_repo "$DISPLAY_NAME")"
+  [ -n "$REPO_NAME" ] || die "Invalid repository name"
+
+  if git remote | grep -q origin; then
+    die "Remote already configured"
+  fi
+
+  case "$PLATFORM" in
+    -gh)
+      command -v gh >/dev/null || die "gh CLI not installed"
+      gh repo create "$REPO_NAME" --private --source=. --remote=origin --push
+      ;;
+    -glab)
+      command -v glab >/dev/null || die "glab CLI not installed"
+      glab repo create "$REPO_NAME" --private --source=. --remote=origin --push
+      ;;
+  esac
+
+  echo "✅ Repository created and pushed"
+  git_status_hint
+  exit 0
 fi
 
 # -------------------------------------------------
-# Default: open or create
+# Flags (whitespace-safe)
 # -------------------------------------------------
 
-[ -n "$ARG" ] || usage
+ARGS="$*"
 
-TARGET="${ARG#/}"
-FILE="${TARGET%.md}.md"
-DIR="$(dirname "$FILE")"
-NAME="$(basename "$FILE" .md)"
-TITLE="$(printf "%s" "$NAME" | tr '_' ' ')"
+case "$CMD" in
+  -ld)
+    TARGET="${ARGS:-.}"
+    find "$TARGET" -type d | sort
+    exit 0
+    ;;
+  -ln)
+    TARGET="${ARGS:-.}"
+    find "$TARGET" -type f -name '*.md' | sort
+    exit 0
+    ;;
+  -l)
+    TARGET="${ARGS:-.}"
+    find "$TARGET" \( -type d -o -name '*.md' \) | sort
+    exit 0
+    ;;
+  -d)
+    [ -n "$ARGS" ] || die "Usage: cl -d <dir>"
+    mkdir -p "$ARGS"
+    echo "✅ Directory created: $ARGS"
+    git_status_hint
+    exit 0
+    ;;
+  -n)
+    [ -n "$ARGS" ] || die "Usage: cl -n <note>"
+    open_note "$ARGS.md"
+    ;;
+  -p)
+    [ -n "$ARGS" ] || die "Usage: cl -p \"message\""
+    git add .
+    git commit -m "$ARGS"
+    git push
+    git_status_hint
+    exit 0
+    ;;
+esac
 
-mkdir -p "$DIR"
+# -------------------------------------------------
+# Default: open or create note
+# -------------------------------------------------
 
-if [ ! -f "$FILE" ]; then
-  cat > "$FILE" <<EOF
-# $TITLE
----
-> stardate: $DATE
-
-EOF
-fi
-
-exec "$EDITOR" "$FILE"
+[ -n "$CMD" ] || die "Usage: cl <note path>"
+open_note "$CMD.md"
