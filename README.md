@@ -8,5 +8,5 @@
 
 `curl -fsSL https://gitlab.com/FF4F00/FF4F00/-/raw/main/install.sh | sh`
 
-> Project hosted on GitLab
+> FF4F00 officially hosted on GitLab
 
