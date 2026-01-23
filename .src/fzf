@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+# ✅ Verified 07/12/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# fzf v0.64.0
+
+DIR="/tmp"
+VERSION="0.64.0"
+TAR="$DIR/fzf.tar.gz"
+
+sudo rm -f /usr/local/bin/fzf
+
+if [ ! -f /usr/local/bin/fzf ]; then
+
+    # Download
+    curl -Lo "$TAR" "https://github.com/junegunn/fzf/releases/download/v${VERSION}/fzf-${VERSION}-darwin_arm64.tar.gz"
+
+    # Extract & Install
+    tar -xzf "$TAR" -C "$DIR"
+    sudo install -m 755 "$DIR/fzf" /usr/local/bin/fzf
+
+    # Cleanup
+    rm -f "$TAR" "$DIR/fzf"
+fi
+

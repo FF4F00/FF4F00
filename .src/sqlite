@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# SQLite v3.49.01
+
+DIR="/tmp"
+VERSION="3490100"
+
+if [ ! -f /usr/local/lib/libsqlite3.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/sqlite-src-${VERSION}.zip" "https://sqlite.org/2025/sqlite-src-${VERSION}.zip"
+
+    # Extract
+    cd "$DIR" && unzip "sqlite-src-${VERSION}.zip" && rm -f "sqlite-src-${VERSION}.zip"
+
+    # Install
+    (cd "$DIR/sqlite-src-${VERSION}" && ./configure && make && sudo make install)
+
+fi

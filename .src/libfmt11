@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libfmt 11.1.4
+
+DIR="/tmp"
+VERSION="11.1.4"
+
+if [ ! -f /usr/local/lib/libfmt.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/fmt-${VERSION}.tar.gz https://github.com/fmtlib/fmt/archive/refs/tags/${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf $DIR/fmt-${VERSION}.tar.gz -C $DIR && rm -f $DIR/fmt-${VERSION}.tar.gz
+
+    # Install
+    (cd $DIR/fmt-${VERSION} && cmake -B build && cmake --build build && sudo cmake --install build)
+
+fi

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# meson v1.7.2
+
+DIR="/tmp"
+VERSION="1.7.2"
+
+if [ ! -f /usr/local/bin/meson ]; then
+
+    # Download
+    curl -Lo $DIR/meson-${VERSION}.tar.gz.asc https://github.com/mesonbuild/meson/releases/download/${VERSION}/meson-${VERSION}.tar.gz.asc
+    curl -Lo $DIR/meson-${VERSION}.tar.gz https://github.com/mesonbuild/meson/releases/download/${VERSION}/meson-${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf "$DIR/meson-${VERSION}.tar.gz" -C $DIR && rm -rf $DIR/meson-${VERSION}.tar.gz
+
+    # Install
+    (cd "$DIR/meson-${VERSION}" && sudo pip3 install .)
+
+fi

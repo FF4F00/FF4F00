@@ -1,0 +1,155 @@
+#!/usr/bin/env zsh
+
+# UI/UX : Elm, SwiftUI, Jetpack COmpose
+
+# ┌───┬───────────┬──────────────────────────┬────────┬────────────────┬────────────┬────────────┬──────────┬────────────┬───────────────┬───────────────────────────────────────┐
+# │   │ Language  │ Paradigm                 │ Purity │ Execution      │ Evaluation │ Discipline │ Check    │ Annotation │ Compatibility │ Features                              │
+# ├───┼───────────┼──────────────────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 1 │ Elm       │ Declarative │ Functional │ Pure   │ Sequential     │ Eager      │ Strong     │ Static   │ I/Explicit │ Nominal       │ Polymorphic, Algebraic                │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 2 │ Swift     │ Imperative  │ Procedural │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ I/Explicit │ Nominal       │ Polymorphic, Algebraic, Union         │
+# ├───┼───────────┼─────────────┼────────────┼────────┼────────────────┼────────────┼────────────┼──────────┼────────────┼───────────────┼───────────────────────────────────────┤
+# │ 3 │ Kotlin    │ Imperative  │ Procedural │ Impure │ Non-Sequential │ Eager      │ Strong     │ Static   │ I/Explicit │ Nominal       │ Polymorphic, Algebraic                │
+# └───┴───────────┴─────────────┴────────────┴────────┴────────────────┴────────────┴────────────┴──────────┴────────────┴───────────────┴───────────────────────────────────────┘
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# Base workspace
+WRK_="$HOME/.wrk_"
+
+# ┌─────────────┐
+# │ usage       │
+# └─────────────┘
+ui_usage() {
+  cat <<'EOF'
+usage:
+  ui -s | self                        # self (no args)
+  ui -h | --help | help               # help
+  ui -q | query   [args...]           # query
+  ui -c | console [args...]           # console
+  ui -u | update  [args...]           # update
+  ui -d | delete  [args...]           # delete
+  ui -l | launch  [args...]           # launch
+  ui -i | install [args...]           # install
+  ui -r | release [args...]           # release
+  ui -v | version [args...]           # version
+  ui -b | build   [args...]           # build
+  ui -n | new     [args...]           # new
+EOF
+}
+
+# ┌─────────────┐
+# │ self        │
+# └─────────────┘
+ui_self() {
+  # strict inside as well
+  set -e
+
+  # ignore any passed arguments
+  if [ "$#" -ne 0 ]; then
+    echo "ℹ️  ignoring arguments to 'self' (takes no parameters)"
+  fi
+
+  local ui_source_path="${WRK_}/ui/ui"
+  local ui_dest_dir="/usr/local/bin"
+  local ui_dest="${ui_dest_dir}/ui"
+
+  # 0) pick an editor ($EDITOR preferred; fallback to vi)
+  local editor="${EDITOR:-}"
+  if [ -n "$editor" ] && command -v "$editor" >/dev/null 2>&1; then
+    :
+  elif command -v vi >/dev/null 2>&1; then
+    editor="vi"
+  else
+    echo "❌ no suitable editor found (set \$EDITOR or install 'vi')" >&2
+    return 1
+  fi
+
+  # 1) edit the version-controlled source
+  if [ ! -f "$ui_source_path" ]; then
+    echo "❌ not found: $ui_source_path" >&2
+    return 1
+  fi
+  "$editor" "$ui_source_path" || {
+    echo "❌ editor failed; aborting install" >&2; return 1;
+  }
+
+  # 2) ensure destination directory exists (sudo on first-time setups)
+  if [ ! -d "$ui_dest_dir" ]; then
+    echo "ℹ️  creating $ui_dest_dir (sudo)"
+    sudo mkdir -p "$ui_dest_dir"
+  fi
+
+  # 3) install/update live binary atomically with correct mode
+  if sudo install -m 0755 "$ui_source_path" "$ui_dest"; then
+    :
+  else
+    echo "❌ install failed. Try:" >&2
+    echo "   sudo install -m 0755 \"$ui_source_path\" \"$ui_dest\"" >&2
+    return 1
+  fi
+
+  # 4) verify executable
+  if [ -x "$ui_dest" ]; then
+    echo "✅ installed: $ui_dest"
+  else
+    echo "⚠️  installed but not executable; fixing (sudo)"
+    sudo chmod +x "$ui_dest" || { echo "❌ chmod failed on $ui_dest" >&2; return 1; }
+    echo "✅ fixed permissions: $ui_dest"
+  fi
+}
+
+# ┌─────────────┐
+# │ placeholders│
+# └─────────────┘
+ui_query()   { echo "ui query $*"; }
+ui_console() { echo "ui console $*"; }
+ui_update()  { echo "ui update $*"; }
+ui_delete()  { echo "ui delete $*"; }
+ui_launch()  { echo "ui launch $*"; }
+ui_install() { echo "ui install $*"; }
+ui_release() { echo "ui release $*"; }
+ui_version() { echo "ui version $*"; }
+ui_build()   { echo "ui build $*"; }
+ui_new()     { echo "ui new $*"; }
+
+# ┌─────────────┐
+# │ dispatcher  │
+# └─────────────┘
+ui() {
+  case "${1:-}" in
+    -s|self)              shift || true; ui_self "$@";;
+    -h|--help|help|"")    ui_usage;;
+    -q|query)             shift || true; ui_query "$@";;
+    -c|console)           shift || true; ui_console "$@";;
+    -u|update)            shift || true; ui_update "$@";;
+    -d|delete)            shift || true; ui_delete "$@";;
+    -l|launch)            shift || true; ui_launch "$@";;
+    -i|install)           shift || true; ui_install "$@";;
+    -r|release)           shift || true; ui_release "$@";;
+    -v|version)           shift || true; ui_version "$@";;
+    -b|build)             shift || true; ui_build "$@";;
+    -n|new)               shift || true; ui_new "$@";;
+    -*)
+      echo "❌ unknown flag: $1" >&2
+      ui_usage; return 2
+      ;;
+    *)
+      echo "❌ only supported words are: self, help, query, console, update, delete, launch, install, release, version, build, new" >&2
+      ui_usage; return 2
+      ;;
+  esac
+}
+
+# ── main ──
+ui "$@"
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# ✅ Verified 07/09/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: CMake, Make
+# Target: Apple Silicon
+# vulkan 1.4.321
+
+DIR="/tmp"
+VK_VERSION="1.4.321"
+
+# Clean up any existing installations
+sudo rm -rf /tmp/Vulkan-Headers-${VK_VERSION}
+sudo rm -rf /tmp/Vulkan-Loader-${VK_VERSION}
+
+if [ ! -f /usr/local/include/vulkan/vulkan.h ]; then
+
+    # ⚠️ Dependencies
+    [ ! -f /usr/local/bin/cmake ] && ./CMAKE  # ✅
+
+    # Download Vulkan Headers
+    curl -Lo "$DIR/vulkan-headers-${VK_VERSION}.tar.gz" "https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v${VK_VERSION}.tar.gz"
+
+    # Extract Vulkan Headers
+    tar -xzvf "$DIR/vulkan-headers-${VK_VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/vulkan-headers-${VK_VERSION}.tar.gz"
+
+    # Install Vulkan Headers
+    (cd "$DIR/Vulkan-Headers-${VK_VERSION}" && \
+     mkdir -p build && \
+     cd build && \
+     cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local && \
+     make && \
+     sudo make install)
+
+    # Download Vulkan Loader
+    curl -Lo "$DIR/vulkan-loader-${VK_VERSION}.tar.gz" "https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v${VK_VERSION}.tar.gz"
+
+    # Extract Vulkan Loader
+    tar -xzvf "$DIR/vulkan-loader-${VK_VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/vulkan-loader-${VK_VERSION}.tar.gz"
+
+    # Install Vulkan Loader
+    (cd "$DIR/Vulkan-Loader-${VK_VERSION}" && \
+     mkdir -p build && \
+     cd build && \
+     cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DVULKAN_HEADERS_INSTALL_DIR=/usr/local && \
+     make && \
+     sudo make install)
+
+fi

@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# ✅ Verified 07/09/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: CMake, Python3, Git
+# Target: Apple Silicon
+# shaderc v2025.3
+
+DIR="/tmp"
+VERSION="2025.3"
+
+# Clean up any existing installations
+sudo rm -rf /tmp/shaderc-${VERSION}
+
+if [ ! -f /usr/local/bin/glslc ]; then
+
+    # ⚠️ Dependencies
+    [ ! -f /usr/local/bin/cmake ] && ./CMAKE  # ✅
+
+    # Download
+    curl -Lo "$DIR/shaderc-${VERSION}.tar.gz" "https://github.com/google/shaderc/archive/refs/tags/v${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/shaderc-${VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/shaderc-${VERSION}.tar.gz"
+
+    # Build
+    (cd "$DIR/shaderc-${VERSION}" && \
+     # Initialize submodules for dependencies
+     python3 utils/git-sync-deps && \
+     # Create build directory
+     mkdir -p build && \
+     cd build && \
+     # Configure with CMake
+     cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local && \
+     # Build
+     make -j$(sysctl -n hw.ncpu) && \
+     # Install
+     sudo make install)
+
+    # Clean up
+    sudo rm -rf /tmp/shaderc-${VERSION}
+
+fi

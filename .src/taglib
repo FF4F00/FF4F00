@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# taglib v2.0.2
+
+DIR="/tmp"
+VERSION="2.0.2"
+
+if [ ! -f /usr/local/lib/libtag.dylib ]; then
+
+    # Download
+    curl -Lo "$DIR/taglib-${VERSION}.tar.gz" "https://taglib.org/releases/taglib-${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/taglib-${VERSION}.tar.gz" -C "$DIR" && rm -f "$DIR/taglib-${VERSION}.tar.gz"
+
+    # Install
+    (cd "$DIR/taglib-${VERSION}" && mkdir -p build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_CXX_FLAGS="-I/usr/local/include/utf8cpp" && make && sudo make install)
+
+fi

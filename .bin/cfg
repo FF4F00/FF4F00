@@ -1,0 +1,122 @@
+#!/usr/bin/env zsh
+
+# ┌──────┬─────────────┐
+# │  ID  │ cfg         │
+# ├──────┼─────────────┤
+# │  C0  │ AEROSPACE   │
+# │  C1  │ GHOSTTY     │
+# │  C2  │ MPD         │
+# │  C3  │ MPV         │
+# │  C4  │ NIX         │
+# │  C5  │ NEOVIM      │
+# │  C6  │ RMPC        │
+# │  C7  │ SKETCHYBAR  │
+# │  C8  │ STARSHIP    │
+# │  C9  │ TMUX        │
+# └──────┴─────────────┘
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# Base workspace
+WRK_="$HOME/.wrk_"
+
+# ┌─────────────┐
+# │ usage       │
+# └─────────────┘
+cfg_usage() {
+  cat <<'EOF'
+usage:
+ .cfg -s                             # self (no args)
+ .cfg -h | --help                    # help
+EOF
+}
+
+# ┌─────────────┐
+# │ self        │
+# └─────────────┘
+cfg_self() {
+  # strict inside as well
+  set -e
+
+  # ignore any passed arguments
+  if [ "$#" -ne 0 ]; then
+    echo "ℹ️  ignoring arguments to 'self' (takes no parameters)"
+  fi
+
+  local.cfg_source_path="${WRK_}/.cfg/cfg"
+  local.cfg_dest_dir="/usr/local/bin"
+  local.cfg_dest="$.cfg_dest_dir}/cfg"
+
+  # 0) pick an editor ($EDITOR preferred; fallback to vi)
+  local editor="${EDITOR:-}"
+  if [ -n "$editor" ] && command -v "$editor" >/dev/null 2>&1; then
+    :
+  elif command -v vi >/dev/null 2>&1; then
+    editor="vi"
+  else
+    echo "❌ no suitable editor found (set \$EDITOR or install 'vi')" >&2
+    return 1
+  fi
+
+  # 1) edit the version-controlled source
+  if [ ! -f ".cfg_source_path" ]; then
+    echo "❌ not found: .cfg_source_path" >&2
+    return 1
+  fi
+  "$editor" ".cfg_source_path" || {
+    echo "❌ editor failed; aborting install" >&2; return 1;
+  }
+
+  # 2) ensure destination directory exists (sudo on first-time setups)
+  if [ ! -d ".cfg_dest_dir" ]; then
+    echo "ℹ️  creating .cfg_dest_dir (sudo)"
+    sudo mkdir -p ".cfg_dest_dir"
+  fi
+
+  # 3) install/update live binary atomically with correct mode
+  if sudo install -m 0755 ".cfg_source_path" ".cfg_dest"; then
+    :
+  else
+    echo "❌ install failed. Try:" >&2
+    echo "   sudo install -m 0755 \".cfg_source_path\" \".cfg_dest\"" >&2
+    return 1
+  fi
+
+  # 4) verify executable
+  if [ -x ".cfg_dest" ]; then
+    echo "✅ installed: .cfg_dest"
+  else
+    echo "⚠️  installed but not executable; fixing (sudo)"
+    sudo chmod +x ".cfg_dest" || { echo "❌ chmod failed on .cfg_dest" >&2; return 1; }
+    echo "✅ fixed permissions: .cfg_dest"
+  fi
+}
+
+# ┌─────────────┐
+# │ dispatcher  │
+# └─────────────┘
+cfg() {
+  case "${1:-}" in
+    -s) shift || true;.cfg_self "$@";;
+    -h|--help|"").cfg_usage;;
+    -*)
+      echo "❌ unknown flag: $1" >&2
+     .cfg_usage; return 2
+      ;;
+    *)
+      # For now, only -s is supported.
+      echo "❌ only '-s' is supported right now." >&2
+     .cfg_usage; return 2
+      ;;
+  esac
+}
+
+# ── main ──
+cfg "$@"
+
+
+
+
+

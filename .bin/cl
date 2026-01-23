@@ -1,0 +1,254 @@
+#!/usr/bin/env sh
+set -e
+
+LOG_DIR="${LOG_DIR:-$HOME/.log}"
+EDITOR="${EDITOR:-nvim}"
+DATE="$(date +%Y-%m-%d)"
+
+usage() {
+  cat <<EOF
+Captain's Log (GitLab)
+
+Usage:
+  cl <path>              Open or create a log
+  cl -n <path>           Create new log
+  cl -d <dir>            Create directory
+  cl -l [dir]            List logs
+  cl -c <repo-url>       Clone existing GitLab repo
+  cl -p "<message>"      Commit and push
+  cl init <repo-name>    Create GitLab repo (requires glab)
+
+Notes:
+  - Logs live in ~/.log
+  - Git is the source of truth
+  - GitLab is assumed by default
+EOF
+  exit 1
+}
+
+# -------------------------------------------------
+# Ensure ~/.log exists
+# -------------------------------------------------
+
+mkdir -p "$LOG_DIR"
+cd "$LOG_DIR"
+
+# -------------------------------------------------
+# Git bootstrap
+# -------------------------------------------------
+
+if [ ! -d ".git" ]; then
+  git init >/dev/null
+fi
+
+if [ ! -f ".gitignore" ]; then
+  cat > .gitignore <<EOF
+.DS_Store
+*.swp
+*~
+EOF
+  git add .gitignore >/dev/null || true
+fi
+
+# -------------------------------------------------
+# Subcommand: init (GitLab repo creation)
+# -------------------------------------------------
+
+if [ "$1" = "init" ]; then
+  shift
+  REPO="$1"
+  [ -n "$REPO" ] || usage
+
+  if git remote get-url origin >/dev/null 2>&1; then
+    echo "❌ Remote 'origin' already exists."
+    exit 1
+  fi
+
+  if ! command -v glab >/dev/null 2>&1; then
+    cat <<EOF
+❌ glab not found.
+
+To publish manually:
+  1. Create a repo on GitLab
+  2. git remote add origin <repo-url>
+  3. cl -p "initial publish"
+
+To enable automatic creation:
+  https://gitlab.com/gitlab-org/cli
+EOF
+    exit 1
+  fi
+
+  if ! glab auth status >/dev/null 2>&1; then
+    echo "❌ glab is not authenticated."
+    echo "   Run: glab auth login"
+    exit 1
+  fi
+
+  echo "==> Creating GitLab repository: $REPO"
+  glab repo create "$REPO" \
+    --private \
+    --source="$LOG_DIR" \
+    --remote=origin \
+    --push
+
+  echo "✅ Captain’s Log published to GitLab"
+  git status --short
+  exit 0
+fi
+
+# -------------------------------------------------
+# Parse flags
+# -------------------------------------------------
+
+MODE=""
+ARG=""
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -l|-n|-d|-c|-p)
+      [ -z "$MODE" ] || usage
+      MODE="$1"
+      shift
+      [ $# -gt 0 ] && ARG="$1"
+      break
+      ;;
+    -*)
+      usage
+      ;;
+    *)
+      ARG="$1"
+      break
+      ;;
+  esac
+done
+
+# -------------------------------------------------
+# Clone existing repo
+# -------------------------------------------------
+
+if [ "$MODE" = "-c" ]; then
+  [ -n "$ARG" ] || usage
+
+  if [ "$(ls -A "$LOG_DIR")" ]; then
+    echo "❌ ~/.log is not empty. Aborting clone."
+    exit 1
+  fi
+
+  TMP="$(mktemp -d)"
+  git clone "$ARG" "$TMP"
+
+  mv "$TMP"/* "$LOG_DIR"/
+  mv "$TMP"/.git "$LOG_DIR"/
+  rm -rf "$TMP"
+
+  echo "✅ Log repository cloned."
+  git status --short
+  exit 0
+fi
+
+# -------------------------------------------------
+# Commit + push
+# -------------------------------------------------
+
+if [ "$MODE" = "-p" ]; then
+  [ -n "$ARG" ] || usage
+
+  if git diff --quiet && git diff --cached --quiet; then
+    echo "ℹ️  No changes to publish."
+    exit 0
+  fi
+
+  git add .
+  git commit -m "$ARG"
+  git push
+
+  git status --short
+  exit 0
+fi
+
+# -------------------------------------------------
+# List logs
+# -------------------------------------------------
+
+if [ "$MODE" = "-l" ]; then
+  TARGET="${ARG:-.}"
+  TARGET="${TARGET#/}"
+
+  [ -d "$TARGET" ] || {
+    echo "❌ Directory does not exist: $TARGET"
+    exit 1
+  }
+
+  find "$TARGET" -type f -name '*.md' | sort
+  exit 0
+fi
+
+# -------------------------------------------------
+# Create directory
+# -------------------------------------------------
+
+if [ "$MODE" = "-d" ]; then
+  [ -n "$ARG" ] || usage
+  TARGET="${ARG#/}"
+
+  mkdir -p "$TARGET"
+  echo "✅ Directory created: $TARGET"
+  git status --short
+  exit 0
+fi
+
+# -------------------------------------------------
+# Create new log
+# -------------------------------------------------
+
+if [ "$MODE" = "-n" ]; then
+  [ -n "$ARG" ] || usage
+
+  TARGET="${ARG#/}"
+  FILE="${TARGET%.md}.md"
+  DIR="$(dirname "$FILE")"
+  NAME="$(basename "$FILE" .md)"
+  TITLE="$(printf "%s" "$NAME" | tr '_' ' ')"
+
+  [ ! -f "$FILE" ] || {
+    echo "❌ Log already exists: $FILE"
+    exit 1
+  }
+
+  mkdir -p "$DIR"
+
+  cat > "$FILE" <<EOF
+# $TITLE
+---
+> stardate: $DATE
+
+EOF
+
+  exec "$EDITOR" "$FILE"
+fi
+
+# -------------------------------------------------
+# Default: open or create
+# -------------------------------------------------
+
+[ -n "$ARG" ] || usage
+
+TARGET="${ARG#/}"
+FILE="${TARGET%.md}.md"
+DIR="$(dirname "$FILE")"
+NAME="$(basename "$FILE" .md)"
+TITLE="$(printf "%s" "$NAME" | tr '_' ' ')"
+
+mkdir -p "$DIR"
+
+if [ ! -f "$FILE" ]; then
+  cat > "$FILE" <<EOF
+# $TITLE
+---
+> stardate: $DATE
+
+EOF
+fi
+
+exec "$EDITOR" "$FILE"

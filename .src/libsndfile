@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: ogg, vorbis, opt(flac)
+# Target: Apple Silicon
+# libsndfile 1.2.2
+
+DIR="/tmp"
+VERSION="1.2.2"
+
+if [ ! -f /usr/local/lib/libsndfile.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/libsndfile-${VERSION}.tar.gz https://github.com/libsndfile/libsndfile/archive/refs/tags/${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf "$DIR/libsndfile-${VERSION}.tar.gz" -C $DIR && rm -f $DIR/libsndfile-${VERSION}.tar.gz
+
+    # Install
+    (cd "$DIR/libsndfile-${VERSION}" && cmake -B build && cmake --build build && sudo cmake --install build)
+
+fi
+

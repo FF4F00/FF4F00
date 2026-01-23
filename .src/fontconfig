@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: freetype, libxml2, expat 
+# Target: Apple Silicon
+# fontconfig 2.16.0
+
+DIR="/tmp"
+VERSION="2.16.0"
+
+if [ ! -f /usr/local/lib/libfontconfig.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/fontconfig-${VERSION}.tar.xz https://www.freedesktop.org/software/fontconfig/release/fontconfig-${VERSION}.tar.xz
+
+    # Extract
+    tar xJf $DIR/fontconfig-${VERSION}.tar.xz -C $DIR && rm -f $DIR/fontconfig-${VERSION}.tar.xz
+
+    # Install
+    (cd $DIR/fontconfig-${VERSION} && ./configure && make && sudo make install)
+
+fi

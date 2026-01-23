@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# Target: Apple Silicon
+# gh 2.75.0
+
+DIR="/tmp"
+VERSION="2.75.0"
+
+if [ ! -f "/usr/local/bin/gh" ]; then
+
+    # download
+    curl -Lo "$DIR/gh.zip" "https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_macOS_arm64.zip"
+
+    # extract
+    unzip "$DIR/gh.zip" -d "$DIR"
+    rm -f "$DIR/gh.zip"
+
+    # install
+    sudo mv "$DIR/gh_${VERSION}_macOS_arm64/bin/"* /usr/local/bin/
+    sudo mv "$DIR/gh_${VERSION}_macOS_arm64/share/"* /usr/local/share/
+
+    rm -rf "$DIR/gh_${VERSION}_macOS_arm64"
+
+fi
+
+

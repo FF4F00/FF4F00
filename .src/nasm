@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# nasm 2.16.01
+
+DIR="/tmp"
+VERSION="2.16.01"
+
+if [ ! -f /usr/local/bin/nasm ]; then
+
+    # Download
+    curl -Lo "$DIR/nasm.tar.gz" "https://www.nasm.us/pub/nasm/releasebuilds/${VERSION}/nasm-${VERSION}.tar.gz"
+
+    # Extract
+    tar -xzvf "$DIR/nasm.tar.gz" -C "$DIR" && rm -f "$DIR/nasm.tar.gz"
+
+    # Install
+    (cd "$DIR/nasm-${VERSION}" && ./configure && make && sudo make install)
+
+fi

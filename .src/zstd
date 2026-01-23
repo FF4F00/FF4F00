@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: PKGCONFIG
+# Target: Apple Silicon
+# zstd 1.5.7
+
+DIR="/tmp"
+VERSION="1.5.7"
+
+if [ ! -f /usr/local/bin/zstd ]; then
+
+    # Download
+    curl -Lo "$DIR/zstd.tar.gz" "https://github.com/facebook/zstd/archive/refs/tags/v${VERSION}.tar.gz"
+    curl -Lo "$DIR/zstd.tar.gz.sig" "https://github.com/facebook/zstd/releases/download/v${VERSION}/v${VERSION}.tar.gz.sig"
+
+    # Extract
+    tar -xzf "$DIR/zstd.tar.gz" -C "$DIR" && rm -f "$DIR/zstd.tar.gz" "$DIR/zstd.tar.gz.sig"
+
+    # Build and Install
+    cd "$DIR/zstd-${VERSION}" && make -j"$(sysctl -n hw.ncpu)" && sudo make install
+
+fi

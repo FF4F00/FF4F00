@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libyaml 0.2.5
+
+DIR="/tmp"
+VERSION="0.2.5"
+
+if [ ! -f /usr/local/lib/libyaml.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/libyaml-${VERSION}.tar.gz https://github.com/yaml/libyaml/archive/refs/tags/${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf "$DIR/libyaml-${VERSION}.tar.gz" -C $DIR && rm -f "$DIR/libyaml-${VERSION}.tar.gz"
+
+    # Install
+    (cd "$DIR/libyaml-${VERSION}" && ./bootstrap && ./configure && make && sudo make install)
+
+fi

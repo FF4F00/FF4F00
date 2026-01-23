@@ -1,0 +1,2742 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+
+
+# 🗑️ 
+
+# 127.0.0.1    youtube.com
+# 127.0.0.1    www.youtube.com
+# ::1          youtube.com
+# ::1          www.youtube.com
+
+127.0.0.1    google.com
+127.0.0.1    www.google.com
+::1          google.com
+::1          www.google.com
+
+127.0.0.1    yahoo.com
+127.0.0.1    www.yahoo.com
+::1          yahoo.com
+::1          www.yahoo.com
+
+127.0.0.1    aol.com
+127.0.0.1    www.aol.com
+::1          aol.com
+::1          www.aol.com
+
+127.0.0.1    tmz.com
+127.0.0.1    www.tmz.com
+::1          tmz.com
+::1          www.tmz.com
+
+127.0.0.1    dailymail.co.uk
+127.0.0.1    www.dailymail.co.uk
+::1          dailymail.co.uk
+::1          www.dailymail.co.uk
+
+127.0.0.1    pagesix.com
+127.0.0.1    www.pagesix.com
+::1          pagesix.com
+::1          www.pagesix.com
+
+127.0.0.1    people.com
+127.0.0.1    www.people.com
+::1          people.com
+::1          www.people.com
+
+127.0.0.1    eonline.com
+127.0.0.1    www.eonline.com
+::1          eonline.com
+::1          www.eonline.com
+
+127.0.0.1    facebook.com
+127.0.0.1    www.facebook.com
+::1          facebook.com
+::1          www.facebook.com
+
+127.0.0.1    twitter.com
+127.0.0.1    www.twitter.com
+::1          twitter.com
+::1          www.twitter.com
+
+127.0.0.1    instagram.com
+127.0.0.1    www.instagram.com
+::1          instagram.com
+::1          www.instagram.com
+
+127.0.0.1    tiktok.com
+127.0.0.1    www.tiktok.com
+::1          tiktok.com
+::1          www.tiktok.com
+
+127.0.0.1    linkedin.com
+127.0.0.1    www.linkedin.com
+::1          linkedin.com
+::1          www.linkedin.com
+
+127.0.0.1    pinterest.com
+127.0.0.1    www.pinterest.com
+::1          pinterest.com
+::1          www.pinterest.com
+
+127.0.0.1    reddit.com
+127.0.0.1    www.reddit.com
+::1          reddit.com
+::1          www.reddit.com
+
+127.0.0.1    snapchat.com
+127.0.0.1    www.snapchat.com
+::1          snapchat.com
+::1          www.snapchat.com
+
+127.0.0.1    whatsapp.com
+127.0.0.1    www.whatsapp.com
+::1          whatsapp.com
+::1          www.whatsapp.com
+
+127.0.0.1    telegram.org
+127.0.0.1    www.telegram.org
+::1          telegram.org
+::1          www.telegram.org
+
+127.0.0.1    discord.com
+127.0.0.1    www.discord.com
+::1          discord.com
+::1          www.discord.com
+
+127.0.0.1    twitch.tv
+127.0.0.1    www.twitch.tv
+::1          twitch.tv
+::1          www.twitch.tv
+
+127.0.0.1    tumblr.com
+127.0.0.1    www.tumblr.com
+::1          tumblr.com
+::1          www.tumblr.com
+
+127.0.0.1    nextdoor.com
+127.0.0.1    www.nextdoor.com
+::1          nextdoor.com
+::1          www.nextdoor.com
+
+127.0.0.1    truthsocial.com
+127.0.0.1    www.truthsocial.com
+::1          truthsocial.com
+::1          www.truthsocial.com
+
+127.0.0.1    gettr.com
+127.0.0.1    www.gettr.com
+::1          gettr.com
+::1          www.gettr.com
+
+127.0.0.1    mastodon.social
+127.0.0.1    www.mastodon.social
+::1          mastodon.social
+::1          www.mastodon.social
+
+127.0.0.1    rumble.com
+127.0.0.1    www.rumble.com
+::1          rumble.com
+::1          www.rumble.com
+
+127.0.0.1    gab.com
+127.0.0.1    www.gab.com
+::1          gab.com
+::1          www.gab.com
+
+127.0.0.1    tinder.com
+127.0.0.1    www.tinder.com
+::1          tinder.com
+::1          www.tinder.com
+
+127.0.0.1    bumble.com
+127.0.0.1    www.bumble.com
+::1          bumble.com
+::1          www.bumble.com
+
+127.0.0.1    hinge.co
+127.0.0.1    www.hinge.co
+::1          hinge.co
+::1          www.hinge.co
+
+127.0.0.1    okcupid.com
+127.0.0.1    www.okcupid.com
+::1          okcupid.com
+::1          www.okcupid.com
+
+127.0.0.1    match.com
+127.0.0.1    www.match.com
+::1          match.com
+::1          www.match.com
+
+127.0.0.1    eharmony.com
+127.0.0.1    www.eharmony.com
+::1          eharmony.com
+::1          www.eharmony.com
+
+127.0.0.1    pof.com
+127.0.0.1    www.pof.com
+::1          pof.com
+::1          www.pof.com
+
+127.0.0.1    adultfriendfinder.com
+127.0.0.1    www.adultfriendfinder.com
+::1          adultfriendfinder.com
+::1          www.adultfriendfinder.com
+
+127.0.0.1    happn.com
+127.0.0.1    www.happn.com
+::1          happn.com
+::1          www.happn.com
+
+127.0.0.1    coffeemeetsbagel.com
+127.0.0.1    www.coffeemeetsbagel.com
+::1          coffeemeetsbagel.com
+::1          www.coffeemeetsbagel.com
+
+127.0.0.1    her.com
+127.0.0.1    www.her.com
+::1          her.com
+::1          www.her.com
+
+127.0.0.1    raya.com
+127.0.0.1    www.raya.com
+::1          raya.com
+::1          www.raya.com
+
+127.0.0.1    grindr.com
+127.0.0.1    www.grindr.com
+::1          grindr.com
+::1          www.grindr.com
+
+127.0.0.1    silversingles.com
+127.0.0.1    www.silversingles.com
+::1          silversingles.com
+::1          www.silversingles.com
+
+127.0.0.1    ourtime.com
+127.0.0.1    www.ourtime.com
+::1          ourtime.com
+::1          www.ourtime.com
+
+127.0.0.1    zoosk.com
+127.0.0.1    www.zoosk.com
+::1          zoosk.com
+::1          www.zoosk.com
+
+127.0.0.1    elitesingles.com
+127.0.0.1    www.elitesingles.com
+::1          elitesingles.com
+::1          www.elitesingles.com
+
+127.0.0.1    christianmingle.com
+127.0.0.1    www.christianmingle.com
+::1          christianmingle.com
+::1          www.christianmingle.com
+
+127.0.0.1    blackpeoplemeet.com
+127.0.0.1    www.blackpeoplemeet.com
+::1          blackpeoplemeet.com
+::1          www.blackpeoplemeet.com
+
+127.0.0.1    feeld.com
+127.0.0.1    www.feeld.com
+::1          feeld.com
+::1          www.feeld.com
+
+127.0.0.1    foxnews.com
+127.0.0.1    www.foxnews.com
+::1          foxnews.com
+::1          www.foxnews.com
+
+127.0.0.1    www.foxnews.com
+::1          foxnews.com
+::1          www.foxnews.com
+
+127.0.0.1    nypost.com
+127.0.0.1    www.nypost.com
+::1          nypost.com
+::1          www.nypost.com
+
+127.0.0.1    breitbart.com
+127.0.0.1    www.breitbart.com
+::1          breitbart.com
+::1          www.breitbart.com
+
+127.0.0.1    dailywire.com
+127.0.0.1    www.dailywire.com
+::1          dailywire.com
+::1          www.dailywire.com
+
+127.0.0.1    thegatewaypundit.com
+127.0.0.1    www.thegatewaypundit.com
+::1          thegatewaypundit.com
+::1          www.thegatewaypundit.com
+
+127.0.0.1    oann.com
+127.0.0.1    www.oann.com
+::1          oann.com
+::1          www.oann.com
+
+127.0.0.1    thefederalist.com
+127.0.0.1    www.thefederalist.com
+::1          thefederalist.com
+::1          www.thefederalist.com
+
+127.0.0.1    justthenews.com
+127.0.0.1    www.justthenews.com
+::1          justthenews.com
+::1          www.justthenews.com
+
+127.0.0.1    libertynation.com
+127.0.0.1    www.libertynation.com
+::1          libertynation.com
+::1          www.libertynation.com
+
+127.0.0.1    realclearpolitics.com
+127.0.0.1    www.realclearpolitics.com
+::1          realclearpolitics.com
+::1          www.realclearpolitics.com
+
+127.0.0.1    americathinker.com
+127.0.0.1    www.americathinker.com
+::1          americathinker.com
+::1          www.americathinker.com
+
+127.0.0.1    pjmedia.com
+127.0.0.1    www.pjmedia.com
+::1          pjmedia.com
+::1          www.pjmedia.com
+
+127.0.0.1    theepochtimes.com
+127.0.0.1    www.theepochtimes.com
+::1          theepochtimes.com
+::1          www.theepochtimes.com
+
+127.0.0.1    spectator.org
+127.0.0.1    www.spectator.org
+::1          spectator.org
+::1          www.spectator.org
+
+127.0.0.1    reason.com
+127.0.0.1    www.reason.com
+::1          reason.com
+::1          www.reason.com
+
+127.0.0.1    washingtonexaminer.com
+127.0.0.1    www.washingtonexaminer.com
+::1          washingtonexaminer.com
+::1          www.washingtonexaminer.com
+
+127.0.0.1    townhall.com
+127.0.0.1    www.townhall.com
+::1          townhall.com
+::1          www.townhall.com
+
+127.0.0.1    dailycaller.com
+127.0.0.1    www.dailycaller.com
+::1          dailycaller.com
+::1          www.dailycaller.com
+
+127.0.0.1    newsbusters.org
+127.0.0.1    www.newsbusters.org
+::1          newsbusters.org
+::1          www.newsbusters.org
+
+127.0.0.1    dailysignal.com
+127.0.0.1    www.dailysignal.com
+::1          dailysignal.com
+::1          www.dailysignal.com
+
+127.0.0.1    democracynow.org
+127.0.0.1    www.democracynow.org
+::1          democracynow.org
+::1          www.democracynow.org
+
+127.0.0.1    commondreams.org
+127.0.0.1    www.commondreams.org
+::1          commondreams.org
+::1          www.commondreams.org
+
+127.0.0.1    jacobinmag.com
+127.0.0.1    www.jacobinmag.com
+::1          jacobinmag.com
+::1          www.jacobinmag.com
+
+127.0.0.1    theintercept.com
+127.0.0.1    www.theintercept.com
+::1          theintercept.com
+::1          www.theintercept.com
+
+127.0.0.1    truthout.org
+127.0.0.1    www.truthout.org
+::1          truthout.org
+::1          www.truthout.org
+
+127.0.0.1    motherjones.com
+127.0.0.1    www.motherjones.com
+::1          motherjones.com
+::1          www.motherjones.com
+
+127.0.0.1    thenation.com
+127.0.0.1    www.thenation.com
+::1          thenation.com
+::1          www.thenation.com
+
+127.0.0.1    currentaffairs.org
+127.0.0.1    www.currentaffairs.org
+::1          currentaffairs.org
+::1          www.currentaffairs.org
+
+127.0.0.1    inequality.org
+127.0.0.1    www.inequality.org
+::1          inequality.org
+::1          www.inequality.org
+
+127.0.0.1    propublica.org
+127.0.0.1    www.propublica.org
+::1          propublica.org
+::1          www.propublica.org
+
+127.0.0.1    dailykos.com
+127.0.0.1    www.dailykos.com
+::1          dailykos.com
+::1          www.dailykos.com
+
+127.0.0.1    mediamatters.org
+127.0.0.1    www.mediamatters.org
+::1          mediamatters.org
+::1          www.mediamatters.org
+
+127.0.0.1    huffpost.com
+127.0.0.1    www.huffpost.com
+::1          huffpost.com
+::1          www.huffpost.com
+
+127.0.0.1    msnbc.com
+127.0.0.1    www.msnbc.com
+::1          msnbc.com
+::1          www.msnbc.com
+
+127.0.0.1    theyoungturks.com
+127.0.0.1    www.theyoungturks.com
+::1          theyoungturks.com
+::1          www.theyoungturks.com
+
+127.0.0.1    greenwald.substack.com
+127.0.0.1    www.greenwald.substack.com
+::1          greenwald.substack.com
+::1          www.greenwald.substack.com
+
+127.0.0.1    socialistworker.org
+127.0.0.1    www.socialistworker.org
+::1          socialistworker.org
+::1          www.socialistworker.org
+
+127.0.0.1    leftvoice.org
+127.0.0.1    www.leftvoice.org
+::1          leftvoice.org
+::1          www.leftvoice.org
+
+127.0.0.1    peoplesworld.org
+127.0.0.1    www.peoplesworld.org
+::1          peoplesworld.org
+::1          www.peoplesworld.org
+
+127.0.0.1    blackagendareport.com
+127.0.0.1    www.blackagendareport.com
+::1          blackagendareport.com
+::1          www.blackagendareport.com
+
+127.0.0.1    infowars.com
+127.0.0.1    www.infowars.com
+::1          infowars.com
+::1          www.infowars.com
+
+127.0.0.1    naturalnews.com
+127.0.0.1    www.naturalnews.com
+::1          naturalnews.com
+::1          www.naturalnews.com
+
+127.0.0.1    beforeitsnews.com
+127.0.0.1    www.beforeitsnews.com
+::1          beforeitsnews.com
+::1          www.beforeitsnews.com
+
+127.0.0.1    yournewswire.com
+127.0.0.1    www.yournewswire.com
+::1          yournewswire.com
+::1          www.yournewswire.com
+
+127.0.0.1    activistpost.com
+127.0.0.1    www.activistpost.com
+::1          activistpost.com
+::1          www.activistpost.com
+
+127.0.0.1    wnd.com
+127.0.0.1    www.wnd.com
+::1          wnd.com
+::1          www.wnd.com
+
+127.0.0.1    thepeoplesvoice.tv
+127.0.0.1    www.thepeoplesvoice.tv
+::1          thepeoplesvoice.tv
+::1          www.thepeoplesvoice.tv
+
+127.0.0.1    pravdareport.com
+127.0.0.1    www.pravdareport.com
+::1          pravdareport.com
+::1          www.pravdareport.com
+
+127.0.0.1    globalresearch.ca
+127.0.0.1    www.globalresearch.ca
+::1          globalresearch.ca
+::1          www.globalresearch.ca
+
+127.0.0.1    rt.com
+127.0.0.1    www.rt.com
+::1          rt.com
+::1          www.rt.com
+
+127.0.0.1    sputniknews.com
+127.0.0.1    www.sputniknews.com
+::1          sputniknews.com
+::1          www.sputniknews.com
+
+127.0.0.1    zerohedge.com
+127.0.0.1    www.zerohedge.com
+::1          zerohedge.com
+::1          www.zerohedge.com
+
+127.0.0.1    bipartisanreport.com
+127.0.0.1    www.bipartisanreport.com
+::1          bipartisanreport.com
+::1          www.bipartisanreport.com
+
+127.0.0.1    buzzfeed.com
+127.0.0.1    www.buzzfeed.com
+::1          buzzfeed.com
+::1          www.buzzfeed.com
+
+127.0.0.1    dailymail.co.uk
+127.0.0.1    www.dailymail.co.uk
+::1          dailymail.co.uk
+::1          www.dailymail.co.uk
+
+127.0.0.1    theblaze.com
+127.0.0.1    www.theblaze.com
+::1          theblaze.com
+::1          www.theblaze.com
+
+127.0.0.1    revolver.news
+127.0.0.1    www.revolver.news
+::1          revolver.news
+::1          www.revolver.news
+
+127.0.0.1    theamericanconservative.com
+127.0.0.1    www.theamericanconservative.com
+::1          theamericanconservative.com
+::1          www.theamericanconservative.com
+
+127.0.0.1    consciouslifenews.com
+127.0.0.1    www.consciouslifenews.com
+::1          consciouslifenews.com
+::1          www.consciouslifenews.com
+
+127.0.0.1    worldtruth.tv
+127.0.0.1    www.worldtruth.tv
+::1          worldtruth.tv
+::1          www.worldtruth.tv
+
+127.0.0.1    worldstarhiphop.com
+127.0.0.1    www.worldstarhiphop.com
+::1          worldstarhiphop.com
+::1          www.worldstarhiphop.com
+
+127.0.0.1    bet.com
+127.0.0.1    www.bet.com
+::1          bet.com
+::1          www.bet.com
+
+127.0.0.1    theshaderoom.com
+127.0.0.1    www.theshaderoom.com
+::1          theshaderoom.com
+::1          www.theshaderoom.com
+
+127.0.0.1    essence.com
+127.0.0.1    www.essence.com
+::1          essence.com
+::1          www.essence.com
+
+127.0.0.1    bossip.com
+127.0.0.1    www.bossip.com
+::1          bossip.com
+::1          www.bossip.com
+
+127.0.0.1    madamenoire.com
+127.0.0.1    www.madamenoire.com
+::1          madamenoire.com
+::1          www.madamenoire.com
+
+127.0.0.1    vibe.com
+127.0.0.1    www.vibe.com
+::1          vibe.com
+::1          www.vibe.com
+
+127.0.0.1    hotnewhiphop.com
+127.0.0.1    www.hotnewhiphop.com
+::1          hotnewhiphop.com
+::1          www.hotnewhiphop.com
+
+127.0.0.1    balleralert.com
+127.0.0.1    www.balleralert.com
+::1          balleralert.com
+::1          www.balleralert.com
+
+127.0.0.1    thegrapevine.theroot.com
+127.0.0.1    www.thegrapevine.theroot.com
+::1          thegrapevine.theroot.com
+::1          www.thegrapevine.theroot.com
+
+127.0.0.1    thejasminebrand.com
+127.0.0.1    www.thejasminebrand.com
+::1          thejasminebrand.com
+::1          www.thejasminebrand.com
+
+127.0.0.1    lovebscott.com
+127.0.0.1    www.lovebscott.com
+::1          lovebscott.com
+::1          www.lovebscott.com
+
+127.0.0.1    karencivil.com
+127.0.0.1    www.karencivil.com
+::1          karencivil.com
+::1          www.karencivil.com
+
+127.0.0.1    thisis50.com
+127.0.0.1    www.thisis50.com
+::1          thisis50.com
+::1          www.thisis50.com
+
+127.0.0.1    globalgrind.com
+127.0.0.1    www.globalgrind.com
+::1          globalgrind.com
+::1          www.globalgrind.com
+
+127.0.0.1    thecoli.com
+127.0.0.1    www.thecoli.com
+::1          thecoli.com
+::1          www.thecoli.com
+
+127.0.0.1    lipstickalley.com
+127.0.0.1    www.lipstickalley.com
+::1          lipstickalley.com
+::1          www.lipstickalley.com
+
+127.0.0.1    sandrarose.com
+127.0.0.1    www.sandrarose.com
+::1          sandrarose.com
+::1          www.sandrarose.com
+
+127.0.0.1    saycheesetv.com
+127.0.0.1    www.saycheesetv.com
+::1          saycheesetv.com
+::1          www.saycheesetv.com
+
+127.0.0.1    thegrio.com
+127.0.0.1    www.thegrio.com
+::1          thegrio.com
+::1          www.thegrio.com
+
+127.0.0.1    blavity.com
+127.0.0.1    www.blavity.com
+::1          blavity.com
+::1          www.blavity.com
+
+127.0.0.1    thebreakfastclub.iheart.com
+127.0.0.1    www.thebreakfastclub.iheart.com
+::1          thebreakfastclub.iheart.com
+::1          www.thebreakfastclub.iheart.com
+
+127.0.0.1    revolt.tv
+127.0.0.1    www.revolt.tv
+::1          revolt.tv
+::1          www.revolt.tv
+
+127.0.0.1    thenorthstar.com
+127.0.0.1    www.thenorthstar.com
+::1          thenorthstar.com
+::1          www.thenorthstar.com
+
+127.0.0.1    shaderoom.com
+127.0.0.1    www.shaderoom.com
+::1          shaderoom.com
+::1          www.shaderoom.com
+
+127.0.0.1    theybf.com
+127.0.0.1    www.theybf.com
+::1          theybf.com
+::1          www.theybf.com
+
+127.0.0.1    hellobeautiful.com
+127.0.0.1    www.hellobeautiful.com
+::1          hellobeautiful.com
+::1          www.hellobeautiful.com
+
+127.0.0.1    urbandaily.com
+127.0.0.1    www.urbandaily.com
+::1          urbandaily.com
+::1          www.urbandaily.com
+
+127.0.0.1    hiphopwired.com
+127.0.0.1    www.hiphopwired.com
+::1          hiphopwired.com
+::1          www.hiphopwired.com
+
+127.0.0.1    thesource.com
+127.0.0.1    www.thesource.com
+::1          thesource.com
+::1          www.thesource.com
+
+127.0.0.1    radaronline.com
+127.0.0.1    www.radaronline.com
+::1          radaronline.com
+::1          www.radaronline.com
+
+127.0.0.1    mediatakeout.com
+127.0.0.1    www.mediatakeout.com
+::1          mediatakeout.com
+::1          www.mediatakeout.com
+
+127.0.0.1    complex.com
+127.0.0.1    www.complex.com
+::1          complex.com
+::1          www.complex.com
+
+127.0.0.1    hollywoodlife.com
+127.0.0.1    www.hollywoodlife.com
+::1          hollywoodlife.com
+::1          www.hollywoodlife.com
+
+127.0.0.1    perezhilton.com
+127.0.0.1    www.perezhilton.com
+::1          perezhilton.com
+::1          www.perezhilton.com
+
+127.0.0.1    thesun.co.uk
+127.0.0.1    www.thesun.co.uk
+::1          thesun.co.uk
+::1          www.thesun.co.uk
+
+127.0.0.1    dlisted.com
+127.0.0.1    www.dlisted.com
+::1          dlisted.com
+::1          www.dlisted.com
+
+127.0.0.1    justjared.com
+127.0.0.1    www.justjared.com
+::1          justjared.com
+::1          www.justjared.com
+
+127.0.0.1    gossipcop.com
+127.0.0.1    www.gossipcop.com
+::1          gossipcop.com
+::1          www.gossipcop.com
+
+127.0.0.1    celebuzz.com
+127.0.0.1    www.celebuzz.com
+::1          celebuzz.com
+::1          www.celebuzz.com
+
+127.0.0.1    theblast.com
+127.0.0.1    www.theblast.com
+::1          theblast.com
+::1          www.theblast.com
+
+127.0.0.1    toofab.com
+127.0.0.1    www.toofab.com
+::1          toofab.com
+::1          www.toofab.com
+
+127.0.0.1    yeezymafia.com
+127.0.0.1    www.yeezymafia.com
+::1          yeezymafia.com
+::1          www.yeezymafia.com
+
+127.0.0.1    theshaderoom.com
+127.0.0.1    www.theshaderoom.com
+::1          theshaderoom.com
+::1          www.theshaderoom.com
+
+127.0.0.1    ad.doubleclick.net
+127.0.0.1    www.ad.doubleclick.net
+::1          ad.doubleclick.net
+::1          www.ad.doubleclick.net
+
+127.0.0.1    adobeanalytics.com
+127.0.0.1    www.adobeanalytics.com
+::1          adobeanalytics.com
+::1          www.adobeanalytics.com
+
+127.0.0.1    ads.microsoft.com
+127.0.0.1    www.ads.microsoft.com
+::1          ads.microsoft.com
+::1          www.ads.microsoft.com
+
+127.0.0.1    ads.yahoo.com
+127.0.0.1    www.ads.yahoo.com
+::1          ads.yahoo.com
+::1          www.ads.yahoo.com
+
+127.0.0.1    adservice.google.com
+127.0.0.1    www.adservice.google.com
+::1          adservice.google.com
+::1          www.adservice.google.com
+
+127.0.0.1    analytics.cloudflare.com
+127.0.0.1    www.analytics.cloudflare.com
+::1          analytics.cloudflare.com
+::1          www.analytics.cloudflare.com
+
+127.0.0.1    analytics.twitter.com
+127.0.0.1    www.analytics.twitter.com
+::1          analytics.twitter.com
+::1          www.analytics.twitter.com
+
+127.0.0.1    bat.bing.com
+127.0.0.1    www.bat.bing.com
+::1          bat.bing.com
+::1          www.bat.bing.com
+
+127.0.0.1    beacon.krxd.net
+127.0.0.1    www.beacon.krxd.net
+::1          beacon.krxd.net
+::1          www.beacon.krxd.net
+
+127.0.0.1    connect.facebook.net
+127.0.0.1    www.connect.facebook.net
+::1          connect.facebook.net
+::1          www.connect.facebook.net
+
+127.0.0.1    data.logentries.com
+127.0.0.1    www.data.logentries.com
+::1          data.logentries.com
+::1          www.data.logentries.com
+
+127.0.0.1    events.attentivemobile.com
+127.0.0.1    www.events.attentivemobile.com
+::1          events.attentivemobile.com
+::1          www.events.attentivemobile.com
+
+127.0.0.1    googleadservices.com
+127.0.0.1    www.googleadservices.com
+::1          googleadservices.com
+::1          www.googleadservices.com
+
+127.0.0.1    graph.facebook.com
+127.0.0.1    www.graph.facebook.com
+::1          graph.facebook.com
+::1          www.graph.facebook.com
+
+127.0.0.1    logx.optimizely.com
+127.0.0.1    www.logx.optimizely.com
+::1          logx.optimizely.com
+::1          www.logx.optimizely.com
+
+127.0.0.1    metrics.apple.com
+127.0.0.1    www.metrics.apple.com
+::1          metrics.apple.com
+::1          www.metrics.apple.com
+
+127.0.0.1    metrics.nvidia.com
+127.0.0.1    www.metrics.nvidia.com
+::1          metrics.nvidia.com
+::1          www.metrics.nvidia.com
+
+127.0.0.1    pixel.reddit.com
+127.0.0.1    www.pixel.reddit.com
+::1          pixel.reddit.com
+::1          www.pixel.reddit.com
+
+127.0.0.1    sb.scorecardresearch.com
+127.0.0.1    www.sb.scorecardresearch.com
+::1          sb.scorecardresearch.com
+::1          www.sb.scorecardresearch.com
+
+127.0.0.1    ssl.google-analytics.com
+127.0.0.1    www.ssl.google-analytics.com
+::1          ssl.google-analytics.com
+::1          www.ssl.google-analytics.com
+
+127.0.0.1    static.ads-twitter.com
+127.0.0.1    www.static.ads-twitter.com
+::1          static.ads-twitter.com
+::1          www.static.ads-twitter.com
+
+127.0.0.1    tags.bluekai.com
+127.0.0.1    www.tags.bluekai.com
+::1          tags.bluekai.com
+::1          www.tags.bluekai.com
+
+127.0.0.1    tags.tiqcdn.com
+127.0.0.1    www.tags.tiqcdn.com
+::1          tags.tiqcdn.com
+::1          www.tags.tiqcdn.com
+
+127.0.0.1    telemetry.sonos.com
+127.0.0.1    www.telemetry.sonos.com
+::1          telemetry.sonos.com
+::1          www.telemetry.sonos.com
+
+127.0.0.1    track.adform.net
+127.0.0.1    www.track.adform.net
+::1          track.adform.net
+::1          www.track.adform.net
+
+127.0.0.1    track.amazon.com
+127.0.0.1    www.track.amazon.com
+::1          track.amazon.com
+::1          www.track.amazon.com
+
+127.0.0.1    track.tenjin.io
+127.0.0.1    www.track.tenjin.io
+::1          track.tenjin.io
+::1          www.track.tenjin.io
+
+127.0.0.1    track.tiktok.com
+127.0.0.1    www.track.tiktok.com
+::1          track.tiktok.com
+::1          www.track.tiktok.com
+
+127.0.0.1    tr.snapchat.com
+127.0.0.1    www.tr.snapchat.com
+::1          tr.snapchat.com
+::1          www.tr.snapchat.com
+
+127.0.0.1    aldi.us
+127.0.0.1    www.aldi.us
+::1          aldi.us
+::1          www.aldi.us
+
+127.0.0.1    aliexpress.com
+127.0.0.1    www.aliexpress.com
+::1          aliexpress.com
+::1          www.aliexpress.com
+
+127.0.0.1    amazon.com
+127.0.0.1    www.amazon.com
+::1          amazon.com
+::1          www.amazon.com
+
+127.0.0.1    bedbathandbeyond.com
+127.0.0.1    www.bedbathandbeyond.com
+::1          bedbathandbeyond.com
+::1          www.bedbathandbeyond.com
+
+127.0.0.1    bestbuy.com
+127.0.0.1    www.bestbuy.com
+::1          bestbuy.com
+::1          www.bestbuy.com
+
+127.0.0.1    costco.com
+127.0.0.1    www.costco.com
+::1          costco.com
+::1          www.costco.com
+
+127.0.0.1    craigslist.org
+127.0.0.1    www.craigslist.org
+::1          craigslist.org
+::1          www.craigslist.org
+
+127.0.0.1    cvs.com
+127.0.0.1    www.cvs.com
+::1          cvs.com
+::1          www.cvs.com
+
+127.0.0.1    dollargeneral.com
+127.0.0.1    www.dollargeneral.com
+::1          dollargeneral.com
+::1          www.dollargeneral.com
+
+127.0.0.1    dollartree.com
+127.0.0.1    www.dollartree.com
+::1          dollartree.com
+::1          www.dollartree.com
+
+127.0.0.1    ebay.com
+127.0.0.1    www.ebay.com
+::1          ebay.com
+::1          www.ebay.com
+
+127.0.0.1    etsy.com
+127.0.0.1    www.etsy.com
+::1          etsy.com
+::1          www.etsy.com
+
+127.0.0.1    hobbylobby.com
+127.0.0.1    www.hobbylobby.com
+::1          hobbylobby.com
+::1          www.hobbylobby.com
+
+127.0.0.1    homedepot.com
+127.0.0.1    www.homedepot.com
+::1          homedepot.com
+::1          www.homedepot.com
+
+127.0.0.1    jcpenney.com
+127.0.0.1    www.jcpenney.com
+::1          jcpenney.com
+::1          www.jcpenney.com
+
+127.0.0.1    kroger.com
+127.0.0.1    www.kroger.com
+::1          kroger.com
+::1          www.kroger.com
+
+127.0.0.1    lowes.com
+127.0.0.1    www.lowes.com
+::1          lowes.com
+::1          www.lowes.com
+
+127.0.0.1    macys.com
+127.0.0.1    www.macys.com
+::1          macys.com
+::1          www.macys.com
+
+127.0.0.1    mercari.com
+127.0.0.1    www.mercari.com
+::1          mercari.com
+::1          www.mercari.com
+
+127.0.0.1    paypal.com
+127.0.0.1    www.paypal.com
+::1          paypal.com
+::1          www.paypal.com
+
+127.0.0.1    publix.com
+127.0.0.1    www.publix.com
+::1          publix.com
+::1          www.publix.com
+
+127.0.0.1    qvc.com
+127.0.0.1    www.qvc.com
+::1          qvc.com
+::1          www.qvc.com
+
+127.0.0.1    rakuten.com
+127.0.0.1    www.rakuten.com
+::1          rakuten.com
+::1          www.rakuten.com
+
+127.0.0.1    samsclub.com
+127.0.0.1    www.samsclub.com
+::1          samsclub.com
+::1          www.samsclub.com
+
+127.0.0.1    sears.com
+127.0.0.1    www.sears.com
+::1          sears.com
+::1          www.sears.com
+
+127.0.0.1    taobao.com
+127.0.0.1    www.taobao.com
+::1          taobao.com
+::1          www.taobao.com
+
+127.0.0.1    target.com
+127.0.0.1    www.target.com
+::1          target.com
+::1          www.target.com
+
+127.0.0.1    temu.com
+127.0.0.1    www.temu.com
+::1          temu.com
+::1          www.temu.com
+
+127.0.0.1    tesla.com
+127.0.0.1    www.tesla.com
+::1          tesla.com
+::1          www.tesla.com
+
+127.0.0.1    traderjoes.com
+127.0.0.1    www.traderjoes.com
+::1          traderjoes.com
+::1          www.traderjoes.com
+
+127.0.0.1    ulta.com
+127.0.0.1    www.ulta.com
+::1          ulta.com
+::1          www.ulta.com
+
+127.0.0.1    walgreens.com
+127.0.0.1    www.walgreens.com
+::1          walgreens.com
+::1          www.walgreens.com
+
+127.0.0.1    walmart.com
+127.0.0.1    www.walmart.com
+::1          walmart.com
+::1          www.walmart.com
+
+127.0.0.1    wegmans.com
+127.0.0.1    www.wegmans.com
+::1          wegmans.com
+::1          www.wegmans.com
+
+127.0.0.1    bitchute.com
+127.0.0.1    www.bitchute.com
+::1          bitchute.com
+::1          www.bitchute.com
+
+127.0.0.1    blueskyweb.xyz
+127.0.0.1    www.blueskyweb.xyz
+::1          blueskyweb.xyz
+::1          www.blueskyweb.xyz
+
+127.0.0.1    crunchyroll.com
+127.0.0.1    www.crunchyroll.com
+::1          crunchyroll.com
+::1          www.crunchyroll.com
+
+127.0.0.1    dailymotion.com
+127.0.0.1    www.dailymotion.com
+::1          dailymotion.com
+::1          www.dailymotion.com
+
+127.0.0.1    discoveryplus.com
+127.0.0.1    www.discoveryplus.com
+::1          discoveryplus.com
+::1          www.discoveryplus.com
+
+127.0.0.1    disneyplus.com
+127.0.0.1    www.disneyplus.com
+::1          disneyplus.com
+::1          www.disneyplus.com
+
+127.0.0.1    eyeem.com
+127.0.0.1    www.eyeem.com
+::1          eyeem.com
+::1          www.eyeem.com
+
+127.0.0.1    hbomax.com
+127.0.0.1    www.hbomax.com
+::1          hbomax.com
+::1          www.hbomax.com
+
+127.0.0.1    hulu.com
+127.0.0.1    www.hulu.com
+::1          hulu.com
+::1          www.hulu.com
+
+127.0.0.1    letterboxd.com
+127.0.0.1    www.letterboxd.com
+::1          letterboxd.com
+::1          www.letterboxd.com
+
+127.0.0.1    medium.com
+127.0.0.1    www.medium.com
+::1          medium.com
+::1          www.medium.com
+
+127.0.0.1    mewe.com
+127.0.0.1    www.mewe.com
+::1          mewe.com
+::1          www.mewe.com
+
+127.0.0.1    minds.com
+127.0.0.1    www.minds.com
+::1          minds.com
+::1          www.minds.com
+
+127.0.0.1    netflix.com
+127.0.0.1    www.netflix.com
+::1          netflix.com
+::1          www.netflix.com
+
+127.0.0.1    nextdoor.com
+127.0.0.1    www.nextdoor.com
+::1          nextdoor.com
+::1          www.nextdoor.com
+
+127.0.0.1    paramountplus.com
+127.0.0.1    www.paramountplus.com
+::1          paramountplus.com
+::1          www.paramountplus.com
+
+127.0.0.1    patreon.com
+127.0.0.1    www.patreon.com
+::1          patreon.com
+::1          www.patreon.com
+
+127.0.0.1    peacocktv.com
+127.0.0.1    www.peacocktv.com
+::1          peacocktv.com
+::1          www.peacocktv.com
+
+127.0.0.1    primevideo.com
+127.0.0.1    www.primevideo.com
+::1          primevideo.com
+::1          www.primevideo.com
+
+127.0.0.1    redgifs-creators.com
+127.0.0.1    www.redgifs-creators.com
+::1          redgifs-creators.com
+::1          www.redgifs-creators.com
+
+127.0.0.1    scrolller.com
+127.0.0.1    www.scrolller.com
+::1          scrolller.com
+::1          www.scrolller.com
+
+127.0.0.1    sexgify.com
+127.0.0.1    www.sexgify.com
+::1          sexgify.com
+::1          www.sexgify.com
+
+127.0.0.1    starz.com
+127.0.0.1    www.starz.com
+::1          starz.com
+::1          www.starz.com
+
+127.0.0.1    substack.com
+127.0.0.1    www.substack.com
+::1          substack.com
+::1          www.substack.com
+
+127.0.0.1    threads.net
+127.0.0.1    www.threads.net
+::1          threads.net
+::1          www.threads.net
+
+127.0.0.1    twitch.tv
+127.0.0.1    www.twitch.tv
+::1          twitch.tv
+::1          www.twitch.tv
+
+127.0.0.1    vimeo.com
+127.0.0.1    www.vimeo.com
+::1          vimeo.com
+::1          www.vimeo.com
+
+127.0.0.1    apiexplorerzone.com
+127.0.0.1    www.apiexplorerzone.com
+::1          apiexplorerzone.com
+::1          www.apiexplorerzone.com
+
+127.0.0.1    clicktopanel.app
+127.0.0.1    www.clicktopanel.app
+::1          clicktopanel.app
+::1          www.clicktopanel.app
+
+127.0.0.1    newgreenvibes.com
+127.0.0.1    www.newgreenvibes.com
+::1          newgreenvibes.com
+::1          www.newgreenvibes.com
+
+127.0.0.1    smthwentwrong.com
+127.0.0.1    www.smthwentwrong.com
+::1          smthwentwrong.com
+::1          www.smthwentwrong.com
+
+127.0.0.1    ernaolife.info
+127.0.0.1    www.ernaolife.info
+::1          ernaolife.info
+::1          www.ernaolife.info
+
+127.0.0.1    comparegjs.com
+127.0.0.1    www.comparegjs.com
+::1          comparegjs.com
+::1          www.comparegjs.com
+
+127.0.0.1    cryptohardware.shop
+127.0.0.1    www.cryptohardware.shop
+::1          cryptohardware.shop
+::1          www.cryptohardware.shop
+
+127.0.0.1    doddyfire.linkpc.net
+127.0.0.1    www.doddyfire.linkpc.net
+::1          doddyfire.linkpc.net
+::1          www.doddyfire.linkpc.net
+
+127.0.0.1    be-precision.com
+127.0.0.1    www.be-precision.com
+::1          be-precision.com
+::1          www.be-precision.com
+
+127.0.0.1    server786.ninositsolution.com
+127.0.0.1    www.server786.ninositsolution.com
+::1          server786.ninositsolution.com
+::1          www.server786.ninositsolution.com
+
+127.0.0.1    launchapps.site
+127.0.0.1    www.launchapps.site
+::1          launchapps.site
+::1          www.launchapps.site
+
+127.0.0.1    chrome.browser.com.de
+127.0.0.1    www.chrome.browser.com.de
+::1          chrome.browser.com.de
+::1          www.chrome.browser.com.de
+
+127.0.0.1    promooformosa.com
+127.0.0.1    www.promooformosa.com
+::1          promooformosa.com
+::1          www.promooformosa.com
+
+127.0.0.1    womansvitamin.com
+127.0.0.1    www.womansvitamin.com
+::1          womansvitamin.com
+::1          www.womansvitamin.com
+
+127.0.0.1    poormet.com
+127.0.0.1    www.poormet.com
+::1          poormet.com
+::1          www.poormet.com
+
+127.0.0.1    huntaget.cn
+127.0.0.1    www.huntaget.cn
+::1          huntaget.cn
+::1          www.huntaget.cn
+
+127.0.0.1    dcdh4.shop
+127.0.0.1    www.dcdh4.shop
+::1          dcdh4.shop
+::1          www.dcdh4.shop
+
+127.0.0.1    ernaolife.info
+127.0.0.1    www.ernaolife.info
+::1          ernaolife.info
+::1          www.ernaolife.info
+
+127.0.0.1    e3ubj753ifg.xyz
+127.0.0.1    www.e3ubj753ifg.xyz
+::1          e3ubj753ifg.xyz
+::1          www.e3ubj753ifg.xyz
+
+127.0.0.1    covaticonstructioncorp.shop
+127.0.0.1    www.covaticonstructioncorp.shop
+::1          covaticonstructioncorp.shop
+::1          www.covaticonstructioncorp.shop
+
+# Top 20 Ad Networks (2025)
+127.0.0.1    googleads.g.doubleclick.net
+127.0.0.1    www.googleads.g.doubleclick.net
+::1          googleads.g.doubleclick.net
+::1          www.googleads.g.doubleclick.net
+
+127.0.0.1    securepubads.g.doubleclick.net
+127.0.0.1    www.securepubads.g.doubleclick.net
+::1          securepubads.g.doubleclick.net
+::1          www.securepubads.g.doubleclick.net
+
+127.0.0.1    adsrvr.org
+127.0.0.1    www.adsrvr.org
+::1          adsrvr.org
+::1          www.adsrvr.org
+
+127.0.0.1    smartyads.com
+127.0.0.1    www.smartyads.com
+::1          smartyads.com
+::1          www.smartyads.com
+
+127.0.0.1    richads.com
+127.0.0.1    www.richads.com
+::1          richads.com
+::1          www.richads.com
+
+127.0.0.1    propellerads.com
+127.0.0.1    www.propellerads.com
+::1          propellerads.com
+::1          www.propellerads.com
+
+127.0.0.1    exoclick.com
+127.0.0.1    www.exoclick.com
+::1          exoclick.com
+::1          www.exoclick.com
+
+127.0.0.1    mgid.com
+127.0.0.1    www.mgid.com
+::1          mgid.com
+::1          www.mgid.com
+
+127.0.0.1    adcash.com
+127.0.0.1    www.adcash.com
+::1          adcash.com
+::1          www.adcash.com
+
+127.0.0.1    taboola.com
+127.0.0.1    www.taboola.com
+::1          taboola.com
+::1          www.taboola.com
+
+127.0.0.1    media.net
+127.0.0.1    www.media.net
+::1          media.net
+::1          www.media.net
+
+127.0.0.1    zeropark.com
+127.0.0.1    www.zeropark.com
+::1          zeropark.com
+::1          www.zeropark.com
+
+127.0.0.1    plugrush.com
+127.0.0.1    www.plugrush.com
+::1          plugrush.com
+::1          www.plugrush.com
+
+127.0.0.1    adsterra.com
+127.0.0.1    www.adsterra.com
+::1          adsterra.com
+::1          www.adsterra.com
+
+127.0.0.1    kadam.net
+127.0.0.1    www.kadam.net
+::1          kadam.net
+::1          www.kadam.net
+
+127.0.0.1    rollerads.com
+127.0.0.1    www.rollerads.com
+::1          rollerads.com
+::1          www.rollerads.com
+
+127.0.0.1    galaksion.com
+127.0.0.1    www.galaksion.com
+::1          galaksion.com
+::1          www.galaksion.com
+
+127.0.0.1    setupad.com
+127.0.0.1    www.setupad.com
+::1          setupad.com
+::1          www.setupad.com
+
+127.0.0.1    mobidea.com
+127.0.0.1    www.mobidea.com
+::1          mobidea.com
+::1          www.mobidea.com
+
+127.0.0.1    publift.com
+127.0.0.1    www.publift.com
+::1          publift.com
+::1          www.publift.com
+
+127.0.0.1    telemetry.microsoft.com
+127.0.0.1    www.telemetry.microsoft.com
+::1          telemetry.microsoft.com
+::1          www.telemetry.microsoft.com
+
+127.0.0.1    diagnostics.support.microsoft.com
+127.0.0.1    www.diagnostics.support.microsoft.com
+::1          diagnostics.support.microsoft.com
+::1          www.diagnostics.support.microsoft.com
+
+127.0.0.1    settings-win.data.microsoft.com
+127.0.0.1    www.settings-win.data.microsoft.com
+::1          settings-win.data.microsoft.com
+::1          www.settings-win.data.microsoft.com
+
+127.0.0.1    vortex.data.microsoft.com
+127.0.0.1    www.vortex.data.microsoft.com
+::1          vortex.data.microsoft.com
+::1          www.vortex.data.microsoft.com
+
+127.0.0.1    watson.telemetry.microsoft.com
+127.0.0.1    www.watson.telemetry.microsoft.com
+::1          watson.telemetry.microsoft.com
+::1          www.watson.telemetry.microsoft.com
+
+127.0.0.1    telemetry-internal.samsungcloud.com
+127.0.0.1    www.telemetry-internal.samsungcloud.com
+::1          telemetry-internal.samsungcloud.com
+::1          www.telemetry-internal.samsungcloud.com
+
+127.0.0.1    logs.roblox.com
+127.0.0.1    www.logs.roblox.com
+::1          logs.roblox.com
+::1          www.logs.roblox.com
+
+127.0.0.1    metrics.roblox.com
+127.0.0.1    www.metrics.roblox.com
+::1          metrics.roblox.com
+::1          www.metrics.roblox.com
+
+127.0.0.1    telemetry.sonos.com
+127.0.0.1    www.telemetry.sonos.com
+::1          telemetry.sonos.com
+::1          www.telemetry.sonos.com
+
+127.0.0.1    data.collector.sb.rtb.advertising.com
+127.0.0.1    www.data.collector.sb.rtb.advertising.com
+::1          data.collector.sb.rtb.advertising.com
+::1          www.data.collector.sb.rtb.advertising.com
+
+127.0.0.1    analytics.google.com
+127.0.0.1    www.analytics.google.com
+::1          analytics.google.com
+::1          www.analytics.google.com
+
+127.0.0.1    metrics.apple.com
+127.0.0.1    www.metrics.apple.com
+::1          metrics.apple.com
+::1          www.metrics.apple.com
+
+127.0.0.1    diagnostics.olx.com
+127.0.0.1    www.diagnostics.olx.com
+::1          diagnostics.olx.com
+::1          www.diagnostics.olx.com
+
+127.0.0.1    data.tubi.tv
+127.0.0.1    www.data.tubi.tv
+::1          data.tubi.tv
+::1          www.data.tubi.tv
+
+127.0.0.1    telemetry.discord.com
+127.0.0.1    www.telemetry.discord.com
+::1          telemetry.discord.com
+::1          www.telemetry.discord.com
+
+127.0.0.1    data.logentries.com
+127.0.0.1    www.data.logentries.com
+::1          data.logentries.com
+::1          www.data.logentries.com
+
+127.0.0.1    telemetry.vmware.com
+127.0.0.1    www.telemetry.vmware.com
+::1          telemetry.vmware.com
+::1          www.telemetry.vmware.com
+
+127.0.0.1    metrics.nvidia.com
+127.0.0.1    www.metrics.nvidia.com
+::1          metrics.nvidia.com
+::1          www.metrics.nvidia.com
+
+1270.0.0.1    data.logs.insight.rapid7.com
+127.0.0.1    www.data.logs.insight.rapid7.com
+::1          data.logs.insight.rapid7.com
+::1          www.data.logs.insight.rapid7.com
+
+127.0.0.1    telemetry.insight.rapid7.com
+127.0.0.1    www.telemetry.insight.rapid7.com
+::1          telemetry.insight.rapid7.com
+::1          www.telemetry.insight.rapid7.com
+
+127.0.0.1    graph.facebook.com
+127.0.0.1    www.graph.facebook.com
+::1          graph.facebook.com
+::1          www.graph.facebook.com
+
+127.0.0.1    analytics.twitter.com
+127.0.0.1    www.analytics.twitter.com
+::1          analytics.twitter.com
+::1          www.analytics.twitter.com
+
+127.0.0.1    pixel.reddit.com
+127.0.0.1    www.pixel.reddit.com
+::1          pixel.reddit.com
+::1          www.pixel.reddit.com
+
+127.0.0.1    tr.snapchat.com
+127.0.0.1    www.tr.snapchat.com
+::1          tr.snapchat.com
+::1          www.tr.snapchat.com
+
+127.0.0.1    analytics.linkedin.com
+127.0.0.1    www.analytics.linkedin.com
+::1          analytics.linkedin.com
+::1          www.analytics.linkedin.com
+
+127.0.0.1    metrics.tiktok.com
+127.0.0.1    www.metrics.tiktok.com
+::1          metrics.tiktok.com
+::1          www.metrics.tiktok.com
+
+127.0.0.1    telemetry.discord.com
+127.0.0.1    www.telemetry.discord.com
+::1          telemetry.discord.com
+::1          www.telemetry.discord.com
+
+127.0.0.1    analytics.pinterest.com
+127.0.0.1    www.analytics.pinterest.com
+::1          analytics.pinterest.com
+::1          www.analytics.pinterest.com
+
+127.0.0.1    logs.roblox.com
+127.0.0.1    www.logs.roblox.com
+::1          logs.roblox.com
+::1          www.logs.roblox.com
+
+127.0.0.1    metrics.roblox.com
+127.0.0.1    www.metrics.roblox.com
+::1          metrics.roblox.com
+::1          www.metrics.roblox.com
+
+127.0.0.1    analytics.telegram.org
+127.0.0.1    www.analytics.telegram.org
+::1          analytics.telegram.org
+::1          www.analytics.telegram.org
+
+127.0.0.1    track.tenjin.io
+127.0.0.1    www.track.tenjin.io
+::1          track.tenjin.io
+::1          www.track.tenjin.io
+
+127.0.0.1    beacon.krxd.net
+127.0.0.1    www.beacon.krxd.net
+::1          beacon.krxd.net
+::1          www.beacon.krxd.net
+
+127.0.0.1    tags.tiqcdn.com
+127.0.0.1    www.tags.tiqcdn.com
+::1          tags.tiqcdn.com
+::1          www.tags.tiqcdn.com
+
+127.0.0.1    sb.scorecardresearch.com
+127.0.0.1    www.sb.scorecardresearch.com
+::1          sb.scorecardresearch.com
+::1          www.sb.scorecardresearch.com
+
+127.0.0.1    logx.optimizely.com
+127.0.0.1    www.logx.optimizely.com
+::1          logx.optimizely.com
+::1          www.logx.optimizely.com
+
+127.0.0.1    analytics.cloudflare.com
+127.0.0.1    www.analytics.cloudflare.com
+::1          analytics.cloudflare.com
+::1          www.analytics.cloudflare.com
+
+127.0.0.1    track.adform.net
+127.0.0.1    www.track.adform.net
+::1          track.adform.net
+::1          www.track.adform.net
+
+127.0.0.1    events.attentivemobile.com
+127.0.0.1    www.events.attentivemobile.com
+::1          events.attentivemobile.com
+::1          www.events.attentivemobile.com
+
+127.0.0.1    data.logentries.com
+127.0.0.1    www.data.logentries.com
+::1          data.logentries.com
+::1          www.data.logentries.com
+
+127.0.0.1    coinhive.com
+127.0.0.1    www.coinhive.com
+::1          coinhive.com
+::1          www.coinhive.com
+
+127.0.0.1    crypto-loot.com
+127.0.0.1    www.crypto-loot.com
+::1          crypto-loot.com
+::1          www.crypto-loot.com
+
+127.0.0.1    authedmine.com
+127.0.0.1    www.authedmine.com
+::1          authedmine.com
+::1          www.authedmine.com
+
+127.0.0.1    webassembly.stream
+127.0.0.1    www.webassembly.stream
+::1          webassembly.stream
+::1          www.webassembly.stream
+
+127.0.0.1    cloud-miner.de
+127.0.0.1    www.cloud-miner.de
+::1          cloud-miner.de
+::1          www.cloud-miner.de
+
+127.0.0.1    minero.cc
+127.0.0.1    www.minero.cc
+::1          minero.cc
+::1          www.minero.cc
+
+127.0.0.1    miner.pr0gramm.com
+127.0.0.1    www.miner.pr0gramm.com
+::1          miner.pr0gramm.com
+::1          www.miner.pr0gramm.com
+
+127.0.0.1    js.hosting
+127.0.0.1    www.js.hosting
+::1          js.hosting
+::1          www.js.hosting
+
+127.0.0.1    miner.nablabee.com
+127.0.0.1    www.miner.nablabee.com
+::1          miner.nablabee.com
+::1          www.miner.nablabee.com
+
+127.0.0.1    crypto-webminer.com
+127.0.0.1    www.crypto-webminer.com
+::1          crypto-webminer.com
+::1          www.crypto-webminer.com
+
+127.0.0.1    webmine.pro
+127.0.0.1    www.webmine.pro
+::1          webmine.pro
+::1          www.webmine.pro
+
+127.0.0.1    xmrigproxy.com
+127.0.0.1    www.xmrigproxy.com
+::1          xmrigproxy.com
+::1          www.xmrigproxy.com
+
+127.0.0.1    monerominer.rocks
+127.0.0.1    www.monerominer.rocks
+::1          monerominer.rocks
+::1          www.monerominer.rocks
+
+127.0.0.1    cpufan.club
+127.0.0.1    www.cpufan.club
+::1          cpufan.club
+::1          www.cpufan.club
+
+127.0.0.1    minr.pw
+127.0.0.1    www.minr.pw
+::1          minr.pw
+::1          www.minr.pw
+
+127.0.0.1    jsecoin.com
+127.0.0.1    www.jsecoin.com
+::1          jsecoin.com
+::1          www.jsecoin.com
+
+127.0.0.1    kryptex.org
+127.0.0.1    www.kryptex.org
+::1          kryptex.org
+::1          www.kryptex.org
+
+127.0.0.1    nicehash.com
+127.0.0.1    www.nicehash.com
+::1          nicehash.com
+::1          www.nicehash.com
+
+127.0.0.1    hashvault.pro
+127.0.0.1    www.hashvault.pro
+::1          hashvault.pro
+::1          www.hashvault.pro
+
+127.0.0.1    nanopool.org
+127.0.0.1    www.nanopool.org
+::1          nanopool.org
+::1          www.nanopool.org
+
+127.0.0.1    pornhub.com
+127.0.0.1    www.pornhub.com
+::1          pornhub.com
+::1          www.pornhub.com
+
+127.0.0.1    xvideos.com
+127.0.0.1    www.xvideos.com
+::1          xvideos.com
+::1          www.xvideos.com
+
+127.0.0.1    xnxx.com
+127.0.0.1    www.xnxx.com
+::1          xnxx.com
+::1          www.xnxx.com
+
+127.0.0.1    sex.com
+127.0.0.1    www.sex.com
+::1          sex.com
+::1          www.sex.com
+
+127.0.0.1    porn.com
+127.0.0.1    www.porn.com
+::1          porn.com
+::1          www.porn.com
+
+127.0.0.1    youporn.com
+127.0.0.1    www.youporn.com
+::1          youporn.com
+::1          www.youporn.com
+
+127.0.0.1    xhamster.com
+127.0.0.1    www.xhamster.com
+::1          xhamster.com
+::1          www.xhamster.com
+
+127.0.0.1    fuq.com
+127.0.0.1    www.fuq.com
+::1          fuq.com
+::1          www.fuq.com
+
+127.0.0.1    tubepleasure.com
+127.0.0.1    www.tubepleasure.com
+::1          tubepleasure.com
+::1          www.tubepleasure.com
+
+127.0.0.1    pornburst.xxx
+127.0.0.1    www.pornburst.xxx
+::1          pornburst.xxx
+::1          www.pornburst.xxx
+
+127.0.0.1    porntv.com
+127.0.0.1    www.porntv.com
+::1          porntv.com
+::1          www.porntv.com
+
+127.0.0.1    pornv.xxx
+127.0.0.1    www.pornv.xxx
+::1          pornv.xxx
+::1          www.pornv.xxx
+
+127.0.0.1    pornhd.com
+127.0.0.1    www.pornhd.com
+::1          pornhd.com
+::1          www.pornhd.com
+
+127.0.0.1    pornhat.com
+127.0.0.1    www.pornhat.com
+::1          pornhat.com
+::1          www.pornhat.com
+
+127.0.0.1    porntube.com
+127.0.0.1    www.porntube.com
+::1          porntube.com
+::1          www.porntube.com
+
+127.0.0.1    youjizz.com
+127.0.0.1    www.youjizz.com
+::1          youjizz.com
+::1          www.youjizz.com
+
+127.0.0.1    spankbang.com
+127.0.0.1    www.spankbang.com
+::1          spankbang.com
+::1          www.spankbang.com
+
+127.0.0.1    xgroovy.com
+127.0.0.1    www.xgroovy.com
+::1          xgroovy.com
+::1          www.xgroovy.com
+
+127.0.0.1    eporner.com
+127.0.0.1    www.eporner.com
+::1          eporner.com
+::1          www.eporner.com
+
+127.0.0.1    pornone.com
+127.0.0.1    www.pornone.com
+::1          pornone.com
+::1          www.pornone.com
+
+127.0.0.1    porndroids.com
+127.0.0.1    www.porndroids.com
+::1          porndroids.com
+::1          www.porndroids.com
+
+127.0.0.1    porn8.com
+127.0.0.1    www.porn8.com
+::1          porn8.com
+::1          www.porn8.com
+
+127.0.0.1    pornmd.com
+127.0.0.1    www.pornmd.com
+::1          pornmd.com
+::1          www.pornmd.com
+
+127.0.0.1    pornhat.one
+127.0.0.1    www.pornhat.one
+::1          pornhat.one
+::1          www.pornhat.one
+
+127.0.0.1    tiava.com
+127.0.0.1    www.tiava.com
+::1          tiava.com
+::1          www.tiava.com
+
+127.0.0.1    4tube.com
+127.0.0.1    www.4tube.com
+::1          4tube.com
+::1          www.4tube.com
+
+127.0.0.1    pornxp.com
+127.0.0.1    www.pornxp.com
+::1          pornxp.com
+::1          www.pornxp.com
+
+127.0.0.1    lobstertube.com
+127.0.0.1    www.lobstertube.com
+::1          lobstertube.com
+::1          www.lobstertube.com
+
+127.0.0.1    porzo.com
+127.0.0.1    www.porzo.com
+::1          porzo.com
+::1          www.porzo.com
+
+127.0.0.1    ixxx.com
+127.0.0.1    www.ixxx.com
+::1          ixxx.com
+::1          www.ixxx.com
+
+127.0.0.1    asiantube.tv
+127.0.0.1    www.asiantube.tv
+::1          asiantube.tv
+::1          www.asiantube.tv
+
+127.0.0.1    tnaflix.com
+127.0.0.1    www.tnaflix.com
+::1          tnaflix.com
+::1          www.tnaflix.com
+
+127.0.0.1    twistedasian.com
+127.0.0.1    www.twistedasian.com
+::1          twistedasian.com
+::1          www.twistedasian.com
+
+127.0.0.1    thumbzilla.com
+127.0.0.1    www.thumbzilla.com
+::1          thumbzilla.com
+::1          www.thumbzilla.com
+
+127.0.0.1    dinotube.com
+127.0.0.1    www.dinotube.com
+::1          dinotube.com
+::1          www.dinotube.com
+
+127.0.0.1    tubesafari.com
+127.0.0.1    www.tubesafari.com
+::1          tubesafari.com
+::1          www.tubesafari.com
+
+127.0.0.1    bbcasia.com
+127.0.0.1    www.bbcasia.com
+::1          bbcasia.com
+::1          www.bbcasia.com
+
+127.0.0.1    trannyclips.com
+127.0.0.1    www.trannyclips.com
+::1          trannyclips.com
+::1          www.trannyclips.com
+
+127.0.0.1    tranny.one
+127.0.0.1    www.tranny.one
+::1          tranny.one
+::1          www.tranny.one
+
+127.0.0.1    ashemaletube.com
+127.0.0.1    www.ashemaletube.com
+::1          ashemaletube.com
+::1          www.ashemaletube.com
+
+127.0.0.1    shemalehub.com
+127.0.0.1    www.shemalehub.com
+::1          shemalehub.com
+::1          www.shemalehub.com
+
+127.0.0.1    tgirl.tv
+127.0.0.1    www.tgirl.tv
+::1          tgirl.tv
+::1          www.tgirl.tv
+
+127.0.0.1    tgtube.com
+127.0.0.1    www.tgtube.com
+::1          tgtube.com
+::1          www.tgtube.com
+
+127.0.0.1    sheshaft.com
+127.0.0.1    www.sheshaft.com
+::1          sheshaft.com
+::1          www.sheshaft.com
+
+127.0.0.1    amaturetube.com
+127.0.0.1    www.amaturetube.com
+::1          amaturetube.com
+::1          www.amaturetube.com
+
+127.0.0.1    shemaletubevideos.com
+127.0.0.1    www.shemaletubevideos.com
+::1          shemaletubevideos.com
+::1          www.shemaletubevideos.com
+
+127.0.0.1    shemale-pussy.net
+127.0.0.1    www.shemale-pussy.net
+::1          shemale-pussy.net
+::1          www.shemale-pussy.net
+
+127.0.0.1    shemaleplus.com
+127.0.0.1    www.shemaleplus.com
+::1          shemaleplus.com
+::1          www.shemaleplus.com
+
+127.0.0.1    pornpics.de
+127.0.0.1    www.pornpics.de
+::1          pornpics.de
+::1          www.pornpics.de
+
+127.0.0.1    porntrex.com
+127.0.0.1    www.porntrex.com
+::1          porntrex.com
+::1          www.porntrex.com
+
+127.0.0.1    redtube.com
+127.0.0.1    www.redtube.com
+::1          redtube.com
+::1          www.redtube.com
+
+127.0.0.1    tube8.com
+127.0.0.1    www.tube8.com
+::1          tube8.com
+::1          www.tube8.com
+
+127.0.0.1    txxx.com
+127.0.0.1    www.txxx.com
+::1          txxx.com
+::1          www.txxx.com
+
+127.0.0.1    porndoe.com
+127.0.0.1    www.porndoe.com
+::1          porndoe.com
+::1          www.porndoe.com
+
+127.0.0.1    chaturbate.com
+127.0.0.1    www.chaturbate.com
+::1          chaturbate.com
+::1          www.chaturbate.com
+
+127.0.0.1    stripchat.com
+127.0.0.1    www.stripchat.com
+::1          stripchat.com
+::1          www.stripchat.com
+
+127.0.0.1    camsoda.com
+127.0.0.1    www.camsoda.com
+::1          camsoda.com
+::1          www.camsoda.com
+
+127.0.0.1    livejasmin.com
+127.0.0.1    www.livejasmin.com
+::1          livejasmin.com
+::1          www.livejasmin.com
+
+127.0.0.1    xhamsterlive.com
+127.0.0.1    www.xhamsterlive.com
+::1          xhamsterlive.com
+::1          www.xhamsterlive.com
+
+127.0.0.1    cam4.com
+127.0.0.1    www.cam4.com
+::1          cam4.com
+::1          www.cam4.com
+
+127.0.0.1    myfreecams.com
+127.0.0.1    www.myfreecams.com
+::1          myfreecams.com
+::1          www.myfreecams.com
+
+127.0.0.1    bongacams.com
+127.0.0.1    www.bongacams.com
+::1          bongacams.com
+::1          www.bongacams.com
+
+127.0.0.1    nudelive.com
+127.0.0.1    www.nudelive.com
+::1          nudelive.com
+::1          www.nudelive.com
+
+127.0.0.1    webcamgirlslive.com
+127.0.0.1    www.webcamgirlslive.com
+::1          webcamgirlslive.com
+::1          www.webcamgirlslive.com
+
+127.0.0.1    camster.com
+127.0.0.1    www.camster.com
+::1          camster.com
+::1          www.camster.com
+
+127.0.0.1    cambb.xxx
+127.0.0.1    www.cambb.xxx
+::1          cambb.xxx
+::1          www.cambb.xxx
+
+127.0.0.1    camvoice.com
+127.0.0.1    www.camvoice.com
+::1          camvoice.com
+::1          www.camvoice.com
+
+127.0.0.1    camlike.chat
+127.0.0.1    www.camlike.chat
+::1          camlike.chat
+::1          www.camlike.chat
+
+127.0.0.1    sexcamly.com
+127.0.0.1    www.sexcamly.com
+::1          sexcamly.com
+::1          www.sexcamly.com
+
+127.0.0.1    jerkmate.com
+127.0.0.1    www.jerkmate.com
+::1          jerkmate.com
+::1          www.jerkmate.com
+
+127.0.0.1    xham.live
+127.0.0.1    www.xham.live
+::1          xham.live
+::1          www.xham.live
+
+127.0.0.1    xcamy.com
+127.0.0.1    www.xcamy.com
+::1          xcamy.com
+::1          www.xcamy.com
+
+127.0.0.1    yescams.com
+127.0.0.1    www.yescams.com
+::1          yescams.com
+::1          www.yescams.com
+
+127.0.0.1    rabbitscams.sex
+127.0.0.1    www.rabbitscams.sex
+::1          rabbitscams.sex
+::1          www.rabbitscams.sex
+
+127.0.0.1    topchats.com
+127.0.0.1    www.topchats.com
+::1          topchats.com
+::1          www.topchats.com
+
+127.0.0.1    recordbate.com
+127.0.0.1    www.recordbate.com
+::1          recordbate.com
+::1          www.recordbate.com
+
+127.0.0.1    camsweb.net
+127.0.0.1    www.camsweb.net
+::1          camsweb.net
+::1          www.camsweb.net
+
+127.0.0.1    archivebate.com
+127.0.0.1    www.archivebate.com
+::1          archivebate.com
+::1          www.archivebate.com
+
+127.0.0.1    thothub.to
+127.0.0.1    www.thothub.to
+::1          thothub.to
+::1          www.thothub.to
+
+127.0.0.1    cloudbate.com
+127.0.0.1    www.cloudbate.com
+::1          cloudbate.com
+::1          www.cloudbate.com
+
+127.0.0.1    eromexxx.com
+127.0.0.1    www.eromexxx.com
+::1          eromexxx.com
+::1          www.eromexxx.com
+
+127.0.0.1    erome.com
+127.0.0.1    www.erome.com
+::1          erome.com
+::1          www.erome.com
+
+127.0.0.1    recu.me
+127.0.0.1    www.recu.me
+::1          recu.me
+::1          www.recu.me
+
+127.0.0.1    pornoperso.com
+127.0.0.1    www.pornoperso.com
+::1          pornoperso.com
+::1          www.pornoperso.com
+
+127.0.0.1    camvideos.me
+127.0.0.1    www.camvideos.me
+::1          camvideos.me
+::1          www.camvideos.me
+
+127.0.0.1    camwhores.tv
+127.0.0.1    www.camwhores.tv
+::1          camwhores.tv
+::1          www.camwhores.tv
+
+127.0.0.1    leakslist.com
+127.0.0.1    www.leakslist.com
+::1          leakslist.com
+::1          www.leakslist.com
+
+127.0.0.1    camshaip.com
+127.0.0.1    www.camshaip.com
+::1          camshaip.com
+::1          www.camshaip.com
+
+127.0.0.1    xhomealone.com
+127.0.0.1    www.xhomealone.com
+::1          xhomealone.com
+::1          www.xhomealone.com
+
+127.0.0.1    hotpussytube.com
+127.0.0.1    www.hotpussytube.com
+::1          hotpussytube.com
+::1          www.hotpussytube.com
+
+127.0.0.1    bravopussy.com
+127.0.0.1    www.bravopussy.com
+::1          bravopussy.com
+::1          www.bravopussy.com
+
+127.0.0.1    tubegalore.com
+127.0.0.1    www.tubegalore.com
+::1          tubegalore.com
+::1          www.tubegalore.com
+
+127.0.0.1    pussyspace.com
+127.0.0.1    www.pussyspace.com
+::1          pussyspace.com
+::1          www.pussyspace.com
+
+127.0.0.1    porntube.com
+127.0.0.1    www.porntube.com
+::1          porntube.com
+::1          www.porntube.com
+
+127.0.0.1    alohatube.com
+127.0.0.1    www.alohatube.com
+::1          alohatube.com
+::1          www.alohatube.com
+
+127.0.0.1    tryst.link
+127.0.0.1    www.tryst.link
+::1          tryst.link
+::1          www.tryst.link
+
+127.0.0.1    skipthegames.com
+127.0.0.1    www.skipthegames.com
+::1          skipthegames.com
+::1          www.skipthegames.com
+
+127.0.0.1    adultsearch.com
+127.0.0.1    www.adultsearch.com
+::1          adultsearch.com
+::1          www.adultsearch.com
+
+127.0.0.1    eros.com
+127.0.0.1    www.eros.com
+::1          eros.com
+::1          www.eros.com
+
+127.0.0.1    slixa.com
+127.0.0.1    www.slixa.com
+::1          slixa.com
+::1          www.slixa.com
+
+127.0.0.1    dreamgirlsseattle.com
+127.0.0.1    www.dreamgirlsseattle.com
+::1          dreamgirlsseattle.com
+::1          www.dreamgirlsseattle.com
+
+127.0.0.1    escortalligator.com.listcrawler.eu
+127.0.0.1    www.escortalligator.com.listcrawler.eu
+::1          escortalligator.com.listcrawler.eu
+::1          www.escortalligator.com.listcrawler.eu
+
+127.0.0.1    xlamma.com
+127.0.0.1    www.xlamma.com
+::1          xlamma.com
+::1          www.xlamma.com
+
+127.0.0.1    privatedelights.ch
+127.0.0.1    www.privatedelights.ch
+::1          privatedelights.ch
+::1          www.privatedelights.ch
+
+127.0.0.1    888companions.com
+127.0.0.1    www.888companions.com
+::1          888companions.com
+::1          www.888companions.com
+
+127.0.0.1    callescort.org
+127.0.0.1    www.callescort.org
+::1          callescort.org
+::1          www.callescort.org
+
+127.0.0.1    ondate.com
+127.0.0.1    www.ondate.com
+::1          ondate.com
+::1          www.ondate.com
+
+127.0.0.1    tnaboard.com
+127.0.0.1    www.tnaboard.com
+::1          tnaboard.com
+::1          www.tnaboard.com
+
+127.0.0.1    topescortbabes.com
+127.0.0.1    www.topescortbabes.com
+::1          topescortbabes.com
+::1          www.topescortbabes.com
+
+127.0.0.1    seattle.2backpage.com
+127.0.0.1    www.seattle.2backpage.com
+::1          seattle.2backpage.com
+::1          www.seattle.2backpage.com
+
+127.0.0.1    hot.com
+127.0.0.1    www.hot.com
+::1          hot.com
+::1          www.hot.com
+
+127.0.0.1    mystiquecompanions.com
+127.0.0.1    www.mystiquecompanions.com
+::1          mystiquecompanions.com
+::1          www.mystiquecompanions.com
+
+127.0.0.1    myntmodels.com
+127.0.0.1    www.myntmodels.com
+::1          myntmodels.com
+::1          www.myntmodels.com
+
+127.0.0.1    tsescorts.com
+127.0.0.1    www.tsescorts.com
+::1          tsescorts.com
+::1          www.tsescorts.com
+
+127.0.0.1    harlothub.com
+127.0.0.1    www.harlothub.com
+::1          harlothub.com
+::1          www.harlothub.com
+
+127.0.0.1    adultlook.com
+127.0.0.1    www.adultlook.com
+::1          adultlook.com
+::1          www.adultlook.com
+
+127.0.0.1    escortdirectory-usa.com
+127.0.0.1    www.escortdirectory-usa.com
+::1          escortdirectory-usa.com
+::1          www.escortdirectory-usa.com
+
+127.0.0.1    ladys.one
+127.0.0.1    www.ladys.one
+::1          ladys.one
+::1          www.ladys.one
+
+127.0.0.1    eroticmonkey.ch
+127.0.0.1    www.eroticmonkey.ch
+::1          eroticmonkey.ch
+::1          www.eroticmonkey.ch
+
+127.0.0.1    escortbabylon.net
+127.0.0.1    www.escortbabylon.net
+::1          escortbabylon.net
+::1          www.escortbabylon.net
+
+
+
+# Government/Law Enforcement Surveillance Domains (2025)
+# WARNING: May block legitimate services like tax filing, emergency alerts, and voter registration
+
+127.0.0.1    nsa.gov
+127.0.0.1    www.nsa.gov
+::1          nsa.gov
+::1          www.nsa.gov
+
+127.0.0.1    fbi.gov
+127.0.0.1    www.fbi.gov
+::1          fbi.gov
+::1          www.fbi.gov
+
+127.0.0.1    ic.gov
+127.0.0.1    www.ic.gov
+::1          ic.gov
+::1          www.ic.gov
+
+127.0.0.1    prism.ic.gov
+127.0.0.1    www.prism.ic.gov
+::1          prism.ic.gov
+::1          www.prism.ic.gov
+
+127.0.0.1    upstream.ic.gov
+127.0.0.1    www.upstream.ic.gov
+::1          upstream.ic.gov
+::1          www.upstream.ic.gov
+
+127.0.0.1    ncrfc.org
+127.0.0.1    www.ncrfc.org
+::1          ncrfc.org
+::1          www.ncrfc.org
+
+127.0.0.1    lexisnexis.com
+127.0.0.1    www.lexisnexis.com
+::1          lexisnexis.com
+::1          www.lexisnexis.com
+
+127.0.0.1    palantir.com
+127.0.0.1    www.palantir.com
+::1          palantir.com
+::1          www.palantir.com
+
+127.0.0.1    vigilsolutions.com
+127.0.0.1    www.vigilsolutions.com
+::1          vigilsolutions.com
+::1          www.vigilsolutions.com
+
+127.0.0.1    clearview.ai
+127.0.0.1    www.clearview.ai
+::1          clearview.ai
+::1          www.clearview.ai
+
+127.0.0.1    surveillance.ic.gov
+127.0.0.1    www.surveillance.ic.gov
+::1          surveillance.ic.gov
+::1          www.surveillance.ic.gov
+
+127.0.0.1    datacollection.dhs.gov
+127.0.0.1    www.datacollection.dhs.gov
+::1          datacollection.dhs.gov
+::1          www.datacollection.dhs.gov
+
+127.0.0.1    fusioncenter.texas.gov
+127.0.0.1    www.fusioncenter.texas.gov
+::1          fusioncenter.texas.gov
+::1          www.fusioncenter.texas.gov
+
+127.0.0.1    analytics.fbi.gov
+::1          analytics.fbi.gov
+127.0.0.1    track.dhs.gov
+::1          track.dhs.gov
+
+127.0.0.1    shadowdragon.io
+::1          shadowdragon.io
+127.0.0.1    babelstreet.com
+::1          babelstreet.com
+
+127.0.0.1    prism.ic.gov
+127.0.0.1    www.prism.ic.gov
+::1          prism.ic.gov
+::1          www.prism.ic.gov
+
+127.0.0.1    upstream.ic.gov
+127.0.0.1    www.upstream.ic.gov
+::1          upstream.ic.gov
+::1          www.upstream.ic.gov
+
+127.0.0.1    boundlessinformant.ic.gov
+127.0.0.1    www.boundlessinformant.ic.gov
+::1          boundlessinformant.ic.gov
+::1          www.boundlessinformant.ic.gov
+
+127.0.0.1    bullrun.nsa.gov
+127.0.0.1    www.bullrun.nsa.gov
+::1          bullrun.nsa.gov
+::1          www.bullrun.nsa.gov
+
+127.0.0.1    dcsnet.fbi.gov
+127.0.0.1    www.dcsnet.fbi.gov
+::1          dcsnet.fbi.gov
+::1          www.dcsnet.fbi.gov
+
+127.0.0.1    goldenshield.mps.gov.cn
+127.0.0.1    www.goldenshield.mps.gov.cn
+::1          goldenshield.mps.gov.cn
+::1          www.goldenshield.mps.gov.cn
+
+127.0.0.1    ijop.xinjiang.gov.cn
+127.0.0.1    www.ijop.xinjiang.gov.cn
+::1          ijop.xinjiang.gov.cn
+::1          www.ijop.xinjiang.gov.cn
+
+127.0.0.1    cms.dot.gov.in
+127.0.0.1    www.cms.dot.gov.in
+::1          cms.dot.gov.in
+::1          www.cms.dot.gov.in
+
+127.0.0.1    netra.drdo.in
+127.0.0.1    www.netra.drdo.in
+::1          netra.drdo.in
+::1          www.netra.drdo.in
+
+127.0.0.1    sorm.fsb.ru
+127.0.0.1    www.sorm.fsb.ru
+::1          sorm.fsb.ru
+::1          www.sorm.fsb.ru
+
+127.0.0.1    tempora.gchq.gov.uk
+127.0.0.1    www.tempora.gchq.gov.uk
+::1          tempora.gchq.gov.uk
+::1          www.tempora.gchq.gov.uk
+
+127.0.0.1    mti.gchq.gov.uk
+127.0.0.1    www.mti.gchq.gov.uk
+::1          mti.gchq.gov.uk
+::1          www.mti.gchq.gov.uk
+
+127.0.0.1    onyx.nda.admin.ch
+127.0.0.1    www.onyx.nda.admin.ch
+::1          onyx.nda.admin.ch
+::1          www.onyx.nda.admin.ch
+
+127.0.0.1    fusioncenter.texas.gov
+127.0.0.1    www.fusioncenter.texas.gov
+::1          fusioncenter.texas.gov
+::1          www.fusioncenter.texas.gov
+
+127.0.0.1    palantir.gov
+127.0.0.1    www.palantir.gov
+::1          palantir.gov
+::1          www.palantir.gov
+
+127.0.0.1    clearview.ai
+127.0.0.1    www.clearview.ai
+::1          clearview.ai
+::1          www.clearview.ai
+
+127.0.0.1    shadowdragon.io
+127.0.0.1    www.shadowdragon.io
+::1          shadowdragon.io
+::1          www.shadowdragon.io
+
+127.0.0.1    babelstreet.com
+127.0.0.1    www.babelstreet.com
+::1          babelstreet.com
+::1          www.babelstreet.com
+
+127.0.0.1    mainway.nsa.gov
+127.0.0.1    www.mainway.nsa.gov
+::1          mainway.nsa.gov
+::1          www.mainway.nsa.gov
+
+127.0.0.1    icreach.ic.gov
+127.0.0.1    www.icreach.ic.gov
+::1          icreach.ic.gov
+::1          www.icreach.ic.gov
+
+127.0.0.1    socialcredit.gov.cn
+127.0.0.1    www.socialcredit.gov.cn
+::1          socialcredit.gov.cn
+::1          www.socialcredit.gov.cn
+
+127.0.0.1    camerton.mvd.ru
+127.0.0.1    www.camerton.mvd.ru
+::1          camerton.mvd.ru
+::1          www.camerton.mvd.ru
+
+127.0.0.1    beenverified.com
+127.0.0.1    www.beenverified.com
+::1          beenverified.com
+::1          www.beenverified.com
+
+127.0.0.1    familytreenow.com
+127.0.0.1    www.familytreenow.com
+::1          familytreenow.com
+::1          www.familytreenow.com
+
+127.0.0.1    fastpeoplesearch.com
+127.0.0.1    www.fastpeoplesearch.com
+::1          fastpeoplesearch.com
+::1          www.fastpeoplesearch.com
+
+127.0.0.1    instantcheckmate.com
+127.0.0.1    www.instantcheckmate.com
+::1          instantcheckmate.com
+::1          www.instantcheckmate.com
+
+127.0.0.1    intelius.com
+127.0.0.1    www.intelius.com
+::1          intelius.com
+::1          www.intelius.com
+
+127.0.0.1    peekyou.com
+127.0.0.1    www.peekyou.com
+::1          peekyou.com
+::1          www.peekyou.com
+
+127.0.0.1    peoplefinders.com
+127.0.0.1    www.peoplefinders.com
+::1          peoplefinders.com
+::1          www.peoplefinders.com
+
+127.0.0.1    pipl.com
+127.0.0.1    www.pipl.com
+::1          pipl.com
+::1          www.pipl.com
+
+127.0.0.1    spokeo.com
+127.0.0.1    www.spokeo.com
+::1          spokeo.com
+::1          www.spokeo.com
+
+127.0.0.1    truthfinder.com
+127.0.0.1    www.truthfinder.com
+::1          truthfinder.com
+::1          www.truthfinder.com
+
+127.0.0.1    whitepages.com
+127.0.0.1    www.whitepages.com
+::1          whitepages.com
+::1          www.whitepages.com
+
+127.0.0.1    radaris.com
+127.0.0.1    www.radaris.com
+::1          radaris.com
+::1          www.radaris.com
+
+127.0.0.1    smartbackgroundchecks.com
+127.0.0.1    www.smartbackgroundchecks.com
+::1          smartbackgroundchecks.com
+::1          www.smartbackgroundchecks.com
+
+127.0.0.1    mylife.com
+127.0.0.1    www.mylife.com
+::1          mylife.com
+::1          www.mylife.com
+
+127.0.0.1    zabasearch.com
+127.0.0.1    www.zabasearch.com
+::1          zabasearch.com
+::1          www.zabasearch.com
+
+127.0.0.1    usa-people-search.com
+127.0.0.1    www.usa-people-search.com
+::1          usa-people-search.com
+::1          www.usa-people-search.com
+
+127.0.0.1    192.com
+127.0.0.1    www.192.com
+::1          192.com
+::1          www.192.com
+
+127.0.0.1    yasni.com
+127.0.0.1    www.yasni.com
+::1          yasni.com
+::1          www.yasni.com
+
+127.0.0.1    reversephonelookup.com
+127.0.0.1    www.reversephonelookup.com
+::1          reversephonelookup.com
+::1          www.reversephonelookup.com
+
+127.0.0.1    thatsthem.com
+127.0.0.1    www.thatsthem.com
+::1          thatsthem.com
+::1          www.thatsthem.com
+
+127.0.0.1    myadult.com
+127.0.0.1    www.myadult.com
+::1          myadult.com
+::1          www.myadult.com
+
+127.0.0.1    tripadvisor.com
+127.0.0.1    www.tripadvisor.com
+::1          tripadvisor.com
+::1          www.tripadvisor.com
+
+127.0.0.1    booking.com
+127.0.0.1    www.booking.com
+::1          booking.com
+::1          www.booking.com
+
+127.0.0.1    airbnb.com
+127.0.0.1    www.airbnb.com
+::1          airbnb.com
+::1          www.airbnb.com
+
+127.0.0.1    expedia.com
+127.0.0.1    www.expedia.com
+::1          expedia.com
+::1          www.expedia.com
+
+127.0.0.1    kayak.com
+127.0.0.1    www.kayak.com
+::1          kayak.com
+::1          www.kayak.com
+
+127.0.0.1    trip.com
+127.0.0.1    www.trip.com
+::1          trip.com
+::1          www.trip.com
+
+127.0.0.1    trivago.com
+127.0.0.1    www.trivago.com
+::1          trivago.com
+::1          www.trivago.com
+
+127.0.0.1    agoda.com
+127.0.0.1    www.agoda.com
+::1          agoda.com
+::1          www.agoda.com
+
+127.0.0.1    orbitz.com
+127.0.0.1    www.orbitz.com
+::1          orbitz.com
+::1          www.orbitz.com
+
+127.0.0.1    priceline.com
+127.0.0.1    www.priceline.com
+::1          priceline.com
+::1          www.priceline.com
+
+127.0.0.1    hotwire.com
+127.0.0.1    www.hotwire.com
+::1          hotwire.com
+::1          www.hotwire.com
+
+127.0.0.1    ryanair.com
+127.0.0.1    www.ryanair.com
+::1          ryanair.com
+::1          www.ryanair.com
+
+127.0.0.1    aa.com
+127.0.0.1    www.aa.com
+::1          aa.com
+::1          www.aa.com
+
+127.0.0.1    southwest.com
+127.0.0.1    www.southwest.com
+::1          southwest.com
+::1          www.southwest.com
+
+127.0.0.1    delta.com
+127.0.0.1    www.delta.com
+::1          delta.com
+::1          www.delta.com
+
+127.0.0.1    united.com
+127.0.0.1    www.united.com
+::1          united.com
+::1          www.united.com
+
+127.0.0.1    latamairlines.com
+127.0.0.1    www.latamairlines.com
+::1          latamairlines.com
+::1          www.latamairlines.com
+
+127.0.0.1    traveloka.com
+127.0.0.1    www.traveloka.com
+::1          traveloka.com
+::1          www.traveloka.com
+
+127.0.0.1    ana.co.jp
+127.0.0.1    www.ana.co.jp
+::1          ana.co.jp
+::1          www.ana.co.jp
+
+127.0.0.1    jal.co.jp
+127.0.0.1    www.jal.co.jp
+::1          jal.co.jp
+::1          www.jal.co.jp
+
+127.0.0.1    easyjet.com
+127.0.0.1    www.easyjet.com
+::1          easyjet.com
+::1          www.easyjet.com
+
+127.0.0.1    yelp.com
+127.0.0.1    www.yelp.com
+::1          yelp.com
+::1          www.yelp.com
+
+127.0.0.1    weather.com
+127.0.0.1    www.weather.com
+::1          weather.com
+::1          www.weather.com
+
+127.0.0.1    bing.com
+127.0.0.1    www.bing.com
+::1          bing.com
+::1          www.bing.com

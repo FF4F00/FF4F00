@@ -1,0 +1,68 @@
+# ┌─────┬───────────────┬─────────────────────────────────────────────┐
+# │ iD  │ Workspace     │ Purpose                                     │
+# ├─────┼───────────────┼─────────────────────────────────────────────┤
+# │  0  │ Operations    │ Business, planning, communication, admin    │
+# │  1  │ Design        │ Visual, UIUX, audio creation                │
+# │  2  │ Engineering   │ Coding, system design, AI modeling          │
+# │  3  │ Notes         │ Research, writing, thinking, synthesis      │
+# │  4  │ Streaming     │ Recording, building in public, live demos   │
+# └─────┴───────────────┴─────────────────────────────────────────────┘
+
+after-startup-command = []
+start-at-login = true
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+[mode.main.binding]
+
+# ────────── Workspaces ──────────
+
+alt-space = 'workspace H'   # Operations
+alt-left  = 'workspace 1'   # Design
+alt-up    = 'workspace 2'   # Engineering
+alt-right = 'workspace 3'   # Notes
+alt-down  = 'workspace 4'   # Streaming
+
+alt-shift-space = 'move-node-to-workspace H'
+alt-shift-left  = 'move-node-to-workspace 1'
+alt-shift-up    = 'move-node-to-workspace 2'
+alt-shift-right = 'move-node-to-workspace 3'
+alt-shift-down  = 'move-node-to-workspace 4'
+
+# ────────── Windows ─────────────
+
+cmd-alt-left  = 'focus left'
+cmd-alt-down  = 'focus down'
+cmd-alt-up    = 'focus up'
+cmd-alt-right = 'focus right'
+
+cmd-left  = 'move left'
+cmd-down  = 'move down'
+cmd-up    = 'move up'
+cmd-right = 'move right'
+
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+alt-shift-c = 'reload-config'
+
+[gaps]
+inner.horizontal = 8
+inner.vertical =   8
+outer.left =       8
+outer.bottom =     8
+outer.top =        0
+outer.right =      8
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# ✅ Verified 07/08/2025
+# ⚠️ Requires: Signature
+# ⚠️ Dependencies: None
+# Target: Apple Silicon
+# libiconv 1.18
+
+DIR="/tmp"
+VERSION="1.18"
+
+if [ ! -f /usr/local/lib/libiconv.dylib ]; then
+
+    # Download
+    curl -Lo $DIR/libiconv-${VERSION}.tar.gz.sig https://mirrors.ocf.berkeley.edu/gnu/libiconv/libiconv-${VERSION}.tar.gz.sig
+    curl -Lo $DIR/libiconv-${VERSION}.tar.gz https://mirrors.ocf.berkeley.edu/gnu/libiconv/libiconv-${VERSION}.tar.gz
+
+    # Extract
+    tar -xzvf "$DIR/libiconv-${VERSION}.tar.gz" -C $DIR && rm -rf $DIR/libiconv-${VERSION}.tar.gz
+
+    # Install
+    (cd "$DIR/libiconv-${VERSION}" && ./configure && make && sudo make install)
+
+fi
+
