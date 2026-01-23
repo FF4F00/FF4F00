@@ -1,0 +1,147 @@
+
+# bootstrap to /usr/local/bin/foundry
+# nvim $WRK_/foundry/foundry && sudo cp $WRK_/foundry/foundry /usr/local/bin/foundry
+
+# edit $WRK_/foundry/foundry && sudo cp $WRK_/foundry/foundry /usr/local/bin/foundry
+# delineate boundaries in code using foundry, project, package in names
+
+# default behavior : foundry lang project_name -> create a new project for lang
+# example          : foundry xyz zig           -> will create a zig app xyz
+
+# build   - foundry -b / src -b for building a project in foundry cache
+# delete  - foundry -x / src -x for deleting a project in foundry cache
+# new     - foundry -n / src -n for creating a new lang exec in foundry dir
+# query   - foundry -q / src -q for querying a project in foundry cache
+# self    - foundry -s / src -s for modifying the source code for foundry
+# update  - foundry -u / src -u for updating a lang exec in foundry dir
+
+WRK_="$HOME/.wrk_"
+
+# ┌─────────────┐
+# │ dispatcher  │
+# └─────────────┘
+foundry_usage() {
+  cat <<'EOF'
+usage:
+  foundry <language> <project name>      # create (default)
+  foundry -n [args…]                     # create/new
+  foundry -b [args…]                     # build
+  foundry -x [args…]                     # delete
+  foundry -q [args…]                     # query
+  foundry -u [args…]                     # update
+  foundry -s [args…]                     # self
+EOF
+}
+
+foundry() {
+  # default: no flag → create
+  case "${1:-}" in
+    -n) shift; foundry_create "$@";;
+    -b) shift; foundry_build  "$@";;
+    -x) shift; foundry_delete "$@";;
+    -q) shift; foundry_query  "$@";;
+    -u) shift; foundry_update "$@";;
+    -s) shift; foundry_self   "$@";;
+    -h|--help) foundry_usage;;
+    -*)
+      echo "❌ unknown flag: $1" >&2
+      foundry_usage; return 2
+      ;;
+    *)
+      # no flag → pass through to create
+      if [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
+        foundry_usage; return 2
+      fi
+      foundry_create "$@"
+      ;;
+  esac
+}
+
+# ┌─────────────┐
+# │ self        │
+# └─────────────┘
+foundry_self() {
+  set -e  # strict; stop on first error
+
+  # ignore any passed arguments
+  if [ "$#" -ne 0 ]; then
+    echo "ℹ️ ignoring arguments to 'self' (takes no parameters)"
+  fi
+
+  foundry_source_path="${WRK_}/foundry/foundry"
+  foundry_dest="/usr/local/bin/foundry"
+  foundry_dest_dir="/usr/local/bin"
+
+  # 1) edit the version-controlled source
+  if [ ! -f "$foundry_source_path" ]; then
+    echo "❌ not found: $foundry_source_path" >&2
+    return 1
+  fi
+  edit "$foundry_source_path" || { echo "❌ editor failed; aborting install" >&2; return 1; }
+
+  # 2) ensure destination directory exists (sudo on first-time setups)
+  if [ ! -d "$foundry_dest_dir" ]; then
+    echo "ℹ️ creating $foundry_dest_dir (sudo)"
+    sudo mkdir -p "$foundry_dest_dir"
+  fi
+
+  # 3) install/update live binary atomically with correct mode
+  if sudo install -m 0755 "$foundry_source_path" "$foundry_dest"; then
+    :
+  else
+    echo "❌ install failed. Try:" >&2
+    echo "   sudo install -m 0755 \"$foundry_source_path\" \"$foundry_dest\"" >&2
+    return 1
+  fi
+
+  # 4) verify executable
+  if [ -x "$foundry_dest" ]; then
+    echo "✅ installed: $foundry_dest"
+  else
+    echo "⚠️ installed but not executable; fixing (sudo)"
+    sudo chmod +x "$foundry_dest" || { echo "❌ chmod failed on $foundry_dest" >&2; return 1; }
+    echo "✅ fixed permissions: $foundry_dest"
+  fi
+}
+
+
+
+
+
+
+
+
+# ┌─────────────┐
+# │ build       │
+# └─────────────┘
+foundry_build(){
+echo "this is the build function"
+}
+
+# ┌─────────────┐
+# │ query       │
+# └─────────────┘
+foundry_query(){
+echo "this is the query function"
+}
+
+# ┌─────────────┐
+# │ create      │
+# └─────────────┘
+foundry_create(){
+echo "this is the create function"
+}
+
+# ┌─────────────┐
+# │ delete      │
+# └─────────────┘
+foundry_delete(){
+echo "this is the delete function"
+}
+
+# ┌─────────────┐
+# │ update      │
+# └─────────────┘
+foundry_update(){
+echo "this is the update function"
+}

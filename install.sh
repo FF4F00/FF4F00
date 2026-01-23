@@ -6,13 +6,16 @@ REPO_SSH="git@github.com:FF4F00/FF4F00.git"
 
 WORKDIR="$HOME/.wrk_"
 PROJECTS_DIR="$HOME/.houston"
+LOG_DIR="$HOME/.log"
 
 BIN_SRC="$WORKDIR/.bin"
 BIN_DST="/usr/local/bin"
 
 echo "==> FF4F00 Platform Installer"
-echo "==> Platform: $WORKDIR (replaceable)"
-echo "==> Projects: $PROJECTS_DIR (persistent)"
+echo
+echo "Platform (replaceable): $WORKDIR"
+echo "Projects (persistent): $PROJECTS_DIR"
+echo "Captain’s Log (persistent): $LOG_DIR"
 echo
 
 # -------------------------------------------------
@@ -26,14 +29,21 @@ if ! command -v git >/dev/null 2>&1; then
 fi
 
 # -------------------------------------------------
-# Ensure projects directory exists (safe)
+# Ensure persistent user directories exist
 # -------------------------------------------------
 
 if [ ! -d "$PROJECTS_DIR" ]; then
   echo "==> Creating projects directory: $PROJECTS_DIR"
   mkdir -p "$PROJECTS_DIR"
 else
-  echo "==> Projects directory exists: $PROJECTS_DIR"
+  echo "==> Projects directory exists"
+fi
+
+if [ ! -d "$LOG_DIR" ]; then
+  echo "==> Creating Captain’s Log directory: $LOG_DIR"
+  mkdir -p "$LOG_DIR"
+else
+  echo "==> Captain’s Log directory exists"
 fi
 
 # -------------------------------------------------
@@ -41,7 +51,7 @@ fi
 # -------------------------------------------------
 
 if [ -d "$WORKDIR" ]; then
-  echo "==> Removing existing platform at $WORKDIR"
+  echo "==> Removing existing platform"
   rm -rf "$WORKDIR"
 fi
 
@@ -65,7 +75,7 @@ if [ ! -d "$BIN_SRC" ]; then
 fi
 
 # -------------------------------------------------
-# Install CLI binaries
+# Install CLI binaries (launch, cfg, src, cl, etc.)
 # -------------------------------------------------
 
 echo "==> Installing CLI tools to $BIN_DST"
@@ -108,7 +118,7 @@ fi
 # -------------------------------------------------
 
 echo
-echo "==> FF4F00 platform installed successfully"
+echo "==> Installation complete"
 echo
 echo "Platform:"
 echo "  $WORKDIR"
@@ -116,7 +126,10 @@ echo
 echo "Projects:"
 echo "  $PROJECTS_DIR"
 echo
-echo "CLI tools:"
+echo "Captain’s Log:"
+echo "  $LOG_DIR"
+echo
+echo "CLI tools installed:"
 ls "$BIN_SRC" | sed 's/^/  - /'
 echo
 echo "==> Done."
