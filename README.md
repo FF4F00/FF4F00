@@ -1,6 +1,6 @@
 # [FF4F00](https://gitlab.com/FF4F00/FF4F00)
 
-FF4F00 is now **hosted on GitLab** 🚀  
+FF4F00 is now **hosted on [GitLab](https://gitlab.com/FF4F00/FF4F00)** 🚀  
 This GitHub repository is provided for **read-only documentation**.
 
 ---
