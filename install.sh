@@ -13,9 +13,9 @@ BIN_DST="/usr/local/bin"
 
 echo "==> FF4F00 Platform Installer"
 echo
-echo "Platform (replaceable): $WORKDIR"
-echo "Projects (persistent): $PROJECTS_DIR"
-echo "Captain’s Log (persistent): $LOG_DIR"
+echo "Platform (replaceable):  $WORKDIR"
+echo "Projects (persistent):   $PROJECTS_DIR"
+echo "Captain’s Log:           $LOG_DIR"
 echo
 
 # -------------------------------------------------
@@ -23,31 +23,19 @@ echo
 # -------------------------------------------------
 
 if ! command -v git >/dev/null 2>&1; then
-  echo "❌ git is not installed."
-  echo "   Please install git and re-run the installer."
+  echo "❌ git is required but not installed."
   exit 1
 fi
 
 # -------------------------------------------------
-# Ensure persistent user directories exist
+# Ensure persistent user directories
 # -------------------------------------------------
 
-if [ ! -d "$PROJECTS_DIR" ]; then
-  echo "==> Creating projects directory: $PROJECTS_DIR"
-  mkdir -p "$PROJECTS_DIR"
-else
-  echo "==> Projects directory exists"
-fi
-
-if [ ! -d "$LOG_DIR" ]; then
-  echo "==> Creating Captain’s Log directory: $LOG_DIR"
-  mkdir -p "$LOG_DIR"
-else
-  echo "==> Captain’s Log directory exists"
-fi
+mkdir -p "$PROJECTS_DIR"
+mkdir -p "$LOG_DIR"
 
 # -------------------------------------------------
-# Replace platform (.wrk_)
+# Replace platform
 # -------------------------------------------------
 
 if [ -d "$WORKDIR" ]; then
@@ -55,33 +43,32 @@ if [ -d "$WORKDIR" ]; then
   rm -rf "$WORKDIR"
 fi
 
-echo "==> Installing latest platform"
+echo "==> Cloning platform"
 git clone "$REPO_HTTPS" "$WORKDIR"
 
 cd "$WORKDIR"
 
-echo "==> Configuring git remote to use SSH"
-git remote set-url origin "$REPO_SSH"
+echo "==> Setting git remote to SSH"
+git remote set-url origin "$REPO_SSH" || true
 
 # -------------------------------------------------
 # Validate platform layout
 # -------------------------------------------------
 
 if [ ! -d "$BIN_SRC" ]; then
-  echo "❌ Required directory missing:"
-  echo "   $BIN_SRC"
-  echo "   Platform install is invalid."
+  echo "❌ Missing required directory: $BIN_SRC"
   exit 1
 fi
 
 # -------------------------------------------------
-# Install CLI binaries (launch, cfg, src, cl, etc.)
+# Install CLI binaries (EXECUTABLES ONLY)
 # -------------------------------------------------
 
-echo "==> Installing CLI tools to $BIN_DST"
+echo "==> Installing CLI tools"
 
 for tool in "$BIN_SRC"/*; do
   [ -f "$tool" ] || continue
+  [ -x "$tool" ] || continue
 
   name="$(basename "$tool")"
   echo "    -> $name"
@@ -98,38 +85,28 @@ done
 # -------------------------------------------------
 
 echo
-echo "==> Checking GitHub SSH authentication"
+echo "==> Checking GitHub SSH access"
 
-if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
-  echo "✅ GitHub SSH authentication detected."
+if ssh -T git@github.com 2>&1 | grep -qi "successfully authenticated"; then
+  echo "✅ SSH authentication OK"
 else
-  echo
-  echo "⚠️  GitHub SSH authentication not detected."
-  echo
-  echo "To enable passwordless git push:"
-  echo "  ssh-keygen -t ed25519 -C \"you@example.com\""
-  echo "  ssh-add --apple-use-keychain ~/.ssh/id_ed25519"
-  echo "  pbcopy < ~/.ssh/id_ed25519.pub"
-  echo "  https://github.com/settings/ssh/new"
+  echo "⚠️  SSH not configured (HTTPS will still work)"
+  echo "    To enable:"
+  echo "      ssh-keygen -t ed25519"
+  echo "      ssh-add --apple-use-keychain ~/.ssh/id_ed25519"
+  echo "      pbcopy < ~/.ssh/id_ed25519.pub"
 fi
 
 # -------------------------------------------------
-# Done
+# Summary
 # -------------------------------------------------
 
 echo
 echo "==> Installation complete"
 echo
-echo "Platform:"
-echo "  $WORKDIR"
-echo
-echo "Projects:"
-echo "  $PROJECTS_DIR"
-echo
-echo "Captain’s Log:"
-echo "  $LOG_DIR"
-echo
-echo "CLI tools installed:"
-ls "$BIN_SRC" | sed 's/^/  - /'
+echo "Installed CLI tools:"
+ls "$BIN_SRC" | while read -r f; do
+  [ -x "$BIN_SRC/$f" ] && echo "  - $f"
+done
 echo
 echo "==> Done."
