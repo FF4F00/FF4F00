@@ -234,15 +234,64 @@ fn viaInit(name: []const u8) !void {
         \\
     );
 
-    // Run nix flake init inside the project directory
-    var child = std.process.Child.init(
-        &.{ "nix", "flake", "init" },
+    // Initialize git repo and create initial commit
+    var git_init = std.process.Child.init(
+        &.{ "git", "init" },
         alloc,
     );
-    child.cwd = base;
-    _ = child.spawnAndWait() catch {
-        std.debug.print("Warning: `nix flake init` failed\n", .{});
+    git_init.cwd = base;
+    _ = git_init.spawnAndWait() catch {
+        std.debug.print("Warning: `git init` failed\n", .{});
     };
+
+    var git_add = std.process.Child.init(
+        &.{ "git", "add", "." },
+        alloc,
+    );
+    git_add.cwd = base;
+    _ = git_add.spawnAndWait() catch {
+        std.debug.print("Warning: `git add` failed\n", .{});
+    };
+
+    var git_commit = std.process.Child.init(
+        &.{ "git", "commit", "-m", "+/=" },
+        alloc,
+    );
+    git_commit.cwd = base;
+    _ = git_commit.spawnAndWait() catch {
+        std.debug.print("Warning: `git commit` failed\n", .{});
+    };
+
+    // Colocate jj with existing git repo
+    var jj = std.process.Child.init(
+        &.{ "jj", "git", "init", "--colocate" },
+        alloc,
+    );
+    jj.cwd = base;
+    _ = jj.spawnAndWait() catch {
+        std.debug.print("Warning: `jj git init --colocate` failed\n", .{});
+    };
+
+    // Register with Radicle if identity exists
+    var rad_check = std.process.Child.init(
+        &.{ "rad", "self" },
+        alloc,
+    );
+    rad_check.stdout_behavior = .Ignore;
+    rad_check.stderr_behavior = .Ignore;
+    const rad_term = rad_check.spawnAndWait() catch null;
+    if (rad_term != null and rad_term.?.Exited == 0) {
+        var rad = std.process.Child.init(
+            &.{ "rad", "init" },
+            alloc,
+        );
+        rad.cwd = base;
+        _ = rad.spawnAndWait() catch {
+            std.debug.print("Warning: `rad init` failed\n", .{});
+        };
+    } else {
+        std.debug.print("No Radicle identity found. Run `rad auth` to create one, then `rad init` in the project.\n", .{});
+    }
 
     std.debug.print("Initialized {s}/.asi\n", .{base});
 }
@@ -261,6 +310,36 @@ fn viaRemove(alloc: std.mem.Allocator, name: []const u8) !void {
         return;
     };
 
+    // Clean Radicle remotes/references
+    var rad_clean = std.process.Child.init(
+        &.{ "rad", "clean" },
+        alloc,
+    );
+    rad_clean.cwd = path;
+    rad_clean.stderr_behavior = .Ignore;
+    _ = rad_clean.spawnAndWait() catch {};
+
+    // Get RID via rad inspect, then unseed
+    const inspect_result = std.process.Child.run(.{
+        .allocator = alloc,
+        .argv = &.{ "rad", "inspect" },
+        .cwd = path,
+    }) catch null;
+    if (inspect_result) |result| {
+        defer alloc.free(result.stdout);
+        defer alloc.free(result.stderr);
+        if (result.term.Exited == 0 and result.stdout.len > 0) {
+            const rid = std.mem.trimRight(u8, result.stdout, "\n\r ");
+            var rad_unseed = std.process.Child.init(
+                &.{ "rad", "unseed", rid },
+                alloc,
+            );
+            rad_unseed.stderr_behavior = .Ignore;
+            _ = rad_unseed.spawnAndWait() catch {};
+        }
+    }
+
+    // Delete project locally
     var child = std.process.Child.init(
         &.{ "rm", "-rf", path },
         alloc,
