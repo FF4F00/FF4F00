@@ -13,17 +13,13 @@ REPO_SSH="git@github.com:FF4F00/FF4F00.git"
 # -------------------------------------------------
 
 WORKDIR="$HOME/.wrk_"
-PROJECTS_DIR="$HOME/.houston"
-LOG_DIR="$HOME/.log"
 
 BIN_SRC="$WORKDIR/.bin"
 BIN_DST="/usr/local/bin"
 
 echo "==> FF4F00 Platform Installer"
 echo
-echo "Platform (replaceable):  $WORKDIR"
-echo "Projects (persistent):   $PROJECTS_DIR"
-echo "Captain’s Log:           $LOG_DIR"
+echo "Platform:  $WORKDIR"
 echo
 
 # -------------------------------------------------
@@ -35,12 +31,33 @@ if ! command -v git >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! command -v gh >/dev/null 2>&1; then
+  echo "❌ gh (GitHub CLI) is required but not installed."
+  echo "    Install: brew install gh"
+  exit 1
+fi
+
 # -------------------------------------------------
-# Ensure persistent user directories
+# GitHub CLI authentication
 # -------------------------------------------------
 
-mkdir -p "$PROJECTS_DIR"
-mkdir -p "$LOG_DIR"
+echo "==> Checking GitHub CLI authentication"
+
+if gh auth status >/dev/null 2>&1; then
+  echo "✅ gh is authenticated"
+else
+  echo "==> GitHub CLI login required"
+  gh auth login
+fi
+
+echo "==> Ensuring delete_repo scope"
+SCOPES=$(gh auth status 2>&1 | grep "Token scopes" || true)
+if echo "$SCOPES" | grep -q "delete_repo"; then
+  echo "✅ delete_repo scope present"
+else
+  echo "==> Adding delete_repo scope"
+  gh auth refresh -h github.com -s delete_repo
+fi
 
 # -------------------------------------------------
 # Replace platform
