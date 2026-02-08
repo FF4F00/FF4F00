@@ -272,25 +272,24 @@ fn viaInit(name: []const u8) !void {
         std.debug.print("Warning: `jj git init --colocate` failed\n", .{});
     };
 
-    // Register with Radicle if identity exists
-    var rad_check = std.process.Child.init(
-        &.{ "rad", "self" },
+    // Create GitHub repo if gh is authenticated
+    var gh_check = std.process.Child.init(
+        &.{ "gh", "auth", "status" },
         alloc,
     );
-    rad_check.stdout_behavior = .Ignore;
-    rad_check.stderr_behavior = .Ignore;
-    const rad_term = rad_check.spawnAndWait() catch null;
-    if (rad_term != null and rad_term.?.Exited == 0) {
-        var rad = std.process.Child.init(
-            &.{ "rad", "init" },
+    gh_check.stdout_behavior = .Ignore;
+    gh_check.stderr_behavior = .Ignore;
+    const gh_term = gh_check.spawnAndWait() catch null;
+    if (gh_term != null and gh_term.?.Exited == 0) {
+        var gh_create = std.process.Child.init(
+            &.{ "gh", "repo", "create", name, "--private", "--source", base, "--push" },
             alloc,
         );
-        rad.cwd = base;
-        _ = rad.spawnAndWait() catch {
-            std.debug.print("Warning: `rad init` failed\n", .{});
+        _ = gh_create.spawnAndWait() catch {
+            std.debug.print("Warning: `gh repo create` failed\n", .{});
         };
     } else {
-        std.debug.print("No Radicle identity found. Run `rad auth` to create one, then `rad init` in the project.\n", .{});
+        std.debug.print("GitHub CLI not authenticated. Run `gh auth login` to create repos automatically.\n", .{});
     }
 
     std.debug.print("Initialized {s}/.asi\n", .{base});
@@ -310,32 +309,25 @@ fn viaRemove(alloc: std.mem.Allocator, name: []const u8) !void {
         return;
     };
 
-    // Clean Radicle remotes/references
-    var rad_clean = std.process.Child.init(
-        &.{ "rad", "clean" },
-        alloc,
-    );
-    rad_clean.cwd = path;
-    rad_clean.stderr_behavior = .Ignore;
-    _ = rad_clean.spawnAndWait() catch {};
-
-    // Get RID via rad inspect, then unseed
-    const inspect_result = std.process.Child.run(.{
+    // Delete GitHub repo (get username, then delete owner/repo)
+    const gh_user_result = std.process.Child.run(.{
         .allocator = alloc,
-        .argv = &.{ "rad", "inspect" },
-        .cwd = path,
+        .argv = &.{ "gh", "api", "user", "--jq", ".login" },
     }) catch null;
-    if (inspect_result) |result| {
+    if (gh_user_result) |result| {
         defer alloc.free(result.stdout);
         defer alloc.free(result.stderr);
         if (result.term.Exited == 0 and result.stdout.len > 0) {
-            const rid = std.mem.trimRight(u8, result.stdout, "\n\r ");
-            var rad_unseed = std.process.Child.init(
-                &.{ "rad", "unseed", rid },
-                alloc,
-            );
-            rad_unseed.stderr_behavior = .Ignore;
-            _ = rad_unseed.spawnAndWait() catch {};
+            const user = std.mem.trimRight(u8, result.stdout, "\n\r ");
+            const full_repo = std.fmt.allocPrint(alloc, "{s}/{s}", .{ user, name }) catch null;
+            if (full_repo) |repo| {
+                defer alloc.free(repo);
+                var gh_delete = std.process.Child.init(
+                    &.{ "gh", "repo", "delete", repo, "--yes" },
+                    alloc,
+                );
+                _ = gh_delete.spawnAndWait() catch {};
+            }
         }
     }
 
